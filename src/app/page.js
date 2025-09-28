@@ -1,4 +1,5 @@
 import AboutSection from "@/components/about";
+import Contact from "@/components/contact";
 import FAQ from "@/components/faq";
 import Hero from "@/components/hero";
 import WorksSection from "@/components/portfolio";
@@ -16,6 +17,7 @@ export default function Home() {
       <QuoteSection />
       <Testimonials />
       <FAQ />
+      <Contact />
     </>
   );
 }
