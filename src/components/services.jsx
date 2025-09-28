@@ -35,7 +35,7 @@ export default function ServicesSection() {
           {cards.map((card, i) => (
             <motion.div
               key={card.id}
-              className="relative h-80 overflow-hidden shadow-lg group"
+              className="relative h-80 rounded-md overflow-hidden shadow-lg group"
               initial={{ opacity: 0, y: 100, rotateX: 90 }}
               whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
               transition={{ duration: 0.8, delay: i * 0.2 }}
