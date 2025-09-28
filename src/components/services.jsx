@@ -8,21 +8,21 @@ const cards = [
     title: "تصميم المواقع",
     desc: "بناء مواقع احترافية متجاوبة",
     icon: <Code size={48} className="mx-auto text-white" />,
-    bg: "/images/web.jpg",
+    bg: "images/bigstock-female-programmer-working-on-c-471073905.jpg",
   },
   {
     id: 2,
     title: "الجرافيك ديزاين",
     desc: "تصميمات عصرية وجذابة",
     icon: <PenTool size={48} className="mx-auto text-white" />,
-    bg: "/images/design.jpg",
+    bg: "images/How-To-Design-a-Logo-5-Easy-Steps.jpg",
   },
   {
     id: 3,
     title: "كتابة المحتوى",
     desc: "محتوى تسويقي مؤثر",
     icon: <FileText size={48} className="mx-auto text-white" />,
-    bg: "/images/content.jpg",
+    bg: "images/content-writing.webp",
   },
 ];
 
@@ -35,7 +35,7 @@ export default function ServicesSection() {
           {cards.map((card, i) => (
             <motion.div
               key={card.id}
-              className="relative h-80 rounded-2xl overflow-hidden shadow-lg group"
+              className="relative h-80 overflow-hidden shadow-lg group"
               initial={{ opacity: 0, y: 100, rotateX: 90 }}
               whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
               transition={{ duration: 0.8, delay: i * 0.2 }}
@@ -43,11 +43,11 @@ export default function ServicesSection() {
             >
               {/* الخلفية */}
               <div
-                className="absolute inset-0 bg-cover bg-center"
+                className="absolute top-full group-hover:top-0 transition-all duration-500 inset-0 bg-cover bg-center"
                 style={{ backgroundImage: `url(${card.bg})` }}
               />
               {/* Overlay */}
-              <div className="absolute inset-0 bg-black/50 group-hover:bg-black/60 transition-all" />
+              <div className="absolute inset-0 bg-blue-900 group-hover:bg-blue-800/70 transition-all duration-500" />
 
               {/* المحتوى */}
               <div className="relative z-10 flex flex-col items-center justify-center h-full text-white px-6">
