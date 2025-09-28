@@ -1,6 +1,14 @@
 "use client";
 import { motion } from "framer-motion";
-import { Code, PenTool, FileText } from "lucide-react";
+import {
+  Code,
+  PenTool,
+  FileText,
+  LogsIcon,
+  Video,
+  SmartphoneCharging,
+  PencilRulerIcon,
+} from "lucide-react";
 
 const cards = [
   {
@@ -12,7 +20,7 @@ const cards = [
   },
   {
     id: 2,
-    title: "الجرافيك ديزاين",
+    title: "التصميم الجرافيكي",
     desc: "تصميمات عصرية وجذابة",
     icon: <PenTool size={48} className="mx-auto text-white" />,
     bg: "images/How-To-Design-a-Logo-5-Easy-Steps.jpg",
@@ -24,6 +32,27 @@ const cards = [
     icon: <FileText size={48} className="mx-auto text-white" />,
     bg: "images/content-writing.webp",
   },
+  {
+    id: 4,
+    title: "تصميم العلامات التجارية",
+    desc: "لمسة فريدة لهويتك البصرية التي تميزك",
+    icon: <PencilRulerIcon size={48} className="mx-auto text-white" />,
+    bg: "images/content-writing.webp",
+  },
+  {
+    id: 5,
+    title: "الانتاج المرئي",
+    desc: "رسخ فكرتك عبر فيديو احترافي مؤثر",
+    icon: <Video size={48} className="mx-auto text-white" />,
+    bg: "images/content-writing.webp",
+  },
+  {
+    id: 6,
+    title: "ادارة وسائل التواصل",
+    desc: "نموذج متكامل لبناء حضور قوي على السوشيال ميديا",
+    icon: <SmartphoneCharging size={48} className="mx-auto text-white" />,
+    bg: "images/content-writing.webp",
+  },
 ];
 
 export default function ServicesSection() {
@@ -31,11 +60,16 @@ export default function ServicesSection() {
     <section className="py-20 bg-gray-50">
       <div className="max-w-6xl mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-12">خدماتنا</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <p className="text-amber-100 ">
+          نقدم لك الحل النهائي لجميع احتياجاتك الرقمية... نسعى لتحقيق الريادة في
+          عالم مزدحم بالأفكار والأعمال، ونقدم حلول برمجية متطورة تساعدك على
+          التقدم والنمو, انضم إلى قائمة الشركاء لدينا وحول أفكارك إلى أكواد...
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
           {cards.map((card, i) => (
             <motion.div
               key={card.id}
-              className="relative h-80 overflow-hidden shadow-lg group"
+              className="relative h-80 rounded-xl overflow-hidden shadow-lg group"
               initial={{ opacity: 0, y: 100, rotateX: 90 }}
               whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
               transition={{ duration: 0.8, delay: i * 0.2 }}
@@ -43,7 +77,7 @@ export default function ServicesSection() {
             >
               {/* الخلفية */}
               <div
-                className="absolute top-full group-hover:top-0 transition-all duration-500 inset-0 bg-cover bg-center"
+                className="absolute top-full group-hover:top-0 transition-all duration-1000 inset-0 bg-cover bg-center"
                 style={{ backgroundImage: `url(${card.bg})` }}
               />
               {/* Overlay */}
