@@ -3,30 +3,32 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import { Menu, X, Globe } from "lucide-react";
+import { Menu, X, Globe, ChevronDown } from "lucide-react";
 
 export default function Navbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
 
   const navLinks = [
     { href: "/", label: "الرئيسية" },
     { href: "/about", label: "عن نايلوب" },
-    { href: "/services", label: "الخدمات" },
+    { href: "/services", label: "الخدمات", dropdown: true },
     { href: "/contact", label: "تواصل معنا" },
   ];
 
-  // مراقبة السكرول
+  const serviceLinks = [
+    { href: "/services/web-design", label: "تصميم المواقع" },
+    { href: "/services/graphic-design", label: "التصميم الجرافيكي" },
+    { href: "/services/marketing", label: "التسويق الإلكتروني" },
+    { href: "/services", label: "جميع الخدمات" },
+  ];
+
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 50);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -39,7 +41,7 @@ export default function Navbar() {
           : "bg-transparent text-white"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-20">
+      <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
         {/* Logo */}
         <Link
           href="/"
@@ -52,22 +54,55 @@ export default function Navbar() {
 
         {/* Desktop Nav */}
         <div className="hidden flex-1 md:flex items-center space-x-6 space-x-reverse">
-          <ul className="flex-1 flex gap-6 justify-center items-center">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`transition-colors pb-3 ${
-                  pathname === link.href
-                    ? "text-[#d4b483] font-semibold border-b-2 border-[#d4b483]"
-                    : scrolled
-                    ? "hover:text-[#d4b483]"
-                    : "hover:text-[#d4b483]"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
+          <ul className="flex-1 flex gap-8 justify-center items-center relative font-bold">
+            {navLinks.map((link) =>
+              link.dropdown ? (
+                <div
+                  key={link.href}
+                  className="relative group"
+                  onMouseEnter={() => setServicesOpen(true)}
+                  onMouseLeave={() => setServicesOpen(false)}
+                >
+                  <button
+                    className={`flex items-center gap-2 transition-colors py-5 ${
+                      pathname.startsWith("/services")
+                        ? "text-[#d4b483] font-semibold border-b-3 border-[#d4b483]"
+                        : "hover:text-[#d4b483]"
+                    }`}
+                  >
+                    {link.label}
+                    <ChevronDown size={16} />
+                  </button>
+
+                  {/* Dropdown Menu */}
+                  {servicesOpen && (
+                    <div className="absolute top-full right-0 bg-white shadow-lg rounded-md py-2 w-48 z-50">
+                      {serviceLinks.map((service) => (
+                        <Link
+                          key={service.href}
+                          href={service.href}
+                          className="block px-4 py-2 text-[#1a237e] hover:bg-[#f5f5f5] hover:text-[#d4b483] transition"
+                        >
+                          {service.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`transition-colors py-5 ${
+                    pathname === link.href
+                      ? "text-[#d4b483] font-semibold border-b-3 border-[#d4b483]"
+                      : "hover:text-[#d4b483]"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              )
+            )}
           </ul>
 
           {/* Language Switch */}
@@ -106,20 +141,46 @@ export default function Navbar() {
             scrolled ? "bg-white text-[#1a237e]" : "bg-[#1a237e] text-white"
           }`}
         >
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setMobileOpen(false)}
-              className={`block py-2 transition-colors ${
-                pathname === link.href
-                  ? "text-[#d4b483] font-semibold border-b border-[#d4b483]"
-                  : "hover:text-[#d4b483]"
-              }`}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) =>
+            link.dropdown ? (
+              <div key={link.href} className="space-y-2">
+                <button
+                  onClick={() => setServicesOpen(!servicesOpen)}
+                  className="flex items-center gap-2 w-full py-2 hover:text-[#d4b483]"
+                >
+                  {link.label}
+                  <ChevronDown size={16} />
+                </button>
+                {servicesOpen && (
+                  <div className="pl-4 space-y-2">
+                    {serviceLinks.map((service) => (
+                      <Link
+                        key={service.href}
+                        href={service.href}
+                        onClick={() => setMobileOpen(false)}
+                        className="block py-2 hover:text-[#d4b483]"
+                      >
+                        {service.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setMobileOpen(false)}
+                className={`block py-2 transition-colors ${
+                  pathname === link.href
+                    ? "text-[#d4b483] font-semibold border-b border-[#d4b483]"
+                    : "hover:text-[#d4b483]"
+                }`}
+              >
+                {link.label}
+              </Link>
+            )
+          )}
 
           <button className="flex items-center gap-2 hover:text-[#d4b483] transition w-full">
             <Globe size={18} />

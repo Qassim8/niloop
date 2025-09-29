@@ -8,8 +8,11 @@ export default function BreadcrumbSection({ title, description }) {
     <section className="relative h-[70vh] flex items-center justify-center text-center text-white">
       {/* Background Image */}
       <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/about-bg.jpg')" }}
+        className="absolute inset-0 bg-cover bg-fixed"
+        style={{
+          backgroundImage:
+            "url('../images/MacBook-Pro-and-iPhone-X-Mockup-1500x1125.jpg')",
+        }}
       />
       {/* Overlay */}
       <div className="absolute inset-0 bg-[#1a237e]/80" />
