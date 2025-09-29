@@ -50,14 +50,14 @@ export default function FAQ() {
               {/* رأس السؤال */}
               <button
                 onClick={() => toggleFAQ(index)}
-                className="flex justify-between items-center w-full px-6 py-4 text-right"
+                className="flex justify-between items-center w-full px-6 py-4 text-right duration-300"
               >
                 <span className="text-lg font-semibold text-blue-900">
                   {faq.question}
                 </span>
                 <motion.div
                   animate={{ rotate: openIndex === index ? 180 : 0 }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: 0.5 }}
                 >
                   <ChevronDown className="w-5 h-5 text-blue-900" />
                 </motion.div>
@@ -70,7 +70,7 @@ export default function FAQ() {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.4 }}
+                    transition={{ duration: 0.5 , ease: "linear" }}
                     className="px-6 pb-4 text-gray-700 leading-relaxed"
                   >
                     {faq.answer}

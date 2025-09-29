@@ -1,5 +1,6 @@
 import BreadcrumbSection from '@/components/breadcrumb'
 import Contact from '@/components/contact/contact';
+import FAQ from '@/components/home/faq';
 import React from 'react'
 
 function ContactUs() {
@@ -10,6 +11,7 @@ function ContactUs() {
         description="
       كن على تواصل معنا لأي استفسارات أو طلبات خاصة. نحن هنا لمساعدتك في تحقيق أهدافك الرقمية وتقديم الدعم الذي تحتاجه."
       />
+      <FAQ />
       <Contact />
     </>
   );
