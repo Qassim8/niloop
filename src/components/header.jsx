@@ -15,6 +15,7 @@ export default function Navbar() {
     { href: "/", label: "الرئيسية" },
     { href: "/about", label: "عن نايلوب" },
     { href: "/services", label: "الخدمات", dropdown: true },
+    { href: "/projects", label: "اعمالنا" },
     { href: "/contact", label: "تواصل معنا" },
   ];
 
