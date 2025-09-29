@@ -1,11 +1,11 @@
-import AboutSection from "@/components/about";
-import Contact from "@/components/contact";
-import FAQ from "@/components/faq";
-import Hero from "@/components/hero";
-import WorksSection from "@/components/portfolio";
-import QuoteSection from "@/components/quote";
-import ServicesSection from "@/components/services";
-import Testimonials from "@/components/testimonials";
+import AboutSection from "@/components/about/about";
+import Contact from "@/components/contact/contact";
+import FAQ from "@/components/home/faq";
+import Hero from "@/components/home/hero";
+import WorksSection from "@/components/projects/portfolio";
+import QuoteSection from "@/components/home/quote";
+import ServicesSection from "@/components/services/services";
+import Testimonials from "@/components/home/testimonials";
 
 export default function Home() {
   return (
