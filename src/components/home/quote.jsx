@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function QuoteSection() {
   return (
-    <section className="relative py-24 bg-gradient-to-r from-blue-900 via-blue-800 to-[#d4b483] text-center">
+    <section className="relative py-24 bg-gradient-to-r from-[#1e549f] to-[#dda853] text-center">
       <div className="container mx-auto px-6">
         <motion.blockquote
           initial={{ opacity: 0, scale: 0.95 }}

@@ -1,12 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import SectionHeader from "../sections-header";
 import { ChevronDown } from "lucide-react";
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState(null);
-
   const faqs = [
     {
       question: "ما هي الخدمات التي تقدمونها؟",
@@ -30,54 +27,28 @@ export default function FAQ() {
     },
   ];
 
-  const toggleFAQ = (index) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
   return (
-    <section className="py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-yellow-100">
-      <div className="container mx-auto px-6">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
-          الأسئلة الشائعة
-        </h2>
+    <section className="py-20 bg-gradient-to-tr from-[#1e549f] to-[#dda853]">
+      <div className="container mx-auto px-6 md:px-0">
+        <SectionHeader title="الأسئلة الشائعة" subtitle="ماذا يدور في ذهنك؟" />
 
         <div className="max-w-3xl mx-auto space-y-4">
           {faqs.map((faq, index) => (
-            <div
+            <details
               key={index}
-              className="bg-white rounded-xl shadow-md overflow-hidden"
+              className="group border border-gray-200 rounded-lg p-5 bg-white shadow-sm transition-all duration-300 ease-linear hover:shadow-md"
             >
-              {/* رأس السؤال */}
-              <button
-                onClick={() => toggleFAQ(index)}
-                className="flex justify-between items-center w-full px-6 py-4 text-right duration-300"
-              >
-                <span className="text-lg font-semibold text-blue-900">
-                  {faq.question}
+              <summary className="flex justify-between items-center cursor-pointer font-semibold text-main list-none">
+                {faq.question}
+                <span className="transition-transform duration-300 group-open:rotate-180">
+                  <ChevronDown className="w-6 h-6 text-main" />
                 </span>
-                <motion.div
-                  animate={{ rotate: openIndex === index ? 180 : 0 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <ChevronDown className="w-5 h-5 text-blue-900" />
-                </motion.div>
-              </button>
+              </summary>
 
-              {/* الإجابة */}
-              <AnimatePresence>
-                {openIndex === index && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.5 , ease: "linear" }}
-                    className="px-6 pb-4 text-gray-700 leading-relaxed"
-                  >
-                    {faq.answer}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+              <p className="mt-3 text-slate-500 leading-relaxed bg-[#ffe1ae10] p-3 rounded-md">
+                {faq.answer}
+              </p>
+            </details>
           ))}
         </div>
       </div>

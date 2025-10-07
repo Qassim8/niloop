@@ -1,1 +1,30 @@
 @import "tailwindcss";
+
+html{
+    scroll-behavior: smooth;
+}
+body{
+    --main-color: #1e549f;
+    --alt-color: #dda853;
+}
+.text-main{
+    color: var(--main-color);
+}
+.bg-main{
+    background-color: var(--main-color);
+}
+.text-alt{
+    color: var(--alt-color);
+}
+.bg-alt{
+    background-color: var(--alt-color);
+}
+.swiper-pagination-bullet{
+    transition-duration: .7s !important;
+}
+.swiper-pagination-bullet-active{
+    padding-inline: 8px !important;
+    border-radius: 4px !important;
+    background-color: var(--alt-color) !important;
+    border: 1px solid var(--main-color) !important;
+}

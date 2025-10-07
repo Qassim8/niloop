@@ -5,13 +5,13 @@ import { Home } from "lucide-react";
 
 export default function BreadcrumbSection({ title, description, links }) {
   return (
-    <section className="relative h-[60vh] flex items-center justify-center text-center text-white">
+    <section className="relative h-[80vh] flex items-center justify-center text-center text-white">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-fixed"
         style={{
           backgroundImage:
-            "url('../images/MacBook-Pro-and-iPhone-X-Mockup-1500x1125.jpg')",
+            "url('../images/8.jpg')",
         }}
       />
       {/* Overlay */}
@@ -20,7 +20,6 @@ export default function BreadcrumbSection({ title, description, links }) {
       {/* Content */}
       <div className="relative z-10 max-w-3xl px-4">
         <h1 className="text-4xl font-bold mb-3">{title}</h1>
-        {/* <p className="text-lg text-gray-200 mb-6">{description}</p> */}
 
         {/* Breadcrumb */}
         <div className="flex items-center justify-center gap-2 text-sm text-gray-300">

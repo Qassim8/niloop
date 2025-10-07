@@ -9,6 +9,7 @@ import {
   SmartphoneCharging,
   PencilRulerIcon,
 } from "lucide-react";
+import SectionHeader from "../sections-header";
 
 const cards = [
   {
@@ -57,19 +58,17 @@ const cards = [
 
 export default function ServicesSection() {
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12">خدماتنا</h2>
-        <p className="text-amber-100 ">
-          نقدم لك الحل النهائي لجميع احتياجاتك الرقمية... نسعى لتحقيق الريادة في
-          عالم مزدحم بالأفكار والأعمال، ونقدم حلول برمجية متطورة تساعدك على
-          التقدم والنمو, انضم إلى قائمة الشركاء لدينا وحول أفكارك إلى أكواد...
-        </p>
+    <section className="py-20 bg-white">
+      <div className="container mx-auto px-4 md:px-0">
+        <SectionHeader
+          title="الخدمات"
+          subtitle="ابرز خدمات نايلوب"
+        />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
           {cards.map((card, i) => (
             <motion.div
               key={card.id}
-              className="relative h-80 rounded-xl overflow-hidden shadow-lg group"
+              className="relative h-80 rounded-md overflow-hidden shadow-lg group"
               initial={{ opacity: 0, y: 100, rotateX: 90 }}
               whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
               transition={{ duration: 0.8, delay: i * 0.2 }}
@@ -81,7 +80,7 @@ export default function ServicesSection() {
                 style={{ backgroundImage: `url(${card.bg})` }}
               />
               {/* Overlay */}
-              <div className="absolute inset-0 bg-blue-900 group-hover:bg-blue-800/70 transition-all duration-500" />
+              <div className="absolute inset-0 bg-main group-hover:!bg-blue-800/70 transition-all duration-500" />
 
               {/* المحتوى */}
               <div className="relative z-10 flex flex-col items-center justify-center h-full text-white px-6">

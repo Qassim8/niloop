@@ -6,59 +6,58 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import SectionHeader from "../sections-header";
 
 export default function Testimonials() {
   const testimonials = [
     {
       name: "محمد أحمد",
       role: "رائد أعمال",
-      image: "/images/client1.jpg",
+      image: "/images/businessman.png",
       text: "التعامل مع الشركة كان تجربة مميزة جدًا، الاحترافية كانت واضحة من البداية وحتى التسليم النهائي.",
     },
     {
       name: "سارة علي",
       role: "مصممة جرافيك",
-      image: "/images/client2.jpg",
+      image: "/images/businesswoman.png",
       text: "خدمة ممتازة وسرعة في الاستجابة، الفريق متعاون ومبدع.",
     },
     {
       name: "أحمد يوسف",
       role: "مطور ويب",
-      image: "/images/client3.jpg",
+      image: "/images/businessman.png",
       text: "النتيجة النهائية فاقت توقعاتي، التصميم عصري والتفاصيل مدروسة.",
     },
     {
       name: "محمد أحمد",
       role: "رائد أعمال",
-      image: "/images/client1.jpg",
+      image: "/images/businessman.png",
       text: "التعامل مع الشركة كان تجربة مميزة جدًا، الاحترافية كانت واضحة من البداية وحتى التسليم النهائي.",
     },
     {
       name: "سارة علي",
       role: "مصممة جرافيك",
-      image: "/images/client2.jpg",
+      image: "/images/businesswoman.png",
       text: "خدمة ممتازة وسرعة في الاستجابة، الفريق متعاون ومبدع.",
     },
     {
       name: "محمد أحمد",
       role: "رائد أعمال",
-      image: "/images/client1.jpg",
+      image: "/images/businessman.png",
       text: "التعامل مع الشركة كان تجربة مميزة جدًا، الاحترافية كانت واضحة من البداية وحتى التسليم النهائي.",
     },
     {
       name: "سارة علي",
       role: "مصممة جرافيك",
-      image: "/images/client2.jpg",
+      image: "/images/businesswoman.png",
       text: "خدمة ممتازة وسرعة في الاستجابة، الفريق متعاون ومبدع.",
     },
   ];
 
   return (
     <section className="py-20 bg-gray-50">
-      <div className="container mx-auto px-6">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-900 mb-12">
-          آراء عملاؤنا
-        </h2>
+      <div className="container mx-auto px-6 md:px-0">
+        <SectionHeader title="العملاء" subtitle="ماذا قال عملاؤنا" />
         <Swiper
           modules={[Navigation]}
           navigation={{

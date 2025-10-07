@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Menu, X, Globe, ChevronDown } from "lucide-react";
+import Image from "next/image";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -36,21 +37,23 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white shadow-md text-[#1a237e]"
-          : "bg-transparent text-white"
-      }`}
+      className={`sticky top-0 left-0 w-full bg-white text-main z-50 transition-all duration-300 shadow-md`}
     >
-      <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto md:px-0 px-4 flex items-center justify-between h-full">
         {/* Logo */}
         <Link
           href="/"
           className={`text-2xl font-bold transition-colors ${
-            scrolled ? "text-[#1a237e]" : "text-[#d4b483]"
+            scrolled ? "text-main" : "text-alt"
           }`}
         >
-          نايلوب
+          <Image
+            src="/images/logo Mark.svg"
+            alt="Nailob Logo"
+            width={90}
+            height={90}
+            className="!w-[80px] md:w-[130px]"
+          />
         </Link>
 
         {/* Desktop Nav */}
@@ -65,10 +68,10 @@ export default function Navbar() {
                   onMouseLeave={() => setServicesOpen(false)}
                 >
                   <button
-                    className={`flex items-center gap-2 transition-colors py-5 ${
+                    className={`flex items-center gap-2 transition-colors ${
                       pathname.startsWith("/services")
-                        ? "text-[#d4b483] font-semibold border-b-3 border-[#d4b483]"
-                        : "hover:text-[#d4b483]"
+                        ? "text-alt font-semibold border-b-3 border-[#dda853]"
+                        : "hover:!text-[#dda853]"
                     }`}
                   >
                     {link.label}
@@ -82,7 +85,7 @@ export default function Navbar() {
                         <Link
                           key={service.href}
                           href={service.href}
-                          className="block px-4 py-2 text-[#1a237e] hover:bg-[#f5f5f5] hover:text-[#d4b483] transition"
+                          className="block px-4 py-2 text-main hover:bg-[#f5f5f5] hover:text-[#dda853] transition"
                         >
                           {service.label}
                         </Link>
@@ -96,8 +99,8 @@ export default function Navbar() {
                   href={link.href}
                   className={`transition-colors py-5 ${
                     pathname === link.href
-                      ? "text-[#d4b483] font-semibold border-b-3 border-[#d4b483]"
-                      : "hover:text-[#d4b483]"
+                      ? "text-alt font-semibold border-b-3 border-[#dda853]"
+                      : "hover:!text-[#dda853]"
                   }`}
                 >
                   {link.label}
@@ -110,8 +113,8 @@ export default function Navbar() {
           <button
             className={`flex items-center gap-1 transition me-4 ${
               scrolled
-                ? "text-[#1a237e] hover:text-[#d4b483]"
-                : "hover:text-[#d4b483]"
+                ? "text-main hover:!text-[#dda853]"
+                : "hover:!text-[#dda853]"
             }`}
           >
             <Globe size={16} />
@@ -119,7 +122,7 @@ export default function Navbar() {
           </button>
 
           {/* Call to Action */}
-          <button className="bg-[#d4b483] text-[#1a237e] px-4 py-2 rounded-xl font-semibold hover:opacity-90 transition">
+          <button className="bg-alt text-main px-4 py-2 rounded-xl font-semibold hover:opacity-90 transition cursor-pointer">
             احصل على خدمتك
           </button>
         </div>
@@ -127,7 +130,7 @@ export default function Navbar() {
         {/* Mobile Menu Button */}
         <button
           className={`md:hidden transition ${
-            scrolled ? "text-[#1a237e]" : "text-white"
+            scrolled ? "text-main" : "text-white"
           }`}
           onClick={() => setMobileOpen(!mobileOpen)}
         >
@@ -139,7 +142,7 @@ export default function Navbar() {
       {mobileOpen && (
         <div
           className={`md:hidden px-4 pb-4 space-y-4 transition ${
-            scrolled ? "bg-white text-[#1a237e]" : "bg-[#1a237e] text-white"
+            scrolled ? "bg-white text-main" : "bg-main text-white"
           }`}
         >
           {navLinks.map((link) =>
@@ -147,7 +150,7 @@ export default function Navbar() {
               <div key={link.href} className="space-y-2">
                 <button
                   onClick={() => setServicesOpen(!servicesOpen)}
-                  className="flex items-center gap-2 w-full py-2 hover:text-[#d4b483]"
+                  className="flex items-center gap-2 w-full py-2 hover:!text-[#dda853]"
                 >
                   {link.label}
                   <ChevronDown size={16} />
@@ -159,7 +162,7 @@ export default function Navbar() {
                         key={service.href}
                         href={service.href}
                         onClick={() => setMobileOpen(false)}
-                        className="block py-2 hover:text-[#d4b483]"
+                        className="block py-2 hover:!text-[#dda853]"
                       >
                         {service.label}
                       </Link>
@@ -174,8 +177,8 @@ export default function Navbar() {
                 onClick={() => setMobileOpen(false)}
                 className={`block py-2 transition-colors ${
                   pathname === link.href
-                    ? "text-[#d4b483] font-semibold border-b border-[#d4b483]"
-                    : "hover:text-[#d4b483]"
+                    ? "text-alt font-semibold border-b border-[#dda853]"
+                    : "hover:!text-[#dda853]"
                 }`}
               >
                 {link.label}
@@ -183,12 +186,12 @@ export default function Navbar() {
             )
           )}
 
-          <button className="flex items-center gap-2 hover:text-[#d4b483] transition w-full">
+          <button className="flex items-center gap-2 hover:!text-[#dda853] transition w-full">
             <Globe size={18} />
             <span>EN</span>
           </button>
 
-          <button className="bg-[#d4b483] text-[#1a237e] w-full py-2 rounded-xl font-semibold hover:opacity-90 transition">
+          <button className="bg-alt text-main w-full py-2 rounded-xl font-semibold hover:opacity-90 transition">
             احصل على خدمتك
           </button>
         </div>

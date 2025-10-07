@@ -1,7 +1,18 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Noto_Kufi_Arabic } from "next/font/google";
 import "./globals.css";
 import Header from "../components/header";
 import Footer from "../components/footer";
+import { Tajawal } from "next/font/google";
+
+const tajawal = Tajawal({
+  subsets: ["arabic"],
+  weight: ["400", "500", "700"],
+});
+
+const notoKufiArabic = Noto_Kufi_Arabic({
+  subsets: ["arabic"],
+  weight: ["400", "500", "700"]
+})
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,7 +33,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ar" dir="rtl">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${notoKufiArabic.className} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Header />
         {children}
