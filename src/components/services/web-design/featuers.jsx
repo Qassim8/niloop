@@ -1,5 +1,6 @@
 "use client";
 
+import SectionHeader from "@/components/sections-header";
 import { motion } from "framer-motion";
 import {
   Globe,
@@ -51,15 +52,15 @@ const features = [
 
 export default function FeaturesSection() {
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-gray-50">
+    <section className="py-20 relative overflow-hidden bg-slate-50">
+      {/* <div className="absolute -top-5 -start-5 w-[150px] -rotate-12">
+        <img src="/images/logo 2.svg" alt="logo" className="max-w-full" />
+      </div>
+      <div className="absolute bottom-0 -end-5-0 w-[150px] -rotate-12">
+        <img src="/images/logo 2.svg" alt="logo" className="max-w-full" />
+      </div> */}
       <div className="container mx-auto px-4 text-center">
-        <h2 className="text-3xl font-bold text-[#1a237e] mb-4">
-          لماذا تختار خدماتنا؟
-        </h2>
-        <p className="text-gray-600 max-w-2xl mx-auto mb-12">
-          لأننا نؤمن أن كل موقع إلكتروني هو تجربة متكاملة تبدأ من الفكرة وتنتهي
-          بالنتيجة التي تُحدث فرقًا.
-        </p>
+        <SectionHeader title=" لماذا خدماتنا؟" subtitle="ستحصل على مزايا فريدة" />
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((feature, index) => (
@@ -73,7 +74,7 @@ export default function FeaturesSection() {
             >
               <div className="flex flex-col items-center text-center">
                 <div className="mb-4">{feature.icon}</div>
-                <h3 className="text-xl font-semibold text-[#1a237e] mb-2">
+                <h3 className="text-xl font-semibold text-main mb-2">
                   {feature.title}
                 </h3>
                 <p className="text-gray-600 leading-relaxed">

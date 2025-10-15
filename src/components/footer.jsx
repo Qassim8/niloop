@@ -7,9 +7,9 @@ export default function Footer() {
       <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* العمود الأول */}
         <div>
-          <h2 className="text-2xl font-bold text-white mb-4"><img src="/images/Niloop mark.svg" alt="logo" className="w-[120px]"/></h2>
+          <h2 className="text-2xl font-bold text-white mb-4"><img src="/images/Niloop_mark.svg" alt="logo" className="w-[120px]"/></h2>
           <p className="text-sm leading-relaxed">
-            شركة تقنية متخصصة في تطوير المواقع والتطبيقات الرقمية وتقديم حلول
+            شركة تقنية متخصصة في تطوير المواقع والتطبيقات الرقمية والتصميم الجرافيكي وتقديم حلول وحملات تسويقية
             مبتكرة لعملائنا.
           </p>
         </div>
@@ -77,8 +77,8 @@ export default function Footer() {
       </div>
 
       {/* الحقوق */}
-      <div className="mt-12 border-t border-gray-700 pt-6 text-center text-sm text-gray-400">
-        © {new Date().getFullYear()} TechCompany. جميع الحقوق محفوظة.
+      <div className="mt-12 border-t border-slate-500 pt-6 text-center text-sm text-slate-400">
+        © 2025 <span className="text-alt">نايلوب</span>. جميع الحقوق محفوظة.
       </div>
     </footer>
   );

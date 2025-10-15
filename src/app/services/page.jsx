@@ -8,8 +8,10 @@ const Services = () => {
   return (
     <>
       <BreadcrumbSection
-        title="الخدمات"
-        description="سنساعدك في تحقيق أهدافك الرقمية من خلال مجموعة شاملة من الخدمات المصممة لتلبية احتياجاتك الفريدة"
+        title="تعرف على خدماتنا"
+        links={[
+          { label: "الخدمات" },
+        ]}
       />
       <ServicesSection />
       <CallToAction />

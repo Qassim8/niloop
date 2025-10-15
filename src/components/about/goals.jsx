@@ -2,23 +2,24 @@
 
 import { Eye, MessageSquareText, Compass } from "lucide-react";
 import { motion } from "framer-motion";
+import SectionHeader from "../sections-header";
 
 export default function GoalsSection() {
   const goals = [
     {
-      icon: <Eye size={32} className="text-[#1a237e]" />,
+      icon: <Eye size={32} className="text-main" />,
       title: "الرؤية",
       description:
         "نسعى لأن نكون الرواد في تقديم الحلول التقنية المبتكرة التي تساهم في تطوير المجتمعات وتحقيق التحول الرقمي.",
     },
     {
-      icon: <MessageSquareText size={32} className="text-[#1a237e]" />,
+      icon: <MessageSquareText size={32} className="text-main" />,
       title: "الرسالة",
       description:
         "تقديم خدمات وحلول عالية الجودة لعملائنا، مع التركيز على الابتكار والالتزام والتميز المستمر.",
     },
     {
-      icon: <Compass size={32} className="text-[#1a237e]" />,
+      icon: <Compass size={32} className="text-main" />,
       title: "الاستراتيجية",
       description:
         "العمل بخطط واضحة مبنية على التحليل العميق للسوق، وبناء شراكات قوية لتحقيق أهدافنا المشتركة.",
@@ -26,11 +27,9 @@ export default function GoalsSection() {
   ];
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16">
       <div className="max-w-4xl mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center text-[#1a237e] mb-12">
-          أهدافنا
-        </h2>
+        <SectionHeader title="اهدافنا" subtitle="ما نسعى لتحقيقه" />
 
         <div className="flex flex-col gap-6">
           {goals.map((goal, idx) => (
@@ -40,14 +39,14 @@ export default function GoalsSection() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
               viewport={{ once: true, amount: 0.3 }}
-              className="bg-white shadow-md rounded-xl p-6 flex items-start gap-4 hover:shadow-lg transition"
+              className="bg-alt shadow-md rounded-lg p-5 flex items-start gap-5 hover:!bg-yellow-50 transition duration-300"
             >
               <div className="flex-shrink-0">{goal.icon}</div>
               <div>
-                <h3 className="text-xl font-semibold mb-2 text-[#1a237e]">
+                <h3 className="text-xl font-semibold mb-2 text-main">
                   {goal.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-slate-700 leading-relaxed">
                   {goal.description}
                 </p>
               </div>

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export default function SectionHeader({ title, subtitle, align = "center" }) {
   return (
     <div
-      className={`relative mb-12 z-20 text-${align} flex flex-col items-${
+      className={`relative mb-12 z-30 text-${align} flex flex-col items-${
         align === "center" ? "center" : "start"
       }`}
     >

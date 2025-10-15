@@ -7,10 +7,11 @@ function ContactUs() {
   return (
     <>
       <BreadcrumbSection
-        title="تواصل معنا"
-        description="
-      كن على تواصل معنا لأي استفسارات أو طلبات خاصة. نحن هنا لمساعدتك في تحقيق أهدافك الرقمية وتقديم الدعم الذي تحتاجه."
-      />
+              title="اتصل بنا"
+              links={[
+                { label: "التواصل" },
+              ]}
+            />
       <FAQ />
       <Contact />
     </>

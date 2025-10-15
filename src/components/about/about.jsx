@@ -34,7 +34,7 @@ export default function AboutSection() {
   ];
 
   return (
-    <section id="about" className="py-20 bg-gray-50 relative overflow-hidden">
+    <section id="about" className="py-20 bg-slate-100 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* الصورة */}
         <motion.div

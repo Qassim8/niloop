@@ -55,7 +55,7 @@ export default function Testimonials() {
   ];
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-slate-100">
       <div className="container mx-auto px-6 md:px-0">
         <SectionHeader title="العملاء" subtitle="ماذا قال عملاؤنا" />
         <Swiper

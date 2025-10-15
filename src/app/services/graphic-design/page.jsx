@@ -1,4 +1,6 @@
 import BreadcrumbSection from '@/components/breadcrumb'
+import FeaturesSection from '@/components/services/graphic-design/features';
+import TopSection from '@/components/services/graphic-design/top-section';
 import React from 'react'
 
 function Graphic() {
@@ -11,6 +13,8 @@ function Graphic() {
           { label: "التصميم الجرافيكي" },
         ]}
       />
+      <TopSection />
+      <FeaturesSection />
     </>
   );
 }

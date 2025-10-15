@@ -9,7 +9,6 @@ function Web() {
     <>
       <BreadcrumbSection
         title="تصميم المواقع"
-        description="نقدم مواقع عصرية وسريعة تلبي احتياجاتك"
         links={[
           { label: "الخدمات", href: "/services" },
           { label: "تصميم المواقع" },

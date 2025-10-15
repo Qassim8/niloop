@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import SectionHeader from "../sections-header";
 
 export default function HowWeWork() {
   const steps = [
@@ -28,7 +29,7 @@ export default function HowWeWork() {
   return (
     <section className="py-20 bg-gray-50 relative">
       <div className="max-w-4xl mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-14">كيف نعمل؟</h2>
+        <SectionHeader title="كيف نعمل" subtitle="معك خطوة بخطوة" />
 
         <div className="flex flex-col items-center gap-5 relative">
           {steps.map((step, index) => (
@@ -42,41 +43,36 @@ export default function HowWeWork() {
             >
               {/* Card */}
               <div
-                className="relative overflow-hidden bg-white shadow-lg rounded-md p-8 text-center 
-                transition-transform duration-500 hover:scale-105 group"
+                className="relative bg-white rounded-md p-8 text-center 
+                transition-all duration-500 hover:scale-105 hover:!bg-[#1e549f] group border border-[#dda85375]"
               >
-                {/* Hover background effect */}
-                <div
-                  className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-800 
-                  translate-x-[-100%] group-hover:translate-x-0 
-                  transition-transform duration-700 ease-in-out z-0"
-                ></div>
-
-                <div className="relative z-10">
-                  <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center rounded-full bg-blue-600 text-white font-bold shadow">
+                <div className="relative z-10 rounded-lg">
+                  <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center rounded-full bg-alt text-main font-bold shadow">
                     {step.id}
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                  <h3 className="text-xl font-semibold mb-2 text-slate-700 group-hover:text-[#dda853] transition-colors duration-500">
                     {step.title}
                   </h3>
-                  <p className="text-gray-600">{step.desc}</p>
+                  <p className="text-slate-500 group-hover:text-[#dda853] transition-colors duration-500">
+                    {step.desc}
+                  </p>
                 </div>
               </div>
 
               {/* Curved Arrow SVG except last */}
               {index !== steps.length - 1 && (
-                <div className="flex justify-center my-3">
+                <div className="flex justify-center my-4">
                   <svg
-                    className=" hidden md:block absolute left-1/2 top-1/2 transform -translate-x-1/2 translate-y-6"
-                    width="80"
-                    height="100"
+                    className="md:block absolute left-1/2 top-[75%] transform -translate-x-1/2 translate-y-6"
+                    width="40"
+                    height="50"
                     viewBox="0 0 80 120"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M40,0 C0,40 80,80 40,120"
-                      stroke="#1a237e"
+                      stroke="#dda853"
                       strokeWidth="3"
                       fill="transparent"
                       markerEnd="url(#arrowhead-vertical)"
@@ -90,7 +86,7 @@ export default function HowWeWork() {
                         refY="5"
                         orient="auto"
                       >
-                        <polygon points="0 0, 10 5, 0 10" fill="#1a237e" />
+                        <polygon points="0 0, 10 5, 0 10" fill="#1e549f" />
                       </marker>
                     </defs>
                   </svg>

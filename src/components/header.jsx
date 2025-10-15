@@ -23,7 +23,7 @@ export default function Navbar() {
   const serviceLinks = [
     { href: "/services/web-design", label: "تصميم المواقع" },
     { href: "/services/graphic-design", label: "التصميم الجرافيكي" },
-    { href: "/services/marketing", label: "التسويق الإلكتروني" },
+    { href: "/services/marketing", label: "التسويق الرقمي" },
     { href: "/services", label: "جميع الخدمات" },
   ];
 
@@ -48,8 +48,8 @@ export default function Navbar() {
           }`}
         >
           <Image
-            src="/images/logo Mark.svg"
-            alt="Nailob Logo"
+            src="/images/logo_Mark.svg"
+            alt="Niloop Logo"
             width={90}
             height={90}
             className="!w-[80px] md:w-[130px]"
@@ -68,7 +68,7 @@ export default function Navbar() {
                   onMouseLeave={() => setServicesOpen(false)}
                 >
                   <button
-                    className={`flex items-center gap-2 transition-colors ${
+                    className={`flex items-center gap-2 transition-colors py-5 ${
                       pathname.startsWith("/services")
                         ? "text-alt font-semibold border-b-3 border-[#dda853]"
                         : "hover:!text-[#dda853]"
@@ -122,9 +122,9 @@ export default function Navbar() {
           </button>
 
           {/* Call to Action */}
-          <button className="bg-alt text-main px-4 py-2 rounded-xl font-semibold hover:opacity-90 transition cursor-pointer">
+          <Link href="/services" className="bg-alt text-main px-4 py-2 rounded-xl font-semibold hover:opacity-90 transition cursor-pointer">
             احصل على خدمتك
-          </button>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -191,9 +191,9 @@ export default function Navbar() {
             <span>EN</span>
           </button>
 
-          <button className="bg-alt text-main w-full py-2 rounded-xl font-semibold hover:opacity-90 transition">
+          <Link href="/services" className="bg-alt text-main w-full py-2 rounded-xl font-semibold hover:opacity-90 transition">
             احصل على خدمتك
-          </button>
+          </Link>
         </div>
       )}
     </nav>

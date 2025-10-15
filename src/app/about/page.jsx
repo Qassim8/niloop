@@ -8,11 +8,11 @@ const About = () => {
   return (
     <>
       <BreadcrumbSection
-        title="عن نايلوب"
-        description="
-          فريق من المبتكرين والمحترفين الذين يستخدمون خبرتهم وإبداعهم لتحويل
-          أفكارك إلى حقيقة في الفضاء الرقمي"
-      />
+              title="من نحن"
+              links={[
+                { label: "من نحن" },
+              ]}
+            />
           <AboutSection />
           <GoalsSection />
           <StatsSection />

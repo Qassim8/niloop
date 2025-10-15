@@ -1,4 +1,6 @@
 import BreadcrumbSection from "@/components/breadcrumb";
+import FeaturesSection from "@/components/services/marketing/features";
+import TopSection from "@/components/services/marketing/top-section";
 
 function Marketing() {
   return (
@@ -10,7 +12,8 @@ function Marketing() {
           { label: "التسويق الرقمي" },
         ]}
       />
-
+      <TopSection />
+      <FeaturesSection />
      
     </>
   );
