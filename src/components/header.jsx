@@ -43,7 +43,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link
           href="/"
-          className={`text-2xl font-bold transition-colors ${
+          className={`text-2xl font-bold transition-colors py-2 md:py-0 ${
             scrolled ? "text-main" : "text-alt"
           }`}
         >
