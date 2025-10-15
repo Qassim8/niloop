@@ -22,7 +22,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="relative text-center z-10 max-w-4xl px-6"
+        className="relative text-center z-10 max-w-6xl px-6"
       >
         <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
           مستقبل التقنية يبدأ مع <span className="text-alt">نايلوب</span>
