@@ -130,7 +130,7 @@ export default function Navbar() {
         {/* Mobile Menu Button */}
         <button
           className={`md:hidden transition ${
-            scrolled ? "text-main" : "text-white"
+            scrolled ? "text-main" : "text-alt"
           }`}
           onClick={() => setMobileOpen(!mobileOpen)}
         >
@@ -142,7 +142,7 @@ export default function Navbar() {
       {mobileOpen && (
         <div
           className={`md:hidden px-4 pb-4 space-y-4 transition ${
-            scrolled ? "bg-white text-main" : "bg-main text-white"
+            scrolled ? "bg-alt text-main" : "bg-alt text-main"
           }`}
         >
           {navLinks.map((link) =>
