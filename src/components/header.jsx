@@ -80,7 +80,7 @@ export default function Navbar() {
                 >
                   <button
                     className={`flex items-center gap-2 transition-colors py-5 ${
-                      pathname.startsWith("/services")
+                      pathname.startsWith(`/${locale}/services`)
                         ? "text-alt font-semibold border-b-3 !border-[#dda853]"
                         : "hover:!text-[#dda853]"
                     }`}
