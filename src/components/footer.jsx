@@ -1,11 +1,12 @@
 "use client"
 
 import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 
 export default function Footer() {
   let t = useTranslations("Footer");
+  const locale = useLocale();
 
   return (
     <footer className="bg-blue-950 text-gray-300 py-12">
@@ -29,17 +30,17 @@ export default function Footer() {
           </h3>
           <ul className="space-y-2">
             <li>
-              <Link href="/" className="hover:text-white">
+              <Link href={`${locale}/`} className="hover:text-white">
                 {t("home")}
               </Link>
             </li>
             <li>
-              <Link href="/services" className="hover:text-white">
+              <Link href={`${locale}/services`} className="hover:text-white">
                 {t("services")}
               </Link>
             </li>
             <li>
-              <Link href="/works" className="hover:text-white">
+              <Link href={`${locale}/projects`} className="hover:text-white">
                 {t("projects")}
               </Link>
             </li>
@@ -82,7 +83,8 @@ export default function Footer() {
 
       {/* الحقوق */}
       <div className="mt-12 border-t border-slate-500 pt-6 text-center text-sm text-slate-400">
-        {t("copyright")}<span className="text-alt">{t("niloop")}</span> © 2025
+        {t("copyright")}
+        <span className="text-alt">{t("niloop")}</span> © 2025
       </div>
     </footer>
   );

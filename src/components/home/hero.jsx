@@ -1,12 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 
 export default function Hero() {
 
   const t = useTranslations("Hero")
+  const locale = useLocale();
 
   return (
     <section className="relative h-[95vh] flex items-center justify-center text-center">
@@ -28,24 +29,26 @@ export default function Hero() {
         transition={{ duration: 1 }}
         className="relative text-center z-10 max-w-6xl px-6"
       >
-        <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
+        <h1 className="text-4xl md:text-6xl font-semibold text-white leading-tight mb-6">
           {t("hero_title")}
-          <span className="text-alt">{t("niloop")}</span>
+          <span className="text-alt text-4xl md:text-6xl font-bold">
+            {t("niloop")}
+          </span>
         </h1>
         <p className="text-lg md:text-xl text-gray-200 mb-8">
-          {t("hero_subtitle")}
+          {`' ${t("hero_subtitle")} '`}
         </p>
 
         <div className="flex flex-col md:flex-row gap-4 justify-center">
           <Link
-            href="/services"
-            className="bg-alt text-main px-6 py-3 rounded-xl font-semibold hover:opacity-90 transition"
+            href={`${locale}/services`}
+            className="bg-alt text-main px-6 py-3 rounded-xl font-semibold hover:opacity-85 transition"
           >
             {t("start_now")}
           </Link>
           <Link
-            href="/about"
-            className="border border-white text-white px-6 py-3 rounded-xl font-semibold hover:bg-white hover:text-[#1a237e] transition"
+            href={`${locale}/about`}
+            className="border border-white text-white px-6 py-3 rounded-xl font-semibold hover:bg-white hover:text-[#1e549f] transition"
           >
             {t("more")}
           </Link>

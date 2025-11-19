@@ -36,7 +36,7 @@ export default function BreadcrumbSection({ title, links }) {
               <span className="text-gray-400">/</span>
               {link.href ? (
                 <Link
-                  href={`${locale}/${link.href}`}
+                  href={`/${locale}${link.href}`}
                   className="hover:text-[#d4b483] transition"
                 >
                   {link.label}

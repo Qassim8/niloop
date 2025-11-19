@@ -59,7 +59,7 @@ export default function Navbar() {
           }`}
         >
           <Image
-            src="/images/logo_Mark.svg"
+            src="/images/Logo_mark.svg"
             alt="Niloop Logo"
             width={90}
             height={90}

@@ -3,10 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import SectionHeader from "../sections-header";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 export default function WorksSection() {
   let t = useTranslations("Projects");
+  const locale = useLocale();
 
   const works = [
     { id: 1, image: "/images/villance.jpg", link: "/works/1" },
@@ -50,7 +51,7 @@ export default function WorksSection() {
         {/* زر المزيد */}
         <div className="text-center mt-12">
           <Link
-            href="/works"
+            href={`${locale}/projects`}
             className="px-6 py-3 bg-alt text-main font-bold rounded-2xl hover:opacity-80 transition duration-300"
           >
             {t("more")}
