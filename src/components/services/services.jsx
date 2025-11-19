@@ -10,59 +10,63 @@ import {
   PencilRulerIcon,
 } from "lucide-react";
 import SectionHeader from "../sections-header";
+import { useTranslations } from "next-intl";
 
-const cards = [
-  {
-    id: 1,
-    title: "تصميم المواقع",
-    desc: "بناء مواقع احترافية متجاوبة",
-    icon: <Code size={48} className="mx-auto text-white" />,
-    bg: "images/bigstock-female-programmer-working-on-c-471073905.jpg",
-  },
-  {
-    id: 2,
-    title: "التصميم الجرافيكي",
-    desc: "تصميمات عصرية وجذابة",
-    icon: <PenTool size={48} className="mx-auto text-white" />,
-    bg: "images/How-To-Design-a-Logo-5-Easy-Steps.jpg",
-  },
-  {
-    id: 3,
-    title: "كتابة المحتوى",
-    desc: "محتوى تسويقي مؤثر",
-    icon: <FileText size={48} className="mx-auto text-white" />,
-    bg: "images/content-writing.webp",
-  },
-  {
-    id: 4,
-    title: "تصميم العلامات التجارية",
-    desc: "لمسة فريدة لهويتك البصرية التي تميزك",
-    icon: <PencilRulerIcon size={48} className="mx-auto text-white" />,
-    bg: "images/content-writing.webp",
-  },
-  {
-    id: 5,
-    title: "الانتاج المرئي",
-    desc: "رسخ فكرتك عبر فيديو احترافي مؤثر",
-    icon: <Video size={48} className="mx-auto text-white" />,
-    bg: "images/content-writing.webp",
-  },
-  {
-    id: 6,
-    title: "ادارة وسائل التواصل",
-    desc: "نموذج متكامل لبناء حضور قوي على السوشيال ميديا",
-    icon: <SmartphoneCharging size={48} className="mx-auto text-white" />,
-    bg: "images/content-writing.webp",
-  },
-];
 
 export default function ServicesSection() {
+  const t = useTranslations("Services");
+
+  const cards = [
+    {
+      id: 1,
+      title: t("web"),
+      desc: t("web_desc"),
+      icon: <Code size={48} className="mx-auto text-white" />,
+      bg: "images/bigstock-female-programmer-working-on-c-471073905.jpg",
+    },
+    {
+      id: 2,
+      title: t("graphic"),
+      desc: t("graphic_desc"),
+      icon: <PenTool size={48} className="mx-auto text-white" />,
+      bg: "images/How-To-Design-a-Logo-5-Easy-Steps.jpg",
+    },
+    {
+      id: 3,
+      title: t("content"),
+      desc: t("content_desc"),
+      icon: <FileText size={48} className="mx-auto text-white" />,
+      bg: "images/content-writing.webp",
+    },
+    {
+      id: 4,
+      title: t("branding"),
+      desc: t("branding_desc"),
+      icon: <PencilRulerIcon size={48} className="mx-auto text-white" />,
+      bg: "images/content-writing.webp",
+    },
+    {
+      id: 5,
+      title: t("montage"),
+      desc: t("montage_desc"),
+      icon: <Video size={48} className="mx-auto text-white" />,
+      bg: "images/content-writing.webp",
+    },
+    {
+      id: 6,
+      title: t("social_media"),
+      desc: t("social_media_desc"),
+      icon: <SmartphoneCharging size={48} className="mx-auto text-white" />,
+      bg: "images/content-writing.webp",
+    },
+  ];
+
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4 md:px-0">
         <SectionHeader
-          title="الخدمات"
-          subtitle="ابرز خدمات نايلوب"
+          title={t("title")}
+          subtitle={t("subtitle")}
         />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
           {cards.map((card, i) => (

@@ -2,16 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Users, Briefcase, Award, UserCheck } from "lucide-react";
+import { useTranslations } from "next-intl";
 
-const stats = [
-  { id: 1, icon: <Users size={32} />, label: "عملاء سعداء", value: 25 },
-  { id: 2, icon: <Briefcase size={32} />, label: "مشاريع منجزة", value: 20 },
-  { id: 3, icon: <Award size={32} />, label: "سنوات خبرة", value: 2 },
-  { id: 4, icon: <UserCheck size={32} />, label: "أعضاء الفريق", value: 5 },
-];
 
 function Counter({ value, start }) {
-    const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0);
 
     useEffect(() => {
         if (!start) return;
@@ -38,6 +33,14 @@ function Counter({ value, start }) {
 export default function StatsSection() {
   const [inView, setInView] = useState(false);
   const sectionRef = useRef(null);
+    const t = useTranslations("Stats");
+
+    const stats = [
+      { id: 1, icon: <Users size={32} />, label: t("clients"), value: 25 },
+      { id: 2, icon: <Briefcase size={32} />, label: t("projects"), value: 20 },
+      { id: 3, icon: <Award size={32} />, label: t("expert"), value: 3 },
+      { id: 4, icon: <UserCheck size={32} />, label: t("members"), value: 5 },
+    ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(

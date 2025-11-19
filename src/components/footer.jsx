@@ -1,46 +1,46 @@
+"use client"
+
 import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 export default function Footer() {
+  let t = useTranslations("Footer");
+
   return (
     <footer className="bg-blue-950 text-gray-300 py-12">
       <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* العمود الأول */}
         <div>
-          <h2 className="text-2xl font-bold text-white mb-4"><img src="/images/Niloop_mark.svg" alt="logo" className="w-[120px]"/></h2>
-          <p className="text-sm leading-relaxed">
-            شركة تقنية متخصصة في تطوير المواقع والتطبيقات الرقمية والتصميم الجرافيكي وتقديم حلول وحملات تسويقية
-            مبتكرة لعملائنا.
-          </p>
+          <h2 className="text-2xl font-bold text-white mb-4">
+            <img
+              src="/images/Niloop_mark.svg"
+              alt="logo"
+              className="w-[120px]"
+            />
+          </h2>
+          <p className="text-sm leading-relaxed">{t("company_desc")}</p>
         </div>
 
         {/* العمود الثاني */}
         <div>
-          <h3 className="text-lg font-semibold text-white mb-4">روابط سريعة</h3>
+          <h3 className="text-lg font-semibold text-white mb-4">
+            {t("quick_links")}
+          </h3>
           <ul className="space-y-2">
             <li>
               <Link href="/" className="hover:text-white">
-                الرئيسية
+                {t("home")}
               </Link>
             </li>
             <li>
-              <Link href="#services" className="hover:text-white">
-                الخدمات
+              <Link href="/services" className="hover:text-white">
+                {t("services")}
               </Link>
             </li>
             <li>
-              <Link href="#works" className="hover:text-white">
-                الأعمال
-              </Link>
-            </li>
-            <li>
-              <Link href="#faq" className="hover:text-white">
-                الأسئلة الشائعة
-              </Link>
-            </li>
-            <li>
-              <Link href="#contact" className="hover:text-white">
-                تواصل معنا
+              <Link href="/works" className="hover:text-white">
+                {t("projects")}
               </Link>
             </li>
           </ul>
@@ -48,9 +48,11 @@ export default function Footer() {
 
         {/* العمود الثالث */}
         <div>
-          <h3 className="text-lg font-semibold text-white mb-4">تواصل معنا</h3>
+          <h3 className="text-lg font-semibold text-white mb-4">
+            {t("contact")}
+          </h3>
           <ul className="space-y-2 text-sm">
-            <li>📍 الخرطوم، السودان</li>
+            <li>📍 {t("location")}</li>
             <li>📞 +249 912 345 678</li>
             <li>📧 info@techcompany.com</li>
           </ul>
@@ -58,7 +60,9 @@ export default function Footer() {
 
         {/* العمود الرابع */}
         <div>
-          <h3 className="text-lg font-semibold text-white mb-4">تابعنا</h3>
+          <h3 className="text-lg font-semibold text-white mb-4">
+            {t("follow")}
+          </h3>
           <div className="flex space-x-4">
             <Link href="#" className="hover:text-white">
               <Facebook />
@@ -78,7 +82,7 @@ export default function Footer() {
 
       {/* الحقوق */}
       <div className="mt-12 border-t border-slate-500 pt-6 text-center text-sm text-slate-400">
-        © 2025 <span className="text-alt">نايلوب</span>. جميع الحقوق محفوظة.
+        {t("copyright")}<span className="text-alt">{t("niloop")}</span> © 2025
       </div>
     </footer>
   );

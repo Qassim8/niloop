@@ -2,53 +2,44 @@
 import SectionHeader from "@/components/sections-header";
 import { PenTool, Brush, Image, Layers, Monitor, Share2 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
-const features = [
-  {
-    icon: <PenTool className="w-10 h-10 text-[#d4b483]" />,
-    title: "تصميم شعارات احترافية",
-    description:
-      "نصمم شعارات تعكس هوية علامتك التجارية وتبقى عالقة في ذهن عملائك.",
-  },
-  {
-    icon: <Brush className="w-10 h-10 text-[#d4b483]" />,
-    title: "تصاميم عصرية وجذابة",
-    description: "نواكب أحدث صيحات التصميم لنمنحك مظهراً مميزاً يلفت الانتباه.",
-  },
-  {
-    icon: <Image className="w-10 h-10 text-[#d4b483]" />,
-    title: "معالجة الصور باحترافية",
-    description:
-      "تحسين وتعديل الصور بجودة عالية تجعلها جاهزة للاستخدام في أي مكان.",
-  },
-  {
-    icon: <Layers className="w-10 h-10 text-[#d4b483]" />,
-    title: "تصميم هوية بصرية متكاملة",
-    description:
-      "من الشعار إلى الألوان والخطوط، نصنع لك هوية بصرية قوية ومتناسقة.",
-  },
-  {
-    icon: <Monitor className="w-10 h-10 text-[#d4b483]" />,
-    title: "تصميم واجهات رقمية",
-    description:
-      "نصمم واجهات أنيقة وسهلة الاستخدام للمواقع والتطبيقات تعزز تجربة المستخدم.",
-  },
-  {
-    icon: <Share2 className="w-10 h-10 text-[#d4b483]" />,
-    title: "تصاميم منصات التواصل",
-    description:
-      "بوستات وبانرات احترافية تزيد من تفاعل جمهورك مع علامتك التجارية.",
-  },
-];
 
 export default function FeaturesSection() {
+
+  const t = useTranslations("Graphic");
+  const features = [
+    {
+      icon: <PenTool className="w-10 h-10 text-[#d4b483]" />,
+      title: t("feature_one"),
+      description: t("feature_one_desc"),
+    },
+    {
+      icon: <Brush className="w-10 h-10 text-[#d4b483]" />,
+      title: t("feature_two"),
+      description: t("feature_two_desc"),
+    },
+    {
+      icon: <Image className="w-10 h-10 text-[#d4b483]" />,
+      title: t("feature_three"),
+      description: t("feature_three_desc"),
+    },
+    {
+      icon: <Layers className="w-10 h-10 text-[#d4b483]" />,
+      title: t("feature_four"),
+      description: t("feature_four_desc"),
+    },
+    {
+      icon: <Monitor className="w-10 h-10 text-[#d4b483]" />,
+      title: t("feature_fife"),
+      description: t("feature_fife_desc"),
+    },
+    
+  ];
   return (
     <section className="py-20 relative overflow-hidden bg-slate-50">
       <div className="container mx-auto px-4 text-center">
-        <SectionHeader
-          title=" لماذا خدماتنا؟"
-          subtitle="جمال يلفت الانتباه"
-        />
+        <SectionHeader title={t("features_title")} subtitle={t('features_subtitle')} />
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((feature, index) => (

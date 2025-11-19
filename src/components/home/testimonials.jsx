@@ -7,57 +7,61 @@ import "swiper/css/navigation";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import SectionHeader from "../sections-header";
+import { useTranslations } from "next-intl";
 
 export default function Testimonials() {
+
+  let t = useTranslations("Testimonials");
+
   const testimonials = [
     {
-      name: "محمد أحمد",
-      role: "رائد أعمال",
+      name: t("first_name"),
+      role: t("first_title"),
       image: "/images/businessman.png",
-      text: "التعامل مع الشركة كان تجربة مميزة جدًا، الاحترافية كانت واضحة من البداية وحتى التسليم النهائي.",
+      text: t("first_desc"),
     },
     {
-      name: "سارة علي",
-      role: "مصممة جرافيك",
+      name: t("second_name"),
+      role: t("second_title"),
       image: "/images/businesswoman.png",
-      text: "خدمة ممتازة وسرعة في الاستجابة، الفريق متعاون ومبدع.",
+      text: t("second_desc"),
     },
     {
-      name: "أحمد يوسف",
-      role: "مطور ويب",
+      name: t("third_name"),
+      role: t("third_title"),
       image: "/images/businessman.png",
-      text: "النتيجة النهائية فاقت توقعاتي، التصميم عصري والتفاصيل مدروسة.",
+      text: t("third_desc"),
     },
     {
-      name: "محمد أحمد",
-      role: "رائد أعمال",
+      name: t("fourth_name"),
+      role: t("fourth_title"),
       image: "/images/businessman.png",
-      text: "التعامل مع الشركة كان تجربة مميزة جدًا، الاحترافية كانت واضحة من البداية وحتى التسليم النهائي.",
+      text: t("fourth_desc"),
     },
     {
-      name: "سارة علي",
-      role: "مصممة جرافيك",
+      name: t("sixth_name"),
+      role: t("sixth_title"),
       image: "/images/businesswoman.png",
-      text: "خدمة ممتازة وسرعة في الاستجابة، الفريق متعاون ومبدع.",
+      text: t("sixth_desc"),
     },
     {
-      name: "محمد أحمد",
-      role: "رائد أعمال",
+      name: t("seventh_name"),
+      role: t("seventh_title"),
       image: "/images/businessman.png",
-      text: "التعامل مع الشركة كان تجربة مميزة جدًا، الاحترافية كانت واضحة من البداية وحتى التسليم النهائي.",
+      text: t("seventh_desc"),
     },
     {
-      name: "سارة علي",
-      role: "مصممة جرافيك",
+      name: t("eigth_name"),
+      role: t("eigth_title"),
       image: "/images/businesswoman.png",
-      text: "خدمة ممتازة وسرعة في الاستجابة، الفريق متعاون ومبدع.",
+      text: t("eigth_desc"),
     },
   ];
 
   return (
     <section className="py-20 bg-slate-100">
       <div className="container mx-auto px-6 md:px-0">
-        <SectionHeader title="العملاء" subtitle="ماذا قال عملاؤنا" />
+        <SectionHeader title={t("title")} subtitle={t("subtitle")} />
         <Swiper
           modules={[Navigation]}
           navigation={{

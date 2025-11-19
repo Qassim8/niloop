@@ -3,28 +3,32 @@
 import { ShieldCheck, Users, Zap, Award } from "lucide-react";
 import { motion } from "framer-motion";
 import SectionHeader from "../sections-header";
+import { useTranslations } from "next-intl";
 
 export default function WhyUs() {
+
+  const t = useTranslations('Services');
+
   const features = [
     {
       icon: <ShieldCheck className="w-10 h-10 text-alt" />,
-      title: "الجودة والالتزام",
-      desc: "نضمن لك تنفيذ المشاريع بأعلى معايير الجودة والالتزام بالمواعيد.",
+      title: t("quality"),
+      desc: t("quality_desc"),
     },
     {
       icon: <Users className="w-10 h-10 text-alt" />,
-      title: "فريق محترف",
-      desc: "فريقنا يضم خبراء في مجالات التصميم، البرمجة، والتسويق.",
+      title: t("professionalism"),
+      desc: t("professionalism_desc"),
     },
     {
       icon: <Zap className="w-10 h-10 text-alt" />,
-      title: "حلول مبتكرة",
-      desc: "نقدم أفكار وحلول مبتكرة تناسب احتياجات شركتك.",
+      title: t("creativety"),
+      desc: t("creativety_desc"),
     },
     {
       icon: <Award className="w-10 h-10 text-alt" />,
-      title: "ثقة عملائنا",
-      desc: "نفتخر برضا عملائنا واستمرارهم معنا في مشاريع متعددة.",
+      title: t("trust"),
+      desc: t("trust_desc"),
     },
   ];
 
@@ -32,7 +36,7 @@ export default function WhyUs() {
     <section className="py-20 bg-slate-100" id="why-us">
       <div className="max-w-7xl mx-auto px-6 text-center">
         {/* Title */}
-        <SectionHeader title="لماذا نايلوب؟" subtitle="هنا اهم ميزاتنا" />
+        <SectionHeader title={t("why_niloop")} subtitle={t("why_niloop_desc")} />
 
         {/* Features */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">

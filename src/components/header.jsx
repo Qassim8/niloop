@@ -1,30 +1,41 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+
+import { usePathname, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Menu, X, Globe, ChevronDown } from "lucide-react";
 import Image from "next/image";
+import { useLocale, useTranslations } from "next-intl";
+import Link from "next/link";
 
 export default function Navbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const router = useRouter();
+  const t = useTranslations("Header");
+  const locale = useLocale();
+
+  const toggleLanguage = () => {
+    const newLocale = locale === "ar" ? "en" : "ar";
+    const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
+    router.push(newPath);
+  };
 
   const navLinks = [
-    { href: "/", label: "الرئيسية" },
-    { href: "/about", label: "عن نايلوب" },
-    { href: "/services", label: "الخدمات", dropdown: true },
-    { href: "/projects", label: "اعمالنا" },
-    { href: "/contact", label: "تواصل معنا" },
+    { href: `/${locale}`, label: t("home") },
+    { href: `/${locale}/about`, label: t("about") },
+    { href: `/${locale}/services`, label: t("services"), dropdown: true },
+    { href: `/${locale}/projects`, label: t("projects") },
+    { href: `/${locale}/contact`, label: t("contact") },
   ];
 
   const serviceLinks = [
-    { href: "/services/web-design", label: "تصميم المواقع" },
-    { href: "/services/graphic-design", label: "التصميم الجرافيكي" },
-    { href: "/services/marketing", label: "التسويق الرقمي" },
-    { href: "/services", label: "جميع الخدمات" },
+    { href: `/${locale}/services/web-design`, label: t("web") },
+    { href: `/${locale}/services/graphic-design`, label: t("graphic") },
+    { href: `/${locale}/services/marketing`, label: t("marketing") },
+    { href: `/${locale}/services`, label: t("all") },
   ];
 
   useEffect(() => {
@@ -70,7 +81,7 @@ export default function Navbar() {
                   <button
                     className={`flex items-center gap-2 transition-colors py-5 ${
                       pathname.startsWith("/services")
-                        ? "text-alt font-semibold border-b-3 border-[#dda853]"
+                        ? "text-alt font-semibold border-b-3 !border-[#dda853]"
                         : "hover:!text-[#dda853]"
                     }`}
                   >
@@ -111,19 +122,23 @@ export default function Navbar() {
 
           {/* Language Switch */}
           <button
-            className={`flex items-center gap-1 transition me-4 ${
+            onClick={toggleLanguage}
+            className={`flex items-center gap-1 transition me-4 cursor-pointer ${
               scrolled
                 ? "text-main hover:!text-[#dda853]"
                 : "hover:!text-[#dda853]"
             }`}
           >
             <Globe size={16} />
-            <span>EN</span>
+            <span>{locale === "ar" ? "EN" : "AR"}</span>
           </button>
 
           {/* Call to Action */}
-          <Link href="/services" className="bg-alt text-main px-4 py-2 rounded-xl font-semibold hover:opacity-90 transition cursor-pointer">
-            احصل على خدمتك
+          <Link
+            href={`${locale}/services`}
+            className="bg-alt text-main px-4 py-2 rounded-xl font-semibold hover:opacity-90 transition cursor-pointer"
+          >
+            {t("get")}
           </Link>
         </div>
 
@@ -142,7 +157,7 @@ export default function Navbar() {
       {mobileOpen && (
         <div
           className={`md:hidden px-4 pb-4 space-y-4 transition ${
-            scrolled ? "bg-alt text-main" : "bg-alt text-main"
+            scrolled ? "bg-white/20 text-main" : "bg-white/20 text-main"
           }`}
         >
           {navLinks.map((link) =>
@@ -186,13 +201,19 @@ export default function Navbar() {
             )
           )}
 
-          <button className="flex items-center gap-2 hover:!text-[#dda853] transition w-full">
+          <button
+            onClick={toggleLanguage}
+            className="flex items-center gap-2 hover:!text-[#dda853] transition w-full cursor-pointer"
+          >
             <Globe size={18} />
-            <span>EN</span>
+            <span>{locale === "ar" ? "EN" : "AR"}</span>
           </button>
 
-          <Link href="/services" className="bg-alt text-main w-full py-2 rounded-xl font-semibold hover:opacity-90 transition">
-            احصل على خدمتك
+          <Link
+            href={`${locale}/services`}
+            className="bg-alt text-main w-full p-2 rounded-xl font-semibold hover:opacity-90 transition"
+          >
+            {t("get")}
           </Link>
         </div>
       )}

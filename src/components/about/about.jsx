@@ -13,28 +13,32 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import SectionHeader from "../sections-header";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 export default function AboutSection() {
+
+  let t = useTranslations("About");
+
   const slides = [
     {
       icon: "/images/logo 2.svg",
-      title: "خبرة تزيد عن ثلاث أعوام",
-      text: "فريق من المبدعين في البرمجة والتصميم والتسويق. منذ 2021 طورنا العديد من المشاريع الناجحة ونواصل تقديم حلول متكاملة.",
+      title: t("expert"),
+      text: t("expert_desc"),
     },
     {
       icon: "/images/logo 2.svg",
-      title: "إبداع متجدد",
-      text: "نبتكر أفكارًا جديدة ونفكر خارج الصندوق لنحول رؤى عملائنا إلى واقع ملموس وجذاب.",
+      title: t("creative"),
+      text: t("creative_desc"),
     },
     {
       icon: "/images/logo 2.svg",
-      title: "التميز",
-      text: "قدمنا مشاريع وشراكات ناجحة مع كبرى العلامات التجارية مستخدمين أحدث التقنيات لنظل في الصدارة.",
+      title: t("excellence"),
+      text: t("excellence_desc"),
     },
   ];
 
   return (
-    <section id="about" className="py-20 bg-slate-100 relative overflow-hidden">
+    <section id="about" className="py-20 bg-slate-50 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* الصورة */}
         <motion.div
@@ -46,7 +50,7 @@ export default function AboutSection() {
         >
           <Image
             src="/images/5.jpg"
-            alt="عن نايلوب"
+            alt={t("title")}
             fill
             className="object-cover max-w-full"
           />
@@ -60,7 +64,7 @@ export default function AboutSection() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <SectionHeader title="من نحن" subtitle="تعرف على نايلوب" />
+          <SectionHeader title={t("title")} subtitle={t("subtitle") } />
 
           <Swiper
             modules={[EffectCreative, Autoplay, Navigation, Pagination]}

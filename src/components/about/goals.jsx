@@ -3,33 +3,33 @@
 import { Eye, MessageSquareText, Compass } from "lucide-react";
 import { motion } from "framer-motion";
 import SectionHeader from "../sections-header";
+import { useTranslations } from "next-intl";
 
 export default function GoalsSection() {
+  const t = useTranslations("About");
+
   const goals = [
     {
       icon: <Eye size={32} className="text-main" />,
-      title: "الرؤية",
-      description:
-        "نسعى لأن نكون الرواد في تقديم الحلول التقنية المبتكرة التي تساهم في تطوير المجتمعات وتحقيق التحول الرقمي.",
+      title: t("vision"),
+      description: t("vision_desc"),
     },
     {
       icon: <MessageSquareText size={32} className="text-main" />,
-      title: "الرسالة",
-      description:
-        "تقديم خدمات وحلول عالية الجودة لعملائنا، مع التركيز على الابتكار والالتزام والتميز المستمر.",
+      title: t("mission"),
+      description: t("mission_desc"),
     },
     {
       icon: <Compass size={32} className="text-main" />,
-      title: "الاستراتيجية",
-      description:
-        "العمل بخطط واضحة مبنية على التحليل العميق للسوق، وبناء شراكات قوية لتحقيق أهدافنا المشتركة.",
+      title: t("strategy"),
+      description: t("strategy_desc"),
     },
   ];
 
   return (
     <section className="py-16">
       <div className="max-w-4xl mx-auto px-4">
-        <SectionHeader title="اهدافنا" subtitle="ما نسعى لتحقيقه" />
+        <SectionHeader title={t('our_goals')} subtitle={t('our_goals_desc')} />
 
         <div className="flex flex-col gap-6">
           {goals.map((goal, idx) => (
@@ -43,10 +43,10 @@ export default function GoalsSection() {
             >
               <div className="flex-shrink-0">{goal.icon}</div>
               <div>
-                <h3 className="text-xl font-semibold mb-2 text-main">
+                <h3 className="text-xl font-bold mb-2 text-main">
                   {goal.title}
                 </h3>
-                <p className="text-slate-700 leading-relaxed">
+                <p className="text-slate-600 font-semibold leading-relaxed">
                   {goal.description}
                 </p>
               </div>

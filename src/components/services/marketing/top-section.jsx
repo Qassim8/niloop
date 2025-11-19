@@ -1,19 +1,19 @@
+import { useTranslations } from "next-intl";
 import Image from "next/image";
-import React from "react";
 
 function TopSection() {
+  const t = useTranslations("Marketing");
+
   return (
     <section className="py-20">
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
         {/* النص */}
         <div>
           <h2 className="text-3xl font-bold text-main mb-6">
-            تسويق رقمي ذكي وفعّال
+            {t("advantages_title")}
           </h2>
           <p className="text-slate-600 leading-relaxed mb-6">
-            في نايلوب نساعدك على الوصول إلى جمهورك المستهدف من خلال حملات
-            تسويقية رقمية مدروسة، نستخدم فيها أحدث الأدوات والاستراتيجيات لزيادة
-            الوعي بعلامتك التجارية وتعزيز المبيعات.
+            {t("advantages_desc")}
           </p>
 
           <ul className="space-y-4 text-slate-500">
@@ -21,28 +21,28 @@ function TopSection() {
               <span className="w-6 h-6 flex items-center justify-center rounded-full bg-alt text-main font-bold">
                 ✓
               </span>
-              استراتيجيات تسويق مخصصة لاحتياجاتك
+              {t("ad_one")}
             </li>
             <li className="flex items-start gap-3">
               <span className="w-6 h-6 flex items-center justify-center rounded-full bg-alt text-main font-bold">
                 ✓
               </span>
-              حملات إعلانية دقيقة وفعالة
+              {t("ad_two")}
             </li>
             <li className="flex items-start gap-3">
               <span className="w-6 h-6 flex items-center justify-center rounded-full bg-alt text-main font-bold">
                 ✓
               </span>
-              بناء جمهور حقيقي وزيادة التفاعل
+              {t("ad_three")}
             </li>
           </ul>
         </div>
 
         {/* الصورة */}
-        <div className="relative w-full h-[500px] max-w-full">
+        <div className="relative w-full h-[300px] md:h-[500px]">
           <Image
             src="/images/vecteezy_businesswoman-with-business-plan-data-analytic-start-up_.webp"
-            alt="تسويق رقمي"
+            alt="تصميم مواقع"
             fill
             className=""
           />
