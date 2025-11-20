@@ -43,21 +43,21 @@ export default function ServicesSection() {
       title: t("branding"),
       desc: t("branding_desc"),
       icon: <PencilRulerIcon size={48} className="mx-auto text-white" />,
-      bg: "images/content-writing.webp",
+      bg: "images/Branding.jpg",
     },
     {
       id: 5,
       title: t("montage"),
       desc: t("montage_desc"),
       icon: <Video size={48} className="mx-auto text-white" />,
-      bg: "images/content-writing.webp",
+      bg: "images/video-editing.png",
     },
     {
       id: 6,
       title: t("social_media"),
       desc: t("social_media_desc"),
       icon: <SmartphoneCharging size={48} className="mx-auto text-white" />,
-      bg: "images/content-writing.webp",
+      bg: "images/social-media.avif",
     },
   ];
 
