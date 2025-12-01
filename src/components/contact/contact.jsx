@@ -3,9 +3,9 @@
 import { MapPin, Phone, Mail } from "lucide-react";
 import SectionHeader from "../sections-header";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 export default function Contact() {
-
   let t = useTranslations("Contact");
 
   return (
@@ -41,7 +41,13 @@ export default function Contact() {
                   <h4 className="font-semibold text-lg text-alt">
                     {t("title_two")}
                   </h4>
-                  <p className="text-slate-500">+249 123 456 789</p>
+                  <Link
+                    href="https://wa.me/577190748"
+                    target="_blank"
+                    className="text-slate-500"
+                  >
+                    00966 57 719 0748
+                  </Link>
                 </div>
               </div>
 
@@ -54,7 +60,13 @@ export default function Contact() {
                   <h4 className="font-semibold text-lg text-alt">
                     {t("title_three")}
                   </h4>
-                  <p className="text-slate-500">info@nilehub.com</p>
+                  <Link
+                    href="mailto:niloop.tech@gmail.com"
+                    target="_blank"
+                    className="text-slate-500"
+                  >
+                    niloop.tech@gmail.com
+                  </Link>
                 </div>
               </div>
             </div>
@@ -64,7 +76,11 @@ export default function Contact() {
           <div className="bg-white text-main rounded-2xl shadow-lg p-8 z-30">
             <h3 className="text-2xl font-semibold mb-6">{t("form_title")}</h3>
 
-            <form className="space-y-4">
+            <form
+              className="space-y-4"
+              action="https://formsubmit.co/mohammed___dev@hotmail.com"
+              method="POST"
+            >
               <div>
                 <label className="block text-sm font-medium mb-1">
                   {t("name")}
@@ -97,6 +113,8 @@ export default function Contact() {
                   placeholder={t("message_placeholder")}
                 ></textarea>
               </div>
+
+              <input type="hidden" name="_captcha" value="true"></input>
 
               <button
                 type="submit"

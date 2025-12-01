@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
@@ -54,8 +54,18 @@ export default function Footer() {
           </h3>
           <ul className="space-y-2 text-sm">
             <li>📍 {t("location")}</li>
-            <li>📞 +249 912 345 678</li>
-            <li>📧 info@techcompany.com</li>
+            <li>
+              📞{" "}
+              <Link href="https://wa.me/577190748" target="_blank">
+                00966 57 719 0748
+              </Link>
+            </li>
+            <li>
+              📧{" "}
+              <Link href="mailto:niloop.tech@gmail.com" target="_blank">
+                niloop.tech@gmail.com
+              </Link>
+            </li>
           </ul>
         </div>
 

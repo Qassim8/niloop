@@ -1,6 +1,5 @@
 "use client";
 
-
 import { usePathname, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Menu, X, Globe, ChevronDown } from "lucide-react";
@@ -63,7 +62,7 @@ export default function Navbar() {
             alt="Niloop Logo"
             width={90}
             height={90}
-            className="!w-[80px] md:w-[130px]"
+            className="w-[60px] md:w-[80px]"
           />
         </Link>
 

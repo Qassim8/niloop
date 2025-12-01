@@ -132,6 +132,9 @@
   "Projects": {
     "title": "Projects",
     "subtitle": "Take a look at our Projects",
+    "all": "All",
+    "website": "Websites",
+    "graphic": "Graphic Design",
     "show": "Show Project",
     "more": "More",
     "quote": "You don't have to be great to start, but you have to start to be great",

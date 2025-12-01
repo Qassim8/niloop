@@ -9,13 +9,12 @@ import Testimonials from "@/components/home/testimonials";
 import "../globals.css";
 
 export default function Home() {
-  
   return (
     <>
       <Hero />
       <ServicesSection />
       <AboutSection />
-      <WorksSection />
+      <WorksSection home={true} />
       <QuoteSection />
       <Testimonials />
       <FAQ />
