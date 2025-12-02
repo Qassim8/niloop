@@ -10,20 +10,19 @@ import SectionHeader from "../sections-header";
 import { useTranslations } from "next-intl";
 
 export default function Testimonials() {
-
   let t = useTranslations("Testimonials");
 
   const testimonials = [
     {
       name: t("first_name"),
       role: t("first_title"),
-      image: "/images/businessman.png",
+      image: "/images/bareq.png",
       text: t("first_desc"),
     },
     {
       name: t("second_name"),
       role: t("second_title"),
-      image: "/images/businesswoman.png",
+      image: "/images/sanaa.png",
       text: t("second_desc"),
     },
     {
@@ -41,13 +40,13 @@ export default function Testimonials() {
     {
       name: t("sixth_name"),
       role: t("sixth_title"),
-      image: "/images/businesswoman.png",
+      image: "/images/businessman.png",
       text: t("sixth_desc"),
     },
     {
       name: t("seventh_name"),
       role: t("seventh_title"),
-      image: "/images/businessman.png",
+      image: "/images/abda_bswal.png",
       text: t("seventh_desc"),
     },
     {
@@ -76,14 +75,14 @@ export default function Testimonials() {
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
+                transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-2xl shadow-lg p-8 max-w-3xl mx-auto text-center my-8"
+                className="bg-white rounded-xl shadow-lg p-8 max-w-3xl mx-auto text-center my-8"
               >
                 <img
                   src={t.image}
                   alt={t.name}
-                  className="w-20 h-20 rounded-full mx-auto mb-4 object-cover"
+                  className="w-[80px] md:w-[200px] h-[50px] md:h-[150px] mx-auto mb-4"
                 />
                 <h3 className="text-xl font-semibold text-blue-900">
                   {t.name}

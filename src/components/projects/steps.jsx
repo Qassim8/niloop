@@ -4,7 +4,6 @@ import SectionHeader from "../sections-header";
 import { useTranslations } from "next-intl";
 
 export default function HowWeWork() {
-
   const t = useTranslations("Projects");
 
   const steps = [
@@ -33,7 +32,10 @@ export default function HowWeWork() {
   return (
     <section className="py-20 bg-gray-50 relative">
       <div className="max-w-4xl mx-auto px-4">
-        <SectionHeader title={t("how_it_work")} subtitle={t("how_it_work_desc")} />
+        <SectionHeader
+          title={t("how_it_work")}
+          subtitle={t("how_it_work_desc")}
+        />
 
         <div className="flex flex-col items-center gap-5 relative">
           {steps.map((step, index) => (
@@ -65,7 +67,7 @@ export default function HowWeWork() {
 
               {/* Curved Arrow SVG except last */}
               {index !== steps.length - 1 && (
-                <div className="flex justify-center my-4">
+                <div className="flex justify-center mt-3 mb-4">
                   <svg
                     className="md:block absolute left-1/2 top-[75%] transform -translate-x-1/2 translate-y-6"
                     width="40"

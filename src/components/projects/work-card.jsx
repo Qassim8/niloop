@@ -14,7 +14,7 @@ function WorkCard({ work, onOpen, t }) {
         className="object-cover w-full h-full group-hover:scale-105 transition duration-500"
       />
 
-      <div className="absolute inset-0 bg-gradient-to-b from-blue-900/80 to-blue-900/0 opacity-0 group-hover:opacity-100 transition duration-500 flex items-start justify-center p-4">
+      <div className="absolute inset-0 bg-gradient-to-b from-blue-900/80 to-blue-900/0 md:opacity-0 group-hover:opacity-100 transition duration-500 flex items-start justify-center p-4">
         <p className="text-white font-semibold hover:!text-blue-700 duration-300">
           {t("show")}
         </p>
