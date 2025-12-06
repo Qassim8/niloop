@@ -42,7 +42,7 @@ function Modal({ work, onClose }) {
                 alt="Work Image"
                 width={500}
                 height={400}
-                className="h-[350px] w-full"
+                className="h-[200px] md:h-[300px] w-full bg-cover"
               />
             </SwiperSlide>
           ))}
