@@ -4,7 +4,7 @@ function WorkCard({ work, onOpen, t }) {
   return (
     <div
       onClick={onOpen}
-      className="relative block h-[250px] group shadow-lg border border-[#dda853] rounded-md overflow-hidden cursor-pointer"
+      className="relative block h-[250px] group shadow-xl border-16 border-[#fffdf9] rounded-md overflow-hidden cursor-pointer"
     >
       <Image
         src={work.image}

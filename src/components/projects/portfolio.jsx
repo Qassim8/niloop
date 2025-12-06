@@ -12,8 +12,6 @@ export default function WorksSection({ home }) {
   let t = useTranslations("Projects");
   const locale = useLocale();
 
-  const [selectedWork, setSelectedWork] = useState(null);
-
   const works = [
     {
       id: 1,
@@ -25,6 +23,8 @@ export default function WorksSection({ home }) {
         "/images/villance-hotel.webp",
         "/images/villance-room.webp",
         "/images/villance-books.webp",
+        "/images/villance-book1.webp",
+        "/images/villance-book2.webp",
       ],
       link: "/works/1",
       title: "",
@@ -33,8 +33,14 @@ export default function WorksSection({ home }) {
     },
     {
       id: 2,
-      image: "/images/zus.jpeg",
-      images: [],
+      image: "/images/zus.webp",
+      images: [
+        "/images/zus1.webp",
+        "/images/zus2.webp",
+        "/images/zus3.webp",
+        "/images/zus4.webp",
+        "/images/zus5.webp",
+      ],
       link: "/works/2",
       title: "",
       desc: "نبذة عن المشروع 1",
@@ -42,8 +48,78 @@ export default function WorksSection({ home }) {
     },
     {
       id: 3,
-      image: "/images/villance.jpg",
-      images: [],
+      image: "/images/abda.webp",
+      images: [
+        "/images/abda1.webp",
+        "/images/abda2.webp",
+        "/images/abda3.webp",
+        "/images/abda4.webp",
+      ],
+      link: "/works/3",
+      title: "",
+      desc: "نبذة عن المشروع 1",
+      type: "collection",
+    },
+    {
+      id: 4,
+      image: "/images/badr.webp",
+      images: [
+        "/images/badr1.webp",
+        "/images/badr2.webp",
+        "/images/badr3.webp",
+      ],
+      link: "/works/3",
+      title: "",
+      desc: "نبذة عن المشروع 1",
+      type: "graphic",
+    },
+    {
+      id: 5,
+      image: "/images/bareq.webp",
+      images: [
+        "/images/bareq1.webp",
+        "/images/bareq2.webp",
+        "/images/bareq3.webp",
+        "/images/bareq4.webp",
+      ],
+      link: "/works/3",
+      title: "",
+      desc: "نبذة عن المشروع 1",
+      type: "website",
+    },
+    {
+      id: 6,
+      image: "/images/abwab.webp",
+      images: [
+        "/images/abwab0.webp",
+        "/images/abwab1.webp",
+        "/images/abwab2.webp",
+        "/images/abwab3.webp",
+        "/images/abwab4.webp",
+        "/images/abwab5.webp",
+        "/images/abwab6.webp",
+        "/images/abwab7.webp",
+        "/images/abwab8.webp",
+        "/images/abwab9.webp",
+      ],
+      link: "/works/3",
+      title: "",
+      desc: "نبذة عن المشروع 1",
+      type: "graphic",
+    },
+    {
+      id: 7,
+      image: "/images/madghut.webp",
+      images: [
+        "/images/madghut1.webp",
+        "/images/madghut2.webp",
+        "/images/madghut3.webp",
+        "/images/madghut4.webp",
+        "/images/madghut5.webp",
+        "/images/madghut6.webp",
+        "/images/madghut7.webp",
+        "/images/madghut8.webp",
+      ],
       link: "/works/3",
       title: "",
       desc: "نبذة عن المشروع 1",
@@ -51,9 +127,12 @@ export default function WorksSection({ home }) {
     },
   ];
 
+  const [selectedWork, setSelectedWork] = useState(null);
   const [allWorks, setAllWorks] = useState(works);
+  const [activeFilter, setActiveFilter] = useState("all");
 
   const filterProjects = (type) => {
+    setActiveFilter(type);
     if (type === "all") {
       setAllWorks(works);
     } else {
@@ -69,26 +148,50 @@ export default function WorksSection({ home }) {
         <section>
           {!home && (
             <ul className="my-8 flex justify-center items-center gap-5">
-              <button className="px-6 py-2 bg-alt text-main font-bold rounded-md cursor-pointer">
+              <button
+                className={`px-6 py-2 font-bold rounded-md cursor-pointer 
+      ${activeFilter === "all" ? "bg-main text-white" : "bg-alt text-main"}
+    `}
+                onClick={() => filterProjects("all")}
+              >
                 {t("all")}
               </button>
+
               <button
-                className="px-6 py-2 bg-alt text-main font-bold rounded-md cursor-pointer"
+                className={`px-6 py-2 font-bold rounded-md cursor-pointer 
+      ${activeFilter === "website" ? "bg-main text-white" : "bg-alt text-main"}
+    `}
                 onClick={() => filterProjects("website")}
               >
                 {t("website")}
               </button>
+
               <button
-                className="px-6 py-2 bg-alt text-main font-bold rounded-md cursor-pointer"
+                className={`px-6 py-2 font-bold rounded-md cursor-pointer 
+      ${activeFilter === "graphic" ? "bg-main text-white" : "bg-alt text-main"}
+    `}
                 onClick={() => filterProjects("graphic")}
               >
                 {t("graphic")}
+              </button>
+
+              <button
+                className={`px-6 py-2 font-bold rounded-md cursor-pointer 
+      ${
+        activeFilter === "collection"
+          ? "bg-main text-white"
+          : "bg-alt text-main"
+      }
+    `}
+                onClick={() => filterProjects("collection")}
+              >
+                {`${t("website")} & ${t("graphic")}`}
               </button>
             </ul>
           )}
           {/* Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {allWorks.map((work) => (
+            {(home ? allWorks.slice(0, 6) : allWorks).map((work) => (
               <WorkCard
                 key={work.id}
                 work={work}
