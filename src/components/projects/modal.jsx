@@ -6,8 +6,10 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 function Modal({ work, onClose }) {
+  const t = useTranslations("Projects");
   return (
     <div
       onClick={onClose}
@@ -55,16 +57,22 @@ function Modal({ work, onClose }) {
           </div>
         </Swiper>
 
+        <h3 className="text-gray-700 text-lg font-bold pb-2 border-b border-slate-300">
+          {work.title}
+        </h3>
         {/* نبذة */}
-        <p className="text-gray-700 mb-4 leading-relaxed">{work.desc}</p>
+        <p className="text-gray-500 my-4">{work.desc}</p>
 
         {/* زر زيارة */}
-        <Link
-          href={work.link}
-          className="inline-block bg-main text-white px-5 py-2 rounded-lg font-semibold hover:opacity-90 transition"
-        >
-          زيارة المشروع
-        </Link>
+        {work.link && (
+          <Link
+            href={work.link}
+            target="_blank"
+            className="inline-block bg-main text-white px-5 py-2 rounded-lg font-semibold hover:opacity-90 transition"
+          >
+            {t("visit")}
+          </Link>
+        )}
       </div>
     </div>
   );

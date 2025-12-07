@@ -1,31 +1,14 @@
-"use client"
+import { getTranslations } from "next-intl/server";
+import WebsitePageClient from "./WebsitePageClient";
 
-import BreadcrumbSection from "@/components/breadcrumb";
-import FeaturesSection from "@/components/services/web-design/featuers";
-import TopSection from "@/components/services/web-design/top-section";
-import { useTranslations } from "next-intl";
-import React, { useEffect, useState } from "react";
-
-function Web() {
-  const t = useTranslations("Web");
-  const [title, setTitle] = useState(t("title"));
-  const [subtitle, setSubtitle] = useState(t("subtitle"));
-
-  useEffect(() => {
-    setTitle(title);
-    setSubtitle(subtitle);
-  }, [title, subtitle]);
-
-  return (
-    <>
-      <BreadcrumbSection
-        title={title}
-        links={[{ label: subtitle, href: "/services" }, { label: title }]}
-      />
-      <TopSection />
-      <FeaturesSection />
-    </>
-  );
+export async function generateMetadata({ params }) {
+  const t = await getTranslations("SEO");
+  return {
+    title: t("web_title"),
+    description: t("web_desc"),
+  };
 }
 
-export default Web;
+export default function WebPage({ params }) {
+  return <WebsitePageClient />;
+}

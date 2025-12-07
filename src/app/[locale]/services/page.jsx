@@ -1,28 +1,15 @@
-"use client"
+import { getTranslations } from "next-intl/server";
+import ServicesPageClient from "./ServicesPageClient";
 
-import BreadcrumbSection from "@/components/breadcrumb";
-import CallToAction from "@/components/services/getservice";
-import ServicesSection from "@/components/services/services";
-import WhyUs from "@/components/services/whyus";
-import { useTranslations } from "next-intl";
-import React, { useEffect, useState } from "react";
+export async function generateMetadata({ params }) {
+  const t = await getTranslations("SEO");
 
-const Services = () => {
-    const t = useTranslations("Services");
+  return {
+    title: t("services_title"),
+    description: t("services_desc"),
+  };
+}
 
-    const [title, setTitle] = useState(t("title"));
-
-    useEffect(() => {
-      setTitle(title);
-    }, [title]);
-  return (
-    <>
-      <BreadcrumbSection title={title} links={[{label: title}]} />
-      <ServicesSection />
-      <CallToAction />
-      <WhyUs />
-    </>
-  );
-};
-
-export default Services;
+export default function ServicesPage({ params }) {
+  return <ServicesPageClient />;
+}

@@ -1,34 +1,14 @@
-"use client"
-import BreadcrumbSection from '@/components/breadcrumb'
-import FeaturesSection from '@/components/services/graphic-design/features';
-import TopSection from '@/components/services/graphic-design/top-section';
-import { useTranslations } from 'next-intl';
-import React, { useEffect, useState } from 'react'
+import { getTranslations } from "next-intl/server";
+import GraphicPageClient from "./GraphicPageClient";
 
-function Graphic() {
-
-  const t = useTranslations("Graphic");
-  const [title, setTitle] = useState(t("title"));
-  const [subtitle, setSubtitle] = useState(t("subtitle"));
-
-  useEffect(() => {
-    setTitle(title);
-    setSubtitle(subtitle);
-  }, [title, subtitle]);
-
-  return (
-    <>
-      <BreadcrumbSection
-        title={title}
-        links={[
-          { label: subtitle, href: "/services" },
-          { label: title },
-        ]}
-      />
-      <TopSection />
-      <FeaturesSection />
-    </>
-  );
+export async function generateMetadata({ params }) {
+  const t = await getTranslations("SEO");
+  return {
+    title: t("graphic_title"),
+    description: t("graphic_desc"),
+  };
 }
 
-export default Graphic
+export default function GraphicPage({ params }) {
+  return <GraphicPageClient />;
+}
