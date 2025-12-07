@@ -147,7 +147,7 @@ export default function WorksSection({ home }) {
 
         <section>
           {!home && (
-            <ul className="my-8 flex justify-center items-center gap-5">
+            <ul className="my-8 flex justify-center items-center gap-3">
               <button
                 className={`px-6 py-2 font-bold rounded-md cursor-pointer 
       ${activeFilter === "all" ? "bg-main text-white" : "bg-alt text-main"}
@@ -190,7 +190,7 @@ export default function WorksSection({ home }) {
             </ul>
           )}
           {/* Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {(home ? allWorks.slice(0, 6) : allWorks).map((work) => (
               <WorkCard
                 key={work.id}
