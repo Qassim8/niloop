@@ -129,6 +129,14 @@ export default function WorksSection({ home }) {
       desc: t("madaghut_desc"),
       type: "graphic",
     },
+    {
+      id: 8,
+      image: "/images/zadi.webp",
+      images: ["/images/zadi.webp", "/images/zadi.webp", "/images/zadi.webp"],
+      title: t("madaghut_title"),
+      desc: t("madaghut_desc"),
+      type: "graphic",
+    },
   ];
 
   const [selectedWork, setSelectedWork] = useState(null);

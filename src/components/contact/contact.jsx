@@ -78,43 +78,61 @@ export default function Contact() {
 
             <form
               className="space-y-4"
-              action="https://formsubmit.co/mohammed___dev@hotmail.com"
+              action="https://formsubmit.co/niloop.tech@gmail.com"
               method="POST"
+              target="_blank"
             >
+              {/* Name */}
               <div>
                 <label className="block text-sm font-medium mb-1">
                   {t("name")}
                 </label>
                 <input
                   type="text"
+                  name="name"
+                  required
                   className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#d4b483]"
                   placeholder={t("name_placeholder")}
                 />
               </div>
 
+              {/* Email */}
               <div>
                 <label className="block text-sm font-medium mb-1">
                   {t("title_three")}
                 </label>
                 <input
                   type="email"
+                  name="email"
+                  required
                   className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#d4b483]"
                   placeholder="example@email.com"
                 />
               </div>
 
+              {/* Message */}
               <div>
                 <label className="block text-sm font-medium mb-1">
                   {t("message")}
                 </label>
                 <textarea
                   rows={4}
+                  name="message"
+                  required
                   className="resize-none w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#d4b483]"
                   placeholder={t("message_placeholder")}
                 ></textarea>
               </div>
 
-              <input type="hidden" name="_captcha" value="true"></input>
+              {/* Disable Captcha */}
+              <input type="hidden" name="_captcha" value="false" />
+
+              {/* Redirect after submit */}
+              <input
+                type="hidden"
+                name="_next"
+                value="https://niloop.tech/thank-you"
+              />
 
               <button
                 type="submit"
