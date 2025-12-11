@@ -242,7 +242,9 @@
     "name_placeholder": "Enter your name",
     "message": "Message",
     "message_placeholder": "Write your message here...",
-    "send": "Send"
+    "send": "Send",
+    "loading": "sending...",
+    "success": "Your message has been sent successfully!"
   },
   "Footer": {
     "company_desc": "A leading tech company specializing in website and application development, graphic design, and innovative marketing solutions that enhance our clients' digital presence and drive their growth.",
