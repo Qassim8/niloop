@@ -6,7 +6,7 @@ function TopSection() {
 
   return (
     <section className="py-20">
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div className="container grid md:grid-cols-2 gap-12 items-center">
         {/* النص */}
         <div>
           <h2 className="text-3xl font-bold text-main mb-6">

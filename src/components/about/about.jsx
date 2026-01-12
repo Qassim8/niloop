@@ -16,7 +16,6 @@ import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
 export default function AboutSection() {
-
   let t = useTranslations("About");
 
   const slides = [
@@ -39,7 +38,7 @@ export default function AboutSection() {
 
   return (
     <section id="about" className="py-20 bg-slate-50 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div className="container grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* الصورة */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
@@ -64,7 +63,7 @@ export default function AboutSection() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <SectionHeader title={t("title")} subtitle={t("subtitle") } />
+          <SectionHeader title={t("title")} subtitle={t("subtitle")} />
 
           <Swiper
             modules={[EffectCreative, Autoplay, Navigation, Pagination]}
@@ -92,7 +91,6 @@ export default function AboutSection() {
           </Swiper>
         </motion.div>
       </div>
-
     </section>
   );
 }

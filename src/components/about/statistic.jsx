@@ -4,43 +4,42 @@ import { useEffect, useRef, useState } from "react";
 import { Users, Briefcase, Award, UserCheck } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-
 function Counter({ value, start }) {
   const [count, setCount] = useState(0);
 
-    useEffect(() => {
-        if (!start) return;
+  useEffect(() => {
+    if (!start) return;
 
-        let startVal = 0;
-        const duration = 2000;
-        const step = Math.ceil(value / (duration / 16));
+    let startVal = 0;
+    const duration = 2000;
+    const step = Math.ceil(value / (duration / 16));
 
-        const interval = setInterval(() => {
-            startVal += step;
-            if (startVal >= value) {
-                startVal = value;
-                clearInterval(interval);
-            }
-            setCount(startVal);
-        }, 16);
+    const interval = setInterval(() => {
+      startVal += step;
+      if (startVal >= value) {
+        startVal = value;
+        clearInterval(interval);
+      }
+      setCount(startVal);
+    }, 16);
 
-        return () => clearInterval(interval);
-    }, [value, start]);
+    return () => clearInterval(interval);
+  }, [value, start]);
 
-    return <span>{count}</span>;
+  return <span>{count}</span>;
 }
 
 export default function StatsSection() {
   const [inView, setInView] = useState(false);
   const sectionRef = useRef(null);
-    const t = useTranslations("Stats");
+  const t = useTranslations("Stats");
 
-    const stats = [
-      { id: 1, icon: <Users size={32} />, label: t("clients"), value: 25 },
-      { id: 2, icon: <Briefcase size={32} />, label: t("projects"), value: 20 },
-      { id: 3, icon: <Award size={32} />, label: t("expert"), value: 3 },
-      { id: 4, icon: <UserCheck size={32} />, label: t("members"), value: 5 },
-    ];
+  const stats = [
+    { id: 1, icon: <Users size={32} />, label: t("clients"), value: 25 },
+    { id: 2, icon: <Briefcase size={32} />, label: t("projects"), value: 20 },
+    { id: 3, icon: <Award size={32} />, label: t("expert"), value: 3 },
+    { id: 4, icon: <UserCheck size={32} />, label: t("members"), value: 5 },
+  ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -65,7 +64,7 @@ export default function StatsSection() {
       ref={sectionRef}
       className="relative bg-gradient-to-r from-[#1a237e] to-[#d4b483] py-16 text-white"
     >
-      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div className="container grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
         {stats.map((item) => (
           <div
             key={item.id}

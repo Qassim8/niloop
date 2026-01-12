@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Image from "next/image";
+import { useState } from "react";
 import Link from "next/link";
 import SectionHeader from "../sections-header";
 import { useLocale, useTranslations } from "next-intl";
@@ -31,6 +30,20 @@ export default function WorksSection({ home }) {
       title: t("villance_title"),
       desc: t("villance_desc"),
       type: "website",
+    },
+    {
+      id: 9,
+      image: "/images/eco.webp",
+      images: [
+        "/images/eco.webp",
+        "/images/eco-1.webp",
+        "/images/eco-2.webp",
+        "/images/eco-3.webp",
+        "/images/eco-4.webp",
+      ],
+      title: t("economics_title"),
+      desc: t("economics_desc"),
+      type: "graphic",
     },
     {
       id: 2,
@@ -131,10 +144,30 @@ export default function WorksSection({ home }) {
     },
     {
       id: 8,
-      image: "/images/zadi.webp",
-      images: ["/images/zadi.webp", "/images/zadi.webp", "/images/zadi.webp"],
-      title: t("madaghut_title"),
-      desc: t("madaghut_desc"),
+      image: "/images/eatc-0.webp",
+      images: [
+        "/images/eatc-0.webp",
+        "/images/eatc.webp",
+        "/images/eatc-1.webp",
+        "/images/eatc-2.webp",
+        "/images/eatc-3.webp",
+        "/images/eatc-4.webp",
+      ],
+      title: t("eatc_title"),
+      desc: t("eatc_desc"),
+      type: "graphic",
+    },
+    {
+      id: 10,
+      image: "/images/speed.webp",
+      images: [
+        "/images/speed.webp",
+        "/images/speed-1.webp",
+        "/images/speed-2.webp",
+        "/images/speed-3.webp",
+      ],
+      title: t("speed_title"),
+      desc: t("speed_desc"),
       type: "graphic",
     },
   ];
@@ -152,53 +185,31 @@ export default function WorksSection({ home }) {
     }
   };
 
+  const filterBtns = [
+    { type: "all", title: t("all") },
+    { type: "website", title: t("website") },
+    { type: "graphic", title: t("graphic") },
+    { type: "collection", title: `${t("website")} & ${t("graphic")}` },
+  ];
+
   return (
     <section className="py-20 bg-white">
-      <div className="container mx-auto px-6 md:px-0">
+      <div className="container">
         <SectionHeader title={t("title")} subtitle={t("subtitle")} />
 
         <section>
           {!home && (
-            <ul className="my-8 flex justify-center items-center gap-3">
-              <button
-                className={`px-6 py-2 font-bold rounded-md cursor-pointer 
-      ${activeFilter === "all" ? "bg-main text-white" : "bg-alt text-main"}
+            <ul className="my-8 grid grid-cols-2 md:grid-cols-4 gap-3 overflow-x-auto max-w-full">
+              {filterBtns.map(({ title, type }, idx) => (
+                <button
+                  className={`text-[10px] md:text-[16px] px-3 md:px-6 py-2 font-bold rounded-md outline-0 cursor-pointer 
+      ${activeFilter === type ? "bg-main text-white" : "bg-alt text-main"}
     `}
-                onClick={() => filterProjects("all")}
-              >
-                {t("all")}
-              </button>
-
-              <button
-                className={`px-6 py-2 font-bold rounded-md cursor-pointer 
-      ${activeFilter === "website" ? "bg-main text-white" : "bg-alt text-main"}
-    `}
-                onClick={() => filterProjects("website")}
-              >
-                {t("website")}
-              </button>
-
-              <button
-                className={`px-6 py-2 font-bold rounded-md cursor-pointer 
-      ${activeFilter === "graphic" ? "bg-main text-white" : "bg-alt text-main"}
-    `}
-                onClick={() => filterProjects("graphic")}
-              >
-                {t("graphic")}
-              </button>
-
-              <button
-                className={`px-6 py-2 font-bold rounded-md cursor-pointer 
-      ${
-        activeFilter === "collection"
-          ? "bg-main text-white"
-          : "bg-alt text-main"
-      }
-    `}
-                onClick={() => filterProjects("collection")}
-              >
-                {`${t("website")} & ${t("graphic")}`}
-              </button>
+                  onClick={() => filterProjects(type)}
+                >
+                  {title}
+                </button>
+              ))}
             </ul>
           )}
           {/* Grid */}

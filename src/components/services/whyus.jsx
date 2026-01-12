@@ -6,8 +6,7 @@ import SectionHeader from "../sections-header";
 import { useTranslations } from "next-intl";
 
 export default function WhyUs() {
-
-  const t = useTranslations('Services');
+  const t = useTranslations("Services");
 
   const features = [
     {
@@ -34,9 +33,12 @@ export default function WhyUs() {
 
   return (
     <section className="py-20 bg-slate-100" id="why-us">
-      <div className="max-w-7xl mx-auto px-6 text-center">
+      <div className="container text-center">
         {/* Title */}
-        <SectionHeader title={t("why_niloop")} subtitle={t("why_niloop_desc")} />
+        <SectionHeader
+          title={t("why_niloop")}
+          subtitle={t("why_niloop_desc")}
+        />
 
         {/* Features */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">

@@ -38,7 +38,7 @@ export default function FeaturesSection() {
 
   return (
     <section className="py-20 relative overflow-hidden bg-slate-50">
-      <div className="container mx-auto px-4 text-center">
+      <div className="container text-center">
         <SectionHeader
           title={t("features_title")}
           subtitle={t("features_subtitle")}

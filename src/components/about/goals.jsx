@@ -28,8 +28,8 @@ export default function GoalsSection() {
 
   return (
     <section className="py-16">
-      <div className="max-w-4xl mx-auto px-4">
-        <SectionHeader title={t('our_goals')} subtitle={t('our_goals_desc')} />
+      <div className="container">
+        <SectionHeader title={t("our_goals")} subtitle={t("our_goals_desc")} />
 
         <div className="flex flex-col gap-6">
           {goals.map((goal, idx) => (
@@ -46,7 +46,7 @@ export default function GoalsSection() {
                 <h3 className="text-xl font-bold mb-2 text-main">
                   {goal.title}
                 </h3>
-                <p className="text-slate-600 font-semibold leading-relaxed">
+                <p className="text-sm md:text-[16px] text-slate-600 font-semibold leading-relaxed">
                   {goal.description}
                 </p>
               </div>

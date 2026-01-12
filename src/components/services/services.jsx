@@ -12,7 +12,6 @@ import {
 import SectionHeader from "../sections-header";
 import { useTranslations } from "next-intl";
 
-
 export default function ServicesSection() {
   const t = useTranslations("Services");
 
@@ -57,22 +56,19 @@ export default function ServicesSection() {
       title: t("social_media"),
       desc: t("social_media_desc"),
       icon: <SmartphoneCharging size={48} className="mx-auto text-white" />,
-      bg: "images/social-media.avif",
+      bg: "images/socialmedia.jpg",
     },
   ];
 
   return (
     <section className="py-20 bg-white">
-      <div className="container mx-auto px-4 md:px-0">
-        <SectionHeader
-          title={t("title")}
-          subtitle={t("subtitle")}
-        />
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
+      <div className="container">
+        <SectionHeader title={t("title")} subtitle={t("subtitle")} />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-10">
           {cards.map((card, i) => (
             <motion.div
               key={card.id}
-              className="relative h-80 rounded-md overflow-hidden shadow-lg group"
+              className="relative p-5 md:h-72 rounded-md overflow-hidden shadow-lg group"
               initial={{ opacity: 0, y: 100, rotateX: 90 }}
               whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
               transition={{ duration: 0.8, delay: i * 0.2 }}
@@ -89,8 +85,12 @@ export default function ServicesSection() {
               {/* المحتوى */}
               <div className="relative z-10 flex flex-col items-center justify-center h-full text-white px-6">
                 <div className="mb-4">{card.icon}</div>
-                <h3 className="text-2xl font-semibold mb-2">{card.title}</h3>
-                <p className="text-center text-gray-200">{card.desc}</p>
+                <h3 className="text-lg md:text-xl font-semibold mb-2">
+                  {card.title}
+                </h3>
+                <p className="text-sm md:text-lg text-center text-gray-200">
+                  {card.desc}
+                </p>
               </div>
             </motion.div>
           ))}

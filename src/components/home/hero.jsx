@@ -5,8 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 
 export default function Hero() {
-
-  const t = useTranslations("Hero")
+  const t = useTranslations("Hero");
   const locale = useLocale();
 
   return (
@@ -39,16 +38,16 @@ export default function Hero() {
           {`' ${t("hero_subtitle")} '`}
         </p>
 
-        <div className="flex flex-col md:flex-row gap-4 justify-center">
+        <div className="flex flex-row gap-4 justify-center">
           <Link
             href={`${locale}/services`}
-            className="bg-alt text-main px-6 py-3 rounded-xl font-semibold hover:opacity-85 transition"
+            className="flex-1 md:flex-none bg-alt text-main md:px-10 py-3 rounded-xl font-semibold hover:opacity-90 transition"
           >
             {t("start_now")}
           </Link>
           <Link
             href={`${locale}/about`}
-            className="border border-white text-white px-6 py-3 rounded-xl font-semibold hover:bg-white hover:text-[#1e549f] transition"
+            className="flex-1 md:flex-none border border-white text-white md:px-10 py-3 rounded-xl font-semibold hover:bg-white hover:text-[#1e549f] transition"
           >
             {t("more")}
           </Link>

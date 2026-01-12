@@ -1,14 +1,13 @@
-import { useTranslations } from 'next-intl';
-import Image from 'next/image';
-import React from 'react';
+import { useTranslations } from "next-intl";
+import Image from "next/image";
+import React from "react";
 
 function TopSection() {
-
   const t = useTranslations("Graphic");
 
   return (
     <section className="py-20">
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div className="container grid md:grid-cols-2 gap-12 items-center">
         {/* النص */}
         <div>
           <h2 className="text-3xl font-bold text-main mb-6">
@@ -54,4 +53,4 @@ function TopSection() {
   );
 }
 
-export default TopSection
+export default TopSection;

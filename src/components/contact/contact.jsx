@@ -72,7 +72,7 @@ export default function Contact() {
         )}
 
         <SectionHeader title={t("title")} subtitle={t("subtitle")} />
-        <div className="container mx-auto px-6 md:px-0 grid md:grid-cols-2 gap-12 items-center">
+        <div className="container grid md:grid-cols-2 gap-12 items-center">
           {/* معلومات التواصل */}
           <div className="z-30">
             <div className="space-y-6">
@@ -99,11 +99,13 @@ export default function Contact() {
                     {t("title_two")}
                   </h4>
                   <Link
-                    href="https://wa.me/577190748"
+                    href="https://wa.me/966577190748"
                     target="_blank"
                     className="text-slate-500"
                   >
-                    00966 57 719 0748
+                    <span dir="ltr" className="unicode-bidi plaintext">
+                      +966 57 719 0748
+                    </span>
                   </Link>
                 </div>
               </div>

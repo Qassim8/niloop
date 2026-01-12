@@ -17,7 +17,7 @@ function Modal({ work, onClose }) {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="bg-white rounded-lg w-full max-w-lg p-6 relative shadow-2xl animate-fadeIn overflow-y-auto overflow-auto max-h-[80vh]"
+        className="bg-white rounded-lg w-full max-w-lg p-6 relative shadow-2xl animate-fadeIn overflow-y-auto  max-h-[80vh]"
       >
         {/* زر الإغلاق */}
         <button
@@ -44,7 +44,7 @@ function Modal({ work, onClose }) {
                 alt="Work Image"
                 width={500}
                 height={400}
-                className="h-[200px] md:h-[300px] w-full bg-cover"
+                className="h-[200px] md:h-[300px] w-full object-cover"
               />
             </SwiperSlide>
           ))}

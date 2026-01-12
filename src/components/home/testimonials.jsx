@@ -28,20 +28,14 @@ export default function Testimonials() {
     {
       name: t("third_name"),
       role: t("third_title"),
-      image: "/images/businessman.png",
+      image: "/images/badr-logo.png",
       text: t("third_desc"),
     },
     {
       name: t("fourth_name"),
       role: t("fourth_title"),
-      image: "/images/businessman.png",
+      image: "/images/zadi-logo.png",
       text: t("fourth_desc"),
-    },
-    {
-      name: t("sixth_name"),
-      role: t("sixth_title"),
-      image: "/images/businessman.png",
-      text: t("sixth_desc"),
     },
     {
       name: t("seventh_name"),
@@ -52,14 +46,14 @@ export default function Testimonials() {
     {
       name: t("eigth_name"),
       role: t("eigth_title"),
-      image: "/images/businesswoman.png",
+      image: "/images/eatc-logo.png",
       text: t("eigth_desc"),
     },
   ];
 
   return (
     <section className="py-20 bg-slate-100">
-      <div className="container mx-auto px-6 md:px-0">
+      <div className="container">
         <SectionHeader title={t("title")} subtitle={t("subtitle")} />
         <Swiper
           modules={[Navigation]}
@@ -77,27 +71,31 @@ export default function Testimonials() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-xl shadow-lg p-8 max-w-3xl mx-auto text-center my-8"
+                className="bg-white rounded-xl shadow-lg p-8 max-w-3xl px-5 text-center my-8 mx-8 md:mx-auto"
               >
-                <img
-                  src={t.image}
-                  alt={t.name}
-                  className="w-[80px] md:w-[200px] h-[50px] md:h-[150px] mx-auto mb-4"
-                />
-                <h3 className="text-xl font-semibold text-blue-900">
+                <div className="flex justify-center items-center h-[60px] md:h-[150px] w-[80px] md:w-[200px] mx-auto mb-3">
+                  <img
+                    src={t.image}
+                    alt={t.name}
+                    className="max-w-full max-h-full"
+                  />
+                </div>
+                <h3 className="md:text-xl font-semibold text-blue-900">
                   {t.name}
                 </h3>
-                <span className="text-sm text-gray-500">{t.role}</span>
-                <p className="mt-4 text-gray-700 leading-relaxed">{t.text}</p>
+                <span className="text-gray-500">{t.role}</span>
+                <p className="text-sm mt-4 text-gray-700 leading-relaxed">
+                  {t.text}
+                </p>
               </motion.div>
             </SwiperSlide>
           ))}
 
           {/* أزرار التنقل */}
-          <div className="swiper-prev absolute left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-blue-900/80 hover:bg-blue-800 text-white flex items-center justify-center rounded-full cursor-pointer shadow-md">
+          <div className="swiper-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 w-7 md:w-10 h-7 md:h-10 bg-blue-900/80 hover:bg-blue-800 text-white flex items-center justify-center rounded-full cursor-pointer shadow-md">
             <ArrowLeft />
           </div>
-          <div className="swiper-next absolute right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-blue-900/80 hover:bg-blue-800 text-white flex items-center justify-center rounded-full cursor-pointer shadow-md">
+          <div className="swiper-next absolute right-0 top-1/2 -translate-y-1/2 z-10 w-7 md:w-10 h-7 md:h-10 bg-blue-900/80 hover:bg-blue-800 text-white flex items-center justify-center rounded-full cursor-pointer shadow-md">
             <ArrowRight />
           </div>
         </Swiper>

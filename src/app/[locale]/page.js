@@ -51,7 +51,7 @@ export default function Home() {
       <WorksSection home={true} />
       <QuoteSection />
       <Testimonials />
-      <FAQ />
+      <FAQ home={true} />
       <Contact />
     </>
   );

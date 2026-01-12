@@ -1,6 +1,6 @@
 "use client";
 
-import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import { Facebook, Linkedin, Instagram } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 
@@ -10,7 +10,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-blue-950 text-gray-300 py-12">
-      <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="container grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* العمود الأول */}
         <div>
           <h2 className="text-2xl font-bold text-white mb-4">
@@ -56,8 +56,10 @@ export default function Footer() {
             <li>📍 {t("location")}</li>
             <li>
               📞{" "}
-              <Link href="https://wa.me/577190748" target="_blank">
-                00966 57 719 0748
+              <Link href="https://wa.me/966577190748" target="_blank">
+                <span dir="ltr" className="unicode-bidi plaintext">
+                  +966 57 719 0748
+                </span>
               </Link>
             </li>
             <li>
@@ -77,9 +79,6 @@ export default function Footer() {
           <div className="flex space-x-4">
             <Link href="#" className="hover:text-white">
               <Facebook />
-            </Link>
-            <Link href="#" className="hover:text-white">
-              <Twitter />
             </Link>
             <Link href="#" className="hover:text-white">
               <Linkedin />

@@ -3,7 +3,6 @@
 import { usePathname, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Menu, X, Globe, ChevronDown } from "lucide-react";
-import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 
@@ -49,20 +48,32 @@ export default function Navbar() {
     <nav
       className={`sticky top-0 left-0 w-full bg-white text-main z-50 transition-all duration-300 shadow-md`}
     >
-      <div className="max-w-7xl mx-auto md:px-0 px-4 flex items-center justify-between h-full">
+      <div className="container flex items-center justify-between h-full">
         {/* Logo */}
         <Link
           href="/"
-          className={`text-2xl font-bold transition-colors py-2 md:py-0 ${
-            scrolled ? "text-main" : "text-alt"
-          }`}
+          className="relative flex items-center h-full py-2 md:py-0 w-[100px]"
         >
-          <Image
+          {/* Logo in Hero (before scroll) */}
+          <img
+            src="/images/Niloop_mark.svg"
+            alt="logo"
+            className={`absolute transition-all duration-200 
+      ${
+        scrolled ? "opacity-0 scale-90 -translate-y-2" : "opacity-100 scale-100"
+      }
+      w-[70px] md:w-[85px]
+    `}
+          />
+
+          {/* Fixed Logo in Header (after scroll) */}
+          <img
             src="/images/Logo_mark.svg"
             alt="Niloop Logo"
-            width={90}
-            height={90}
-            className="w-[60px] md:w-[80px]"
+            className={`transition-all duration-200 
+      ${scrolled ? "opacity-100 scale-100" : "opacity-0 scale-90 translate-y-2"}
+      w-[50px] md:w-[65px]
+    `}
           />
         </Link>
 
@@ -148,14 +159,18 @@ export default function Navbar() {
           }`}
           onClick={() => setMobileOpen(!mobileOpen)}
         >
-          {mobileOpen ? <X size={28} /> : <Menu size={28} />}
+          {mobileOpen ? (
+            <X size={20} className="cursor-pointer" />
+          ) : (
+            <Menu size={20} className="cursor-pointer" />
+          )}
         </button>
       </div>
 
       {/* Mobile Nav */}
       {mobileOpen && (
         <div
-          className={`md:hidden px-4 pb-4 space-y-4 transition ${
+          className={`md:hidden px-6 pb-8 space-y-4 transition ${
             scrolled ? "bg-white/20 text-main" : "bg-white/20 text-main"
           }`}
         >
