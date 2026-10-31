@@ -1,6 +1,7 @@
 "use client";
 
 import SectionHeader from "@/components/sections-header";
+import Wave from "@/components/ui/wave";
 import { motion } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
@@ -19,7 +20,7 @@ export default function ErpFeatures() {
   const locale = useLocale();
 
   return (
-    <section className="py-20 relative overflow-hidden bg-slate-50">
+    <section className="relative overflow-hidden bg-water pb-28 pt-20">
       <div className="container text-center">
         <SectionHeader
           title={t("features_title")}
@@ -34,7 +35,7 @@ export default function ErpFeatures() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="p-8 bg-white rounded-2xl shadow-md hover:shadow-xl transition-all border-t-4 border-[#d4b483] hover:border-[#1e549f]"
+              className="p-8 bg-white rounded-[2rem] shadow-[0_10px_40px_-15px_rgba(30,84,159,0.25)] hover:shadow-[0_25px_50px_-15px_rgba(30,84,159,0.4)] hover:-translate-y-2 transition-all duration-500 border border-[#1e549f]/10 border-t-4 border-t-[#dda853] hover:border-t-[#1e549f]"
             >
               <div className="flex flex-col items-center text-center">
                 <Icon className="w-12 md:w-14 h-12 md:h-14 mb-4 text-main" strokeWidth={1.5} />
@@ -48,7 +49,7 @@ export default function ErpFeatures() {
             </motion.div>
           ))}
 
-          <div className="p-8 bg-main text-white rounded-2xl shadow-md flex flex-col items-center justify-center text-center">
+          <div className="p-8 bg-main text-white rounded-[2rem] shadow-md flex flex-col items-center justify-center text-center">
             <h3 className="text-xl font-semibold mb-2">{t("example_title")}</h3>
             <p className="leading-relaxed mb-5 text-white/90">
               {t("example_desc")}
@@ -62,6 +63,7 @@ export default function ErpFeatures() {
           </div>
         </div>
       </div>
+      <Wave className="text-white" />
     </section>
   );
 }

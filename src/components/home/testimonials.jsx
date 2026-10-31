@@ -8,8 +8,11 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import SectionHeader from "../sections-header";
 import { useTranslations } from "next-intl";
+import { Quote } from "lucide-react";
+import { Blobs } from "../ui/shapes";
+import Wave from "../ui/wave";
 
-export default function Testimonials() {
+export default function Testimonials({ wave = "text-white" }) {
   let t = useTranslations("Testimonials");
 
   const testimonials = [
@@ -52,7 +55,8 @@ export default function Testimonials() {
   ];
 
   return (
-    <section className="py-20 bg-slate-100">
+    <section className="relative overflow-hidden bg-water pb-28 pt-20">
+      <Blobs />
       <div className="container">
         <SectionHeader title={t("title")} subtitle={t("subtitle")} />
         <Swiper
@@ -71,8 +75,12 @@ export default function Testimonials() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-xl shadow-lg p-8 max-w-3xl px-5 text-center my-8 mx-8 md:mx-auto"
+                className="relative my-8 mx-8 max-w-3xl overflow-hidden rounded-[2rem] border border-[#1e549f]/10 bg-white p-8 px-6 text-center shadow-[0_20px_50px_-20px_rgba(30,84,159,0.35)] md:mx-auto"
               >
+                <Quote
+                  aria-hidden="true"
+                  className="absolute -top-2 start-5 h-16 w-16 text-[#dda853]/20"
+                />
                 <div className="flex justify-center items-center h-[60px] md:h-[150px] w-[80px] md:w-[200px] mx-auto mb-3">
                   <img
                     src={t.image}
@@ -93,14 +101,15 @@ export default function Testimonials() {
           ))}
 
           {/* أزرار التنقل */}
-          <div className="swiper-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 w-7 md:w-10 h-7 md:h-10 bg-blue-900/80 hover:bg-blue-800 text-white flex items-center justify-center rounded-full cursor-pointer shadow-md">
+          <div className="swiper-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 w-7 md:w-10 h-7 md:h-10 bg-[#1e549f] hover:bg-[#dda853] hover:text-[#0b2a57] text-white flex items-center justify-center rounded-full cursor-pointer shadow-lg transition">
             <ArrowLeft />
           </div>
-          <div className="swiper-next absolute right-0 top-1/2 -translate-y-1/2 z-10 w-7 md:w-10 h-7 md:h-10 bg-blue-900/80 hover:bg-blue-800 text-white flex items-center justify-center rounded-full cursor-pointer shadow-md">
+          <div className="swiper-next absolute right-0 top-1/2 -translate-y-1/2 z-10 w-7 md:w-10 h-7 md:h-10 bg-[#1e549f] hover:bg-[#dda853] hover:text-[#0b2a57] text-white flex items-center justify-center rounded-full cursor-pointer shadow-lg transition">
             <ArrowRight />
           </div>
         </Swiper>
       </div>
+      {wave && <Wave className={wave} />}
     </section>
   );
 }

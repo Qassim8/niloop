@@ -18,7 +18,7 @@ const ServicesPageClient = () => {
   return (
     <>
       <BreadcrumbSection title={title} links={[{ label: title }]} />
-      <ServicesSection />
+      <ServicesSection wave={false} />
       <CallToAction />
       <WhyUs />
     </>

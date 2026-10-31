@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { Users, Briefcase, Award, UserCheck } from "lucide-react";
 import { useTranslations } from "next-intl";
+import Wave from "../ui/wave";
+import { Ripples } from "../ui/shapes";
 import { siteConfig } from "@/lib/site";
 
 function Counter({ value, start }) {
@@ -63,15 +65,17 @@ export default function StatsSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-gradient-to-r from-[#1a237e] to-[#d4b483] py-16 text-white"
+      className="gradient-pan relative overflow-hidden bg-gradient-to-r from-[#0b2a57] via-[#1e549f] to-[#c58f3c] py-28 text-white"
     >
-      <div className="container grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <Wave position="top" className="text-white" />
+      <Ripples className="start-1/2 top-1/2 h-[30rem] w-[30rem] -translate-x-1/2 -translate-y-1/2" />
+      <div className="container relative z-20 grid grid-cols-2 gap-6 text-center md:grid-cols-4">
         {stats.map((item) => (
           <div
             key={item.id}
-            className="flex flex-col items-center gap-3 transform hover:-translate-y-2 transition duration-500"
+            className="flex flex-col items-center gap-3 rounded-3xl border border-white/15 bg-white/10 px-4 py-8 backdrop-blur-md transition duration-500 hover:-translate-y-2 hover:bg-white/20"
           >
-            <div className="bg-white/20 p-4 rounded-full">{item.icon}</div>
+            <div className="rounded-full bg-[#dda853] p-4 text-[#0b2a57] shadow-lg">{item.icon}</div>
             <h3 className="text-4xl font-bold">
               <Counter value={item.value} start={inView} />+
             </h3>
@@ -79,6 +83,7 @@ export default function StatsSection() {
           </div>
         ))}
       </div>
+      <Wave className="text-water" />
     </section>
   );
 }

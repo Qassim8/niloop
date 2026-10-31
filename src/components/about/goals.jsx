@@ -27,7 +27,7 @@ export default function GoalsSection() {
   ];
 
   return (
-    <section className="py-16">
+    <section className="bg-white py-20">
       <div className="container">
         <SectionHeader title={t("our_goals")} subtitle={t("our_goals_desc")} />
 
@@ -39,14 +39,14 @@ export default function GoalsSection() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
               viewport={{ once: true, amount: 0.3 }}
-              className="bg-alt shadow-md rounded-lg p-5 flex items-start gap-5 hover:!bg-yellow-50 transition duration-300"
+              className="card-soft flex items-start gap-5 border-s-4 border-s-[#dda853] p-6"
             >
-              <div className="flex-shrink-0">{goal.icon}</div>
+              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#dda853] to-[#e9c277] shadow-md">{goal.icon}</div>
               <div>
                 <h3 className="text-xl font-bold mb-2 text-main">
                   {goal.title}
                 </h3>
-                <p className="text-sm md:text-[16px] text-slate-600 font-semibold leading-relaxed">
+                <p className="text-sm md:text-[16px] text-slate-600 leading-relaxed">
                   {goal.description}
                 </p>
               </div>

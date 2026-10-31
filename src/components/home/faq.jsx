@@ -3,6 +3,9 @@
 import { useTranslations } from "next-intl";
 import SectionHeader from "../sections-header";
 import { ChevronDown } from "lucide-react";
+import { motion } from "framer-motion";
+import Wave from "../ui/wave";
+import { Blobs } from "../ui/shapes";
 
 export default function FAQ({ home }) {
   let t = useTranslations("FAQ");
@@ -44,18 +47,25 @@ export default function FAQ({ home }) {
 
   return (
     <section
-      className={`py-20 ${
-        home ? "bg-gradient-to-tr from-[#1e549f] to-[#dda853]" : "bg-slate-100"
-      } `}
+      className={`relative overflow-hidden ${
+        home
+          ? "gradient-pan bg-gradient-to-tr from-[#0b2a57] via-[#1e549f] to-[#c58f3c] py-32"
+          : "bg-white py-20"
+      }`}
     >
-      <div className="container">
-        <SectionHeader title={t("title")} subtitle={t("subtitle")} />
+      {home ? <Wave position="top" className="text-water" /> : <Blobs />}
+      <div className="container relative z-20">
+        <SectionHeader title={t("title")} subtitle={t("subtitle")} light={home} />
 
         <div className="max-w-3xl mx-auto space-y-4">
           {faqs.map((faq, index) => (
-            <details
+            <motion.details
               key={index}
-              className="group border border-gray-200 rounded-lg p-5 bg-white shadow-sm transition-all duration-300 ease-linear hover:shadow-md"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: (index % 4) * 0.08 }}
+              className="group rounded-2xl border border-[#1e549f]/10 border-s-4 border-s-transparent bg-white p-5 shadow-sm transition-all duration-300 hover:shadow-lg open:border-s-[#dda853] open:shadow-lg"
             >
               <summary className="text-sm md:text-lg flex justify-between items-center cursor-pointer font-semibold text-main list-none">
                 {faq.question}
@@ -64,13 +74,14 @@ export default function FAQ({ home }) {
                 </span>
               </summary>
 
-              <p className="mt-3 text-slate-500 leading-relaxed bg-[#ddaf6020] p-3 rounded-md">
+              <p className="mt-3 rounded-xl bg-[#dda853]/10 p-4 leading-relaxed text-slate-600">
                 {faq.answer}
               </p>
-            </details>
+            </motion.details>
           ))}
         </div>
       </div>
+      {home && <Wave className="text-white" />}
     </section>
   );
 }

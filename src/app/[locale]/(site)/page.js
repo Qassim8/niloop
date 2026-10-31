@@ -27,7 +27,7 @@ export default async function Home({ params }) {
       <AboutSection />
       <WorksSection home={true} />
       <QuoteSection />
-      <Testimonials />
+      <Testimonials wave={false} />
       <FAQ home={true} />
       <Contact />
     </>

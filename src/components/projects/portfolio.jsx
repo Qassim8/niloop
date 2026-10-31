@@ -31,7 +31,7 @@ export default function WorksSection({ home }) {
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="relative overflow-hidden bg-white py-20">
       <div className="container">
         <SectionHeader title={t("title")} subtitle={t("subtitle")} />
 
@@ -45,8 +45,12 @@ export default function WorksSection({ home }) {
                 key={type}
                 type="button"
                 aria-pressed={activeFilter === type}
-                className={`text-xs md:text-base px-4 md:px-6 py-2 font-bold rounded-md outline-0 cursor-pointer transition
-                  ${activeFilter === type ? "bg-main text-white" : "bg-alt text-main"}`}
+                className={`text-xs md:text-base px-5 md:px-7 py-2 font-bold rounded-full outline-0 cursor-pointer transition duration-300
+                  ${
+                    activeFilter === type
+                      ? "bg-main text-white shadow-lg shadow-[#1e549f]/30"
+                      : "bg-[#dda853]/15 text-main hover:bg-[#dda853]/30"
+                  }`}
                 onClick={() => setActiveFilter(type)}
               >
                 {title}
@@ -63,6 +67,7 @@ export default function WorksSection({ home }) {
               image={work.image}
               title={work.title}
               label={t("show")}
+              tag={t(`type_${work.type}`)}
             />
           ))}
         </div>
@@ -71,7 +76,7 @@ export default function WorksSection({ home }) {
           <div className="text-center mt-12">
             <Link
               href={`/${locale}/projects`}
-              className="px-6 py-3 bg-alt text-main font-bold rounded-2xl hover:opacity-80 transition duration-300"
+              className="btn-blue"
             >
               {t("more")}
             </Link>

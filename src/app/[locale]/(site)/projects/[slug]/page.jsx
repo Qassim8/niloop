@@ -8,6 +8,8 @@ import JsonLd from "@/components/json-ld";
 import PageSchema from "@/components/page-schema";
 import SectionHeader from "@/components/sections-header";
 import WorkCard from "@/components/projects/work-card";
+import Wave from "@/components/ui/wave";
+import { Ripples } from "@/components/ui/shapes";
 import { createMetadata, truncate } from "@/lib/seo";
 import { projectSchema } from "@/lib/schema";
 import { projects, getProject } from "@/data/projects";
@@ -77,7 +79,7 @@ export default async function ProjectPage({ params }) {
         links={[{ label: t("title"), href: "/projects" }, { label: title }]}
       />
 
-      <article className="py-20 bg-white">
+      <article className="bg-white py-20">
         <div className="container">
           <div className="grid md:grid-cols-3 gap-10">
             <div className="md:col-span-2">
@@ -102,7 +104,7 @@ export default async function ProjectPage({ params }) {
               )}
             </div>
 
-            <aside className="md:col-span-1 h-fit rounded-xl bg-slate-50 p-6 space-y-4">
+            <aside className="card-soft md:col-span-1 h-fit space-y-4 border-t-4 border-t-[#dda853] p-6">
               <div>
                 <p className="text-sm text-slate-400">{t("category")}</p>
                 <p className="font-semibold text-main">
@@ -114,7 +116,7 @@ export default async function ProjectPage({ params }) {
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-main text-white px-5 py-2 rounded-lg font-semibold hover:opacity-90 transition"
+                  className="btn-blue !py-2"
                 >
                   {t("visit")}
                   <ArrowUpRight size={18} />
@@ -128,7 +130,7 @@ export default async function ProjectPage({ params }) {
             {project.images.map((image, i) => (
               <div
                 key={image}
-                className={`relative overflow-hidden rounded-lg shadow-md aspect-[16/9] ${
+                className={`relative overflow-hidden rounded-[2rem] shadow-[0_15px_40px_-15px_rgba(30,84,159,0.4)] aspect-[16/9] ${
                   i === 0 && project.images.length > 1 ? "sm:col-span-2" : ""
                 }`}
               >
@@ -146,20 +148,23 @@ export default async function ProjectPage({ params }) {
         </div>
       </article>
 
-      <section className="py-16 bg-gradient-to-r from-[#1e549f] to-[#dda853] text-white text-center">
-        <div className="max-w-3xl mx-auto px-4">
+      <section className="gradient-pan relative overflow-hidden bg-gradient-to-r from-[#0b2a57] via-[#1e549f] to-[#c58f3c] py-32 text-center text-white">
+        <Wave position="top" className="text-white" />
+        <Ripples className="start-1/2 top-1/2 h-[28rem] w-[28rem] -translate-x-1/2 -translate-y-1/2" />
+        <div className="relative z-20 mx-auto max-w-3xl px-4">
           <h2 className="text-3xl font-bold mb-4">{t("cta_title")}</h2>
           <p className="text-lg mb-8">{t("cta_desc")}</p>
           <Link
             href={`/${locale}/contact`}
-            className="inline-block bg-alt text-main font-semibold px-6 py-3 rounded-xl shadow-lg hover:opacity-90 transition"
+            className="btn-gold text-lg"
           >
             {t("cta_button")}
           </Link>
         </div>
+        <Wave className="text-water" />
       </section>
 
-      <section className="py-20 bg-slate-50">
+      <section className="relative overflow-hidden bg-water pb-28 pt-20">
         <div className="container">
           <SectionHeader title={t("related")} subtitle={t("subtitle")} />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -174,6 +179,7 @@ export default async function ProjectPage({ params }) {
             ))}
           </div>
         </div>
+        <Wave className="text-white" />
       </section>
     </>
   );

@@ -3,6 +3,7 @@
 import { ShieldCheck, Users, Zap, Award } from "lucide-react";
 import { motion } from "framer-motion";
 import SectionHeader from "../sections-header";
+import Wave from "../ui/wave";
 import { useTranslations } from "next-intl";
 
 export default function WhyUs() {
@@ -32,7 +33,7 @@ export default function WhyUs() {
   ];
 
   return (
-    <section className="py-20 bg-slate-100" id="why-us">
+    <section className="bg-water relative overflow-hidden pb-28 pt-20" id="why-us">
       <div className="container text-center">
         {/* Title */}
         <SectionHeader
@@ -49,7 +50,7 @@ export default function WhyUs() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: idx * 0.2 }}
               viewport={{ once: true }}
-              className="bg-white p-6 rounded-lg hover:shadow-lg transition ease-linear group"
+              className="card-soft group p-6"
             >
               <div className="flex justify-center mb-6">{item.icon}</div>
               <h3 className="text-xl font-semibold mb-2 text-main group-hover:!text-[#dda853] transition duration-300">
@@ -60,6 +61,7 @@ export default function WhyUs() {
           ))}
         </div>
       </div>
+      <Wave className="text-white" />
     </section>
   );
 }

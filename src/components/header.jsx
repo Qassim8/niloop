@@ -47,7 +47,11 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`sticky top-0 left-0 w-full bg-white text-main z-50 transition-all duration-300 shadow-md`}
+      className={`sticky top-0 left-0 w-full text-main z-50 transition-all duration-300 backdrop-blur-xl ${
+        scrolled
+          ? "bg-white/85 shadow-[0_8px_30px_-12px_rgba(30,84,159,0.35)]"
+          : "bg-white/95 shadow-sm"
+      }`}
     >
       <div className="container flex items-center justify-between h-full">
         {/* Logo */}
@@ -81,7 +85,7 @@ export default function Navbar() {
 
         {/* Desktop Nav */}
         <div className="hidden flex-1 md:flex items-center space-x-6 space-x-reverse">
-          <ul className="flex-1 flex gap-8 justify-center items-center relative font-bold">
+          <ul className="flex-1 flex gap-5 lg:gap-8 justify-center items-center relative font-bold whitespace-nowrap">
             {navLinks.map((link) =>
               link.dropdown ? (
                 <div
@@ -93,7 +97,7 @@ export default function Navbar() {
                   <button
                     className={`flex items-center gap-2 transition-colors py-5 ${
                       pathname.startsWith(`/${locale}/services`)
-                        ? "text-alt font-semibold border-b-3 !border-[#dda853]"
+                        ? "text-alt font-semibold border-b-4 !border-[#dda853]"
                         : "hover:!text-[#dda853]"
                     }`}
                   >
@@ -103,7 +107,7 @@ export default function Navbar() {
 
                   {/* Dropdown Menu */}
                   {servicesOpen && (
-                    <div className="absolute top-full right-0 bg-white shadow-lg rounded-md py-2 w-48 z-50">
+                    <div className="absolute top-full end-0 bg-white shadow-xl rounded-2xl py-2 w-52 z-50 border border-[#1e549f]/10 animate-slideDownSoft">
                       {serviceLinks.map((service) => (
                         <Link
                           key={service.href}
@@ -122,7 +126,7 @@ export default function Navbar() {
                   href={link.href}
                   className={`transition-colors py-5 ${
                     pathname === link.href
-                      ? "text-alt font-semibold border-b-3 border-[#dda853]"
+                      ? "text-alt font-semibold border-b-4 border-[#dda853]"
                       : "hover:!text-[#dda853]"
                   }`}
                 >
@@ -150,7 +154,7 @@ export default function Navbar() {
           {/* Call to Action */}
           <Link
             href={`/${locale}/contact`}
-            className="bg-alt text-main px-4 py-2 rounded-xl font-semibold hover:opacity-90 transition cursor-pointer"
+            className="btn-gold !px-5 !py-2 text-sm whitespace-nowrap"
           >
             {t("get")}
           </Link>
@@ -177,9 +181,7 @@ export default function Navbar() {
       {/* Mobile Nav */}
       {mobileOpen && (
         <div
-          className={`md:hidden px-6 pb-8 space-y-4 transition ${
-            scrolled ? "bg-white/20 text-main" : "bg-white/20 text-main"
-          }`}
+          className="md:hidden px-6 pb-8 space-y-4 bg-white text-main border-t border-[#1e549f]/10"
         >
           {navLinks.map((link) =>
             link.dropdown ? (
@@ -235,7 +237,7 @@ export default function Navbar() {
           <Link
             href={`/${locale}/contact`}
             onClick={() => setMobileOpen(false)}
-            className="bg-alt text-main w-full p-2 rounded-xl font-semibold hover:opacity-90 transition"
+            className="btn-gold w-full !py-2"
           >
             {t("get")}
           </Link>

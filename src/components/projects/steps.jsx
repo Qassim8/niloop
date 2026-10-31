@@ -30,7 +30,7 @@ export default function HowWeWork() {
   ];
 
   return (
-    <section className="py-20 bg-gray-50 relative">
+    <section className="relative bg-white py-20">
       <div className="max-w-4xl mx-auto px-4">
         <SectionHeader
           title={t("how_it_work")}
@@ -49,7 +49,7 @@ export default function HowWeWork() {
             >
               {/* Card */}
               <div
-                className="relative bg-white rounded-md p-8 text-center 
+                className="relative bg-white rounded-[2rem] p-8 text-center shadow-md 
                 transition-all duration-500 hover:scale-105 hover:!bg-[#1e549f] group border border-[#dda85375]"
               >
                 <div className="relative z-10 rounded-lg">

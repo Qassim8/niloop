@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { siteConfig } from "@/lib/site";
+import Wave from "../ui/wave";
 
 export default function Contact() {
   const t = useTranslations("Contact");
@@ -53,7 +54,7 @@ export default function Contact() {
 
   return (
     <section
-      className="py-20 relative bg-cover bg-[url('/images/pattern.svg')]
+      className="relative overflow-hidden bg-cover bg-[url('/images/pattern.svg')] pb-32 pt-20
       before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-white/95 before:z-20"
     >
       <div className="relative z-30">
@@ -98,8 +99,8 @@ export default function Contact() {
           <div className="z-30">
             <div className="space-y-6">
               {/* كارد العنوان */}
-              <div className="bg-blue-800/10 backdrop-blur-sm rounded-xl p-6 flex items-center gap-4 hover:bg-white/20 transition">
-                <div className="bg-alt p-3 rounded-lg">
+              <div className="card-soft flex items-center gap-4 p-6">
+                <div className="rounded-2xl bg-gradient-to-br from-[#dda853] to-[#e9c277] p-3 shadow-md">
                   <MapPin className="w-6 h-6 text-main" />
                 </div>
                 <div>
@@ -111,8 +112,8 @@ export default function Contact() {
               </div>
 
               {/* كارد الهاتف */}
-              <div className="bg-blue-800/10 backdrop-blur-sm rounded-xl p-6 flex items-center gap-4 hover:bg-white/20 transition">
-                <div className="bg-alt p-3 rounded-lg">
+              <div className="card-soft flex items-center gap-4 p-6">
+                <div className="rounded-2xl bg-gradient-to-br from-[#dda853] to-[#e9c277] p-3 shadow-md">
                   <Phone className="w-6 h-6 text-main" />
                 </div>
                 <div>
@@ -133,8 +134,8 @@ export default function Contact() {
               </div>
 
               {/* كارد البريد */}
-              <div className="bg-blue-800/10 backdrop-blur-sm rounded-xl p-6 flex items-center gap-4 hover:bg-white/20 transition">
-                <div className="bg-alt p-3 rounded-lg">
+              <div className="card-soft flex items-center gap-4 p-6">
+                <div className="rounded-2xl bg-gradient-to-br from-[#dda853] to-[#e9c277] p-3 shadow-md">
                   <Mail className="w-6 h-6 text-main" />
                 </div>
                 <div>
@@ -153,7 +154,8 @@ export default function Contact() {
           </div>
 
           {/* نموذج التواصل */}
-          <div className="bg-white text-main rounded-2xl shadow-lg p-8 z-30">
+          <div className="relative z-30 overflow-hidden rounded-[2rem] border border-[#1e549f]/10 bg-white p-8 text-main shadow-[0_25px_60px_-20px_rgba(30,84,159,0.35)]">
+            <div aria-hidden="true" className="blob pointer-events-none absolute -end-16 -top-16 h-44 w-44 bg-[#dda853]/20" />
             <h3 className="text-2xl font-semibold mb-6">{t("form_title")}</h3>
 
             <form className="space-y-4" onSubmit={handleSubmit}>
@@ -168,7 +170,7 @@ export default function Contact() {
                   name="name"
                   autoComplete="name"
                   required
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#d4b483]"
+                  className="w-full border border-gray-300 rounded-xl px-4 py-2.5 transition focus:outline-none focus:border-[#dda853] focus:ring-2 focus:ring-[#dda853]/40"
                   placeholder={t("name_placeholder")}
                 />
               </div>
@@ -184,7 +186,7 @@ export default function Contact() {
                   name="email"
                   autoComplete="email"
                   required
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#d4b483]"
+                  className="w-full border border-gray-300 rounded-xl px-4 py-2.5 transition focus:outline-none focus:border-[#dda853] focus:ring-2 focus:ring-[#dda853]/40"
                   placeholder="example@email.com"
                 />
               </div>
@@ -199,7 +201,7 @@ export default function Contact() {
                   rows={4}
                   name="message"
                   required
-                  className="resize-none w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#d4b483]"
+                  className="resize-none w-full border border-gray-300 rounded-xl px-4 py-2.5 transition focus:outline-none focus:border-[#dda853] focus:ring-2 focus:ring-[#dda853]/40"
                   placeholder={t("message_placeholder")}
                 ></textarea>
               </div>
@@ -210,14 +212,14 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled
-                  className={`w-full bg-alt text-main py-3 rounded-lg cursor-pointer font-semibold outline-0 opacity-70 transition`}
+                  className="btn-gold w-full opacity-70"
                 >
                   {t("loading")}
                 </button>
               ) : (
                 <button
                   type="submit"
-                  className={`w-full bg-alt text-main py-3 rounded-lg cursor-pointer font-semibold outline-0 hover:opacity-90 transition`}
+                  className="btn-gold w-full"
                 >
                   {t("send")}
                 </button>

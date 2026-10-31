@@ -6,7 +6,7 @@ function TopSection() {
   const t = useTranslations("Web");
 
   return (
-    <section className="py-20">
+    <section className="bg-white py-20">
       <div className="container grid md:grid-cols-2 gap-12 items-center">
         {/* النص */}
         <div>
@@ -40,13 +40,17 @@ function TopSection() {
         </div>
 
         {/* الصورة */}
-        <div className="relative w-full h-[300px] md:h-[500px]">
-          <Image
+        <div className="relative h-[300px] w-full md:h-[480px]">
+          <div className="blob absolute -bottom-4 -end-4 h-full w-full bg-gradient-to-br from-[#dda853] to-[#f1d49a] opacity-80" />
+          <div className="blob relative h-full w-full overflow-hidden shadow-2xl">
+            <Image
             src="/images/vecteezy_programmer-developer-engineer-with-laptop-sitting-at-the_8826724.webp"
             alt="تصميم مواقع"
             fill
-            className=""
-          />
+            className="object-cover"
+              sizes="(min-width: 768px) 50vw, 100vw"
+            />
+          </div>
         </div>
       </div>
     </section>

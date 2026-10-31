@@ -1,5 +1,6 @@
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import MotionProvider from "@/components/motion-provider";
 import JsonLd from "@/components/json-ld";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
@@ -70,9 +71,11 @@ export default async function LocaleLayout({ children, params }) {
       <body>
         <JsonLd data={organizationGraph(locale, { description: t("home_desc") })} />
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <Header />
-          <main>{children}</main>
-          <Footer />
+          <MotionProvider>
+            <Header />
+            <main>{children}</main>
+            <Footer />
+          </MotionProvider>
         </NextIntlClientProvider>
       </body>
     </html>
