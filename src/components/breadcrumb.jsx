@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Home } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
@@ -7,23 +8,30 @@ export default function BreadcrumbSection({ title, links }) {
   const locale = useLocale();
 
   return (
-    <section className="relative h-[80vh] flex items-center justify-center text-center text-white">
+    <section className="relative min-h-[45vh] flex items-center justify-center text-center text-white overflow-hidden">
       {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-fixed"
-        style={{
-          backgroundImage: "url('../images/8.jpg')",
-        }}
+      <Image
+        src="/images/breadcrumb-bg.webp"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover"
       />
       {/* Overlay */}
       <div className="absolute inset-0 bg-[#1a237e]/80" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-3xl px-4">
-        <h1 className="text-4xl font-bold mb-3">{title}</h1>
+      <div className="relative z-10 max-w-3xl px-4 py-16">
+        <h1 className="text-3xl md:text-4xl font-bold mb-3 leading-snug">
+          {title}
+        </h1>
 
         {/* Breadcrumb */}
-        <div className="flex items-center justify-center gap-2 text-sm text-gray-300">
+        <nav
+          aria-label="Breadcrumb"
+          className="flex flex-wrap items-center justify-center gap-2 text-sm text-gray-300"
+        >
           <Link
             href={`/${locale}`}
             className="flex items-center gap-1 hover:text-[#d4b483] transition"
@@ -42,11 +50,16 @@ export default function BreadcrumbSection({ title, links }) {
                   {link.label}
                 </Link>
               ) : (
-                <span className="font-medium text-[#d4b483]">{link.label}</span>
+                <span
+                  aria-current="page"
+                  className="font-medium text-[#d4b483]"
+                >
+                  {link.label}
+                </span>
               )}
             </div>
           ))}
-        </div>
+        </nav>
       </div>
     </section>
   );

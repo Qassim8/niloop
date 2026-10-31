@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Hero() {
@@ -12,10 +13,13 @@ export default function Hero() {
     <section className="relative h-[95vh] flex items-center justify-center text-center">
       {/* خلفية الصورة */}
       <div className="absolute inset-0">
-        <img
+        <Image
           src="/images/modern-buildings.webp"
-          alt="خلفية تقنية"
-          className="w-full h-full object-cover"
+          alt={t("hero_alt")}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
         />
         {/* Overlay */}
         <div className="absolute inset-0 bg-blue-800/70"></div>
@@ -40,13 +44,13 @@ export default function Hero() {
 
         <div className="flex flex-row gap-4 justify-center">
           <Link
-            href={`${locale}/services`}
+            href={`/${locale}/contact`}
             className="flex-1 md:flex-none bg-alt text-main md:px-10 py-3 rounded-xl font-semibold hover:opacity-90 transition"
           >
             {t("start_now")}
           </Link>
           <Link
-            href={`${locale}/about`}
+            href={`/${locale}/about`}
             className="flex-1 md:flex-none border border-white text-white md:px-10 py-3 rounded-xl font-semibold hover:bg-white hover:text-[#1e549f] transition"
           >
             {t("more")}

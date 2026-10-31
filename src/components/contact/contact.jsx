@@ -4,12 +4,24 @@ import { MapPin, Phone, Mail } from "lucide-react";
 import SectionHeader from "../sections-header";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { siteConfig } from "@/lib/site";
 
 export default function Contact() {
   const t = useTranslations("Contact");
   const [success, setSuccess] = useState(false);
+  const [failed, setFailed] = useState(false);
   const [load, setLoad] = useState(false);
+
+  // Hide the toast a few seconds after it appears.
+  useEffect(() => {
+    if (!success && !failed) return;
+    const timer = setTimeout(() => {
+      setSuccess(false);
+      setFailed(false);
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, [success, failed]);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -17,6 +29,7 @@ export default function Contact() {
     const formData = new FormData(e.target);
     try {
       setLoad(true);
+      setFailed(false);
       const response = await fetch(
         "https://formsubmit.co/mohamedalgasim123@gmail.com",
         {
@@ -24,20 +37,19 @@ export default function Contact() {
           body: formData,
         }
       );
-      if (response.status === 200) {
+      if (response.ok) {
         e.target.reset();
         setSuccess(true);
+      } else {
+        setFailed(true);
       }
-      e.target.reset();
-    } catch (er) {
+    } catch {
       setSuccess(false);
-      console.log(er.message);
+      setFailed(true);
     } finally {
-      setLoad(false); // ✨ أوقف اللودر بعد ما العملية تكمل
+      setLoad(false);
     }
   }
-
-  setTimeout(() => setSuccess(false), 5000);
 
   return (
     <section
@@ -71,6 +83,15 @@ export default function Contact() {
           </div>
         )}
 
+        {failed && (
+          <div
+            role="alert"
+            className="fixed top-32 left-1/2 -translate-x-1/2 bg-red-600/90 backdrop-blur-md text-white py-3 px-6 rounded-xl shadow-xl animate-slideDown z-[9999]"
+          >
+            {t("sending_failed")}
+          </div>
+        )}
+
         <SectionHeader title={t("title")} subtitle={t("subtitle")} />
         <div className="container grid md:grid-cols-2 gap-12 items-center">
           {/* معلومات التواصل */}
@@ -99,12 +120,13 @@ export default function Contact() {
                     {t("title_two")}
                   </h4>
                   <Link
-                    href="https://wa.me/966577190748"
+                    href={siteConfig.whatsapp}
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="text-slate-500"
                   >
                     <span dir="ltr" className="unicode-bidi plaintext">
-                      +966 57 719 0748
+                      {siteConfig.phoneDisplay}
                     </span>
                   </Link>
                 </div>
@@ -120,11 +142,10 @@ export default function Contact() {
                     {t("title_three")}
                   </h4>
                   <Link
-                    href="mailto:niloop.tech@gmail.com"
-                    target="_blank"
+                    href={`mailto:${siteConfig.email}`}
                     className="text-slate-500"
                   >
-                    niloop.tech@gmail.com
+                    {siteConfig.email}
                   </Link>
                 </div>
               </div>
@@ -138,12 +159,14 @@ export default function Contact() {
             <form className="space-y-4" onSubmit={handleSubmit}>
               {/* Name */}
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label htmlFor="contact-name" className="block text-sm font-medium mb-1">
                   {t("name")}
                 </label>
                 <input
+                  id="contact-name"
                   type="text"
                   name="name"
+                  autoComplete="name"
                   required
                   className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#d4b483]"
                   placeholder={t("name_placeholder")}
@@ -152,12 +175,14 @@ export default function Contact() {
 
               {/* Email */}
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label htmlFor="contact-email" className="block text-sm font-medium mb-1">
                   {t("title_three")}
                 </label>
                 <input
+                  id="contact-email"
                   type="email"
                   name="email"
+                  autoComplete="email"
                   required
                   className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#d4b483]"
                   placeholder="example@email.com"
@@ -166,10 +191,11 @@ export default function Contact() {
 
               {/* Message */}
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label htmlFor="contact-message" className="block text-sm font-medium mb-1">
                   {t("message")}
                 </label>
                 <textarea
+                  id="contact-message"
                   rows={4}
                   name="message"
                   required

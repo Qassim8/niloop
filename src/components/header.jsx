@@ -31,6 +31,7 @@ export default function Navbar() {
 
   const serviceLinks = [
     { href: `/${locale}/services/web-design`, label: t("web") },
+    { href: `/${locale}/services/erp`, label: t("erp") },
     { href: `/${locale}/services/graphic-design`, label: t("graphic") },
     { href: `/${locale}/services/marketing`, label: t("marketing") },
     { href: `/${locale}/services`, label: t("all") },
@@ -51,13 +52,14 @@ export default function Navbar() {
       <div className="container flex items-center justify-between h-full">
         {/* Logo */}
         <Link
-          href="/"
+          href={`/${locale}`}
           className="relative flex items-center h-full py-2 md:py-0 w-[100px]"
         >
           {/* Logo in Hero (before scroll) */}
           <img
             src="/images/Niloop_mark.svg"
-            alt="logo"
+            alt=""
+            aria-hidden="true"
             className={`absolute transition-all duration-200 
       ${
         scrolled ? "opacity-0 scale-90 -translate-y-2" : "opacity-100 scale-100"
@@ -69,7 +71,7 @@ export default function Navbar() {
           {/* Fixed Logo in Header (after scroll) */}
           <img
             src="/images/Logo_mark.svg"
-            alt="Niloop Logo"
+            alt={t("logo_alt")}
             className={`transition-all duration-200 
       ${scrolled ? "opacity-100 scale-100" : "opacity-0 scale-90 translate-y-2"}
       w-[50px] md:w-[65px]
@@ -132,7 +134,9 @@ export default function Navbar() {
 
           {/* Language Switch */}
           <button
+            type="button"
             onClick={toggleLanguage}
+            aria-label={t("switch_language")}
             className={`flex items-center gap-1 transition me-4 cursor-pointer ${
               scrolled
                 ? "text-main hover:!text-[#dda853]"
@@ -145,7 +149,7 @@ export default function Navbar() {
 
           {/* Call to Action */}
           <Link
-            href={`${locale}/services`}
+            href={`/${locale}/contact`}
             className="bg-alt text-main px-4 py-2 rounded-xl font-semibold hover:opacity-90 transition cursor-pointer"
           >
             {t("get")}
@@ -154,6 +158,9 @@ export default function Navbar() {
 
         {/* Mobile Menu Button */}
         <button
+          type="button"
+          aria-label={t("menu")}
+          aria-expanded={mobileOpen}
           className={`md:hidden transition ${
             scrolled ? "text-main" : "text-alt"
           }`}
@@ -216,7 +223,9 @@ export default function Navbar() {
           )}
 
           <button
+            type="button"
             onClick={toggleLanguage}
+            aria-label={t("switch_language")}
             className="flex items-center gap-2 hover:!text-[#dda853] transition w-full cursor-pointer"
           >
             <Globe size={18} />
@@ -224,7 +233,8 @@ export default function Navbar() {
           </button>
 
           <Link
-            href={`${locale}/services`}
+            href={`/${locale}/contact`}
+            onClick={() => setMobileOpen(false)}
             className="bg-alt text-main w-full p-2 rounded-xl font-semibold hover:opacity-90 transition"
           >
             {t("get")}

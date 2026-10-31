@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function CallToAction() {
 
-  const t = useTranslations("Services")
+  const t = useTranslations("Services");
   const locale = useLocale();
 
   return (

@@ -32,6 +32,14 @@ export default function FAQ({ home }) {
       question: t("q_six"),
       answer: t("q_six_desc"),
     },
+    {
+      question: t("q_seven"),
+      answer: t("q_seven_desc"),
+    },
+    {
+      question: t("q_eight"),
+      answer: t("q_eight_desc"),
+    },
   ];
 
   return (

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Users, Briefcase, Award, UserCheck } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { siteConfig } from "@/lib/site";
 
 function Counter({ value, start }) {
   const [count, setCount] = useState(0);
@@ -37,7 +38,7 @@ export default function StatsSection() {
   const stats = [
     { id: 1, icon: <Users size={32} />, label: t("clients"), value: 25 },
     { id: 2, icon: <Briefcase size={32} />, label: t("projects"), value: 20 },
-    { id: 3, icon: <Award size={32} />, label: t("expert"), value: 3 },
+    { id: 3, icon: <Award size={32} />, label: t("expert"), value: new Date().getFullYear() - siteConfig.foundingYear },
     { id: 4, icon: <UserCheck size={32} />, label: t("members"), value: 5 },
   ];
 

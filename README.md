@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Niloop (نايلوب)
 
-## Getting Started
-
-First, run the development server:
+Company website for Niloop built with Next.js (App Router), `next-intl` (Arabic default + English) and Tailwind CSS 4.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000  (redirects to /ar)
+npm run build && npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Before going live (domain + Google Search Console)
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+1. Set the production domain as an environment variable in the hosting platform
+   (canonical URLs, hreflang, sitemap, robots and structured data are all derived from it):
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+   ```
+   NEXT_PUBLIC_SITE_URL=https://your-domain.com
+   ```
 
-## Learn More
+2. In Google Search Console add the property and either verify through DNS, or set the HTML-tag token:
 
-To learn more about Next.js, take a look at the following resources:
+   ```
+   NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=<token>
+   NEXT_PUBLIC_BING_SITE_VERIFICATION=<token>   # optional
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. Submit `https://your-domain.com/sitemap.xml` in Search Console.
+4. Add the real social profile URLs in `src/lib/site.js` (`siteConfig.social`); they show up in the footer and structured data.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Where things live
 
-## Deploy on Vercel
+| What | Where |
+| --- | --- |
+| Site URL, contact info, social links, indexable routes | `src/lib/site.js` |
+| Page metadata (canonical, hreflang, Open Graph) | `src/lib/seo.js` |
+| JSON-LD builders (Organization, Service, FAQ, Breadcrumb, Project) | `src/lib/schema.js`, `src/components/page-schema.jsx` |
+| Portfolio projects | `src/data/projects.js` (texts in `src/messages/*.json` → `Projects`) |
+| Translations | `src/messages/ar.json`, `src/messages/en.json` |
+| Sitemap / robots / llms.txt | `src/app/sitemap.js`, `src/app/robots.js`, `src/app/llms.txt/route.js` |
+| Locale routing proxy | `src/proxy.js` |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Adding a project
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Add an entry to `src/data/projects.js` (slug, `key`, type, images, optional `link`).
+2. Add `<key>_title` and `<key>_desc` (and optionally `<key>_f1…`) under `Projects` in both message files.
+3. Put images in `public/images/` (WebP, ≤ 1600px wide). The project page, listing card, sitemap entry and structured data are generated automatically.
+
+The covers for Matajri, Al Zamil Clean and Sudatech in `public/images/projects/` are temporary; replace them with real screenshots using the same file names.

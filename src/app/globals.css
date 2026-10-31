@@ -1,26 +1,22 @@
-@import url("https://fonts.googleapis.com/css2?family=Asap:wght@300;400;600;700&display=swap");
-/* @import url('https://fonts.googleapis.com/css2?family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap'); */
-@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
 @import "tailwindcss";
 
 html {
   scroll-behavior: smooth;
+  color-scheme: light;
 }
 body {
+  background-color: #fff;
   --main-color: #1e549f;
   --alt-color: #dda853;
 }
-:root {
-  --font-cairo: "Tajawal", sans-serif;
-  --font-inter: "Asap", sans-serif;
-}
+
 
 html[lang="ar"] body {
-  font-family: var(--font-cairo);
+  font-family: var(--font-tajawal), "Segoe UI", Tahoma, sans-serif;
 }
 
 html[lang="en"] body {
-  font-family: var(--font-inter);
+  font-family: var(--font-asap), system-ui, sans-serif;
 }
 
 @layer components {

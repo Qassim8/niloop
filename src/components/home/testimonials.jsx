@@ -16,7 +16,7 @@ export default function Testimonials() {
     {
       name: t("first_name"),
       role: t("first_title"),
-      image: "/images/bareq.png",
+      image: "/images/bareq-logo.webp",
       text: t("first_desc"),
     },
     {
@@ -77,6 +77,7 @@ export default function Testimonials() {
                   <img
                     src={t.image}
                     alt={t.name}
+                    loading="lazy"
                     className="max-w-full max-h-full"
                   />
                 </div>

@@ -12,25 +12,25 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import SectionHeader from "../sections-header";
+import { siteConfig } from "@/lib/site";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
 export default function AboutSection() {
   let t = useTranslations("About");
 
+  const years = new Date().getFullYear() - siteConfig.foundingYear;
+
   const slides = [
     {
-      icon: "/images/logo 2.svg",
-      title: t("expert"),
+      title: t("expert", { years }),
       text: t("expert_desc"),
     },
     {
-      icon: "/images/logo 2.svg",
       title: t("creative"),
       text: t("creative_desc"),
     },
     {
-      icon: "/images/logo 2.svg",
       title: t("excellence"),
       text: t("excellence_desc"),
     },
@@ -48,9 +48,10 @@ export default function AboutSection() {
           className="relative h-96 md:h-full rounded-2xl overflow-hidden shadow-lg md:order-first order-last"
         >
           <Image
-            src="/images/5.jpg"
-            alt={t("title")}
+            src="/images/about.webp"
+            alt={t("image_alt")}
             fill
+            sizes="(min-width: 768px) 50vw, 100vw"
             className="object-cover max-w-full"
           />
           <div className="absolute inset-0 bg-blue-800/30 flex items-center justify-center" />
