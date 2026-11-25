@@ -1,11 +1,16 @@
-import AboutSection from "@/components/about/about";
-import Contact from "@/components/contact/contact";
+import StatsSection from "@/components/about/statistic";
+import ClientsStrip from "@/components/home/clients";
+import ErpSpotlight from "@/components/home/erp-spotlight";
+import Intent from "@/components/home/intent";
+import ServicesTicker from "@/components/home/ticker";
+import HowWeWork from "@/components/projects/steps";
+import WhyUs from "@/components/services/whyus";
 import FAQ from "@/components/home/faq";
 import Hero from "@/components/home/hero";
 import WorksSection from "@/components/projects/portfolio";
-import QuoteSection from "@/components/home/quote";
 import ServicesSection from "@/components/services/services";
 import Testimonials from "@/components/home/testimonials";
+import OffersSection from "@/components/pricing/offers";
 import PageSchema from "@/components/page-schema";
 import { setRequestLocale } from "next-intl/server";
 import { createMetadata } from "@/lib/seo";
@@ -23,13 +28,18 @@ export default async function Home({ params }) {
     <>
       <PageSchema locale={locale} path="" seoKey="home" faq />
       <Hero />
+      <ClientsStrip />
+      <StatsSection />
+      <Intent />
       <ServicesSection />
-      <AboutSection />
+      {/* <ServicesTicker /> */}
       <WorksSection home={true} />
-      <QuoteSection />
-      <Testimonials wave={false} />
+      <ErpSpotlight />
+      <OffersSection limit={3} showAllLink />
+      <HowWeWork tone="sand" />
+      <WhyUs tone="white" />
+      <Testimonials tone="sand" />
       <FAQ home={true} />
-      <Contact />
     </>
   );
 }

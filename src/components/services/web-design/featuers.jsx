@@ -1,7 +1,6 @@
 "use client";
 
 import SectionHeader from "@/components/sections-header";
-import Wave from "@/components/ui/wave";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
@@ -38,14 +37,14 @@ export default function FeaturesSection() {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-water pb-28 pt-20">
-      <div className="container text-center">
+    <section className="section relative overflow-hidden bg-sand">
+      <div className="container">
         <SectionHeader
           title={t("features_title")}
           subtitle={t("features_subtitle")}
         />
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
           {features.map((feature, index) => (
             <motion.div
               key={index}
@@ -53,20 +52,20 @@ export default function FeaturesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="p-8 bg-white rounded-[2rem] shadow-[0_10px_40px_-15px_rgba(30,84,159,0.25)] hover:shadow-[0_25px_50px_-15px_rgba(30,84,159,0.4)] hover:-translate-y-2 transition-all duration-500 border border-[#1e549f]/10 border-t-4 border-t-[#dda853] hover:border-t-[#1e549f]"
+              className="card card-hover h-full p-8"
             >
-              <div className="flex flex-col items-center text-center">
+              <div className="flex flex-col items-start text-start">
                 <Image
                   src={feature.image}
                   alt={feature.title}
                   width={500}
                   height={500}
-                  className="w-12 md:w-16 mb-4"
+                  className="mb-5 h-14 w-14 object-contain"
                 />
-                <h3 className="text-xl font-semibold text-main mb-2">
+                <h3 className="text-xl font-semibold text-nile-950 mb-2">
                   {feature.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-slate-600 leading-relaxed">
                   {feature.description}
                 </p>
               </div>
@@ -74,7 +73,6 @@ export default function FeaturesSection() {
           ))}
         </div>
       </div>
-      <Wave className="text-white" />
     </section>
   );
 }

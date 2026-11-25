@@ -1,18 +1,27 @@
 "use client";
 
-import { MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone, Mail, MessageCircle, Check } from "lucide-react";
 import SectionHeader from "../sections-header";
+import Reveal from "../ui/reveal";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { siteConfig } from "@/lib/site";
-import Wave from "../ui/wave";
+import { isPlanId, items } from "@/data/pricing";
+
+const groupKeys = ["web", "erp", "graphic", "marketing", "content"];
+
+const fieldClass =
+  "w-full rounded-xl border border-line bg-white px-4 py-3 text-ink transition placeholder:text-slate-400 focus:border-gold-400 focus:outline-none focus:ring-2 focus:ring-gold-400/30";
 
 export default function Contact() {
   const t = useTranslations("Contact");
+  const pricing = useTranslations("Pricing");
   const [success, setSuccess] = useState(false);
   const [failed, setFailed] = useState(false);
   const [load, setLoad] = useState(false);
+  const [plan, setPlan] = useState("");
+  const [service, setService] = useState("");
+  const messageRef = useRef(null);
 
   // Hide the toast a few seconds after it appears.
   useEffect(() => {
@@ -24,6 +33,21 @@ export default function Contact() {
     return () => clearTimeout(timer);
   }, [success, failed]);
 
+  // Arriving from a pricing card or the "what do you need" selector (?plan=<id>):
+  // pre-select the service and pre-fill the message.
+  useEffect(() => {
+    const id = new URLSearchParams(window.location.search).get("plan");
+    if (!id || !isPlanId(id)) return;
+    const name = pricing.has(`offers.${id}.title`)
+      ? pricing(`offers.${id}.title`)
+      : pricing(`items.${id}.title`);
+    setPlan(name);
+    if (items[id]) setService(items[id].group);
+    if (messageRef.current && !messageRef.current.value) {
+      messageRef.current.value = t("plan_prefill", { name });
+    }
+  }, [pricing, t]);
+
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -33,10 +57,7 @@ export default function Contact() {
       setFailed(false);
       const response = await fetch(
         "https://formsubmit.co/mohamedalgasim123@gmail.com",
-        {
-          method: "POST",
-          body: formData,
-        }
+        { method: "POST", body: formData }
       );
       if (response.ok) {
         e.target.reset();
@@ -52,180 +73,156 @@ export default function Contact() {
     }
   }
 
+  const info = [
+    { Icon: MapPin, title: t("title_one"), content: t("desc_one") },
+    {
+      Icon: Phone,
+      title: t("title_two"),
+      content: (
+        <a href={siteConfig.whatsapp} target="_blank" rel="noopener noreferrer" className="hover:text-nile-600">
+          <span dir="ltr">{siteConfig.phoneDisplay}</span>
+        </a>
+      ),
+    },
+    {
+      Icon: Mail,
+      title: t("title_three"),
+      content: (
+        <a href={`mailto:${siteConfig.email}`} className="hover:text-nile-600">
+          {siteConfig.email}
+        </a>
+      ),
+    },
+  ];
+
   return (
-    <section
-      className="relative overflow-hidden bg-cover bg-[url('/images/pattern.svg')] pb-32 pt-20
-      before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-white/95 before:z-20"
-    >
-      <div className="relative z-30">
-        {success && (
-          <div
-            className="fixed top-32 left-1/2 -translate-x-1/2 
-    bg-green-600/90 backdrop-blur-md text-white 
-    py-3 px-6 rounded-xl shadow-xl 
-    flex items-center gap-3 
-    animate-slideDown z-[9999]"
-          >
-            <svg
-              className="w-5 h-5 text-white"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M5 13l4 4L19 7"
-              />
-            </svg>
+    <section className="section relative bg-sand">
+      {success && (
+        <div className="animate-slideDown fixed left-1/2 top-28 z-[9999] flex items-center gap-3 rounded-full bg-emerald-600 px-6 py-3 text-white shadow-xl">
+          <Check size={18} />
+          <span className="font-medium">{t("success")}</span>
+        </div>
+      )}
+      {failed && (
+        <div
+          role="alert"
+          className="animate-slideDown fixed left-1/2 top-28 z-[9999] rounded-full bg-red-600 px-6 py-3 text-white shadow-xl"
+        >
+          {t("sending_failed")}
+        </div>
+      )}
 
-            <span className="font-medium">{t("success")}</span>
-          </div>
-        )}
-
-        {failed && (
-          <div
-            role="alert"
-            className="fixed top-32 left-1/2 -translate-x-1/2 bg-red-600/90 backdrop-blur-md text-white py-3 px-6 rounded-xl shadow-xl animate-slideDown z-[9999]"
-          >
-            {t("sending_failed")}
-          </div>
-        )}
-
+      <div className="container">
         <SectionHeader title={t("title")} subtitle={t("subtitle")} />
-        <div className="container grid md:grid-cols-2 gap-12 items-center">
-          {/* معلومات التواصل */}
-          <div className="z-30">
-            <div className="space-y-6">
-              {/* كارد العنوان */}
-              <div className="card-soft flex items-center gap-4 p-6">
-                <div className="rounded-2xl bg-gradient-to-br from-[#dda853] to-[#e9c277] p-3 shadow-md">
-                  <MapPin className="w-6 h-6 text-main" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-lg text-alt">
-                    {t("title_one")}
-                  </h4>
-                  <p className="text-slate-500">{t("desc_one")}</p>
-                </div>
-              </div>
 
-              {/* كارد الهاتف */}
-              <div className="card-soft flex items-center gap-4 p-6">
-                <div className="rounded-2xl bg-gradient-to-br from-[#dda853] to-[#e9c277] p-3 shadow-md">
-                  <Phone className="w-6 h-6 text-main" />
+        <div className="grid items-start gap-6 lg:grid-cols-12 lg:gap-8">
+          <div className="space-y-4 lg:col-span-5">
+            {info.map(({ Icon, title, content }, i) => (
+              <Reveal key={title} delay={i * 0.08}>
+                <div className="card flex items-center gap-4 p-5">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gold-400 text-nile-950">
+                    <Icon size={22} />
+                  </span>
+                  <div>
+                    <h3 className="font-semibold text-nile-950">{title}</h3>
+                    <p className="text-slate-600">{content}</p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-semibold text-lg text-alt">
-                    {t("title_two")}
-                  </h4>
-                  <Link
-                    href={siteConfig.whatsapp}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-slate-500"
-                  >
-                    <span dir="ltr" className="unicode-bidi plaintext">
-                      {siteConfig.phoneDisplay}
-                    </span>
-                  </Link>
-                </div>
-              </div>
+              </Reveal>
+            ))}
+            <Reveal delay={0.24}>
+              <a
+                href={siteConfig.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-gold w-full"
+              >
+                <MessageCircle size={20} />
+                {t("whatsapp")}
+              </a>
+            </Reveal>
+          </div>
 
-              {/* كارد البريد */}
-              <div className="card-soft flex items-center gap-4 p-6">
-                <div className="rounded-2xl bg-gradient-to-br from-[#dda853] to-[#e9c277] p-3 shadow-md">
-                  <Mail className="w-6 h-6 text-main" />
+          <Reveal className="lg:col-span-7">
+            <div className="card rounded-[var(--radius-media)] p-6 md:p-10">
+              <h3 className="mb-6 text-2xl font-semibold text-nile-950">{t("form_title")}</h3>
+
+              <form className="space-y-5" onSubmit={handleSubmit}>
+                <div className="grid gap-5 md:grid-cols-2">
+                  <div>
+                    <label htmlFor="contact-name" className="mb-1.5 block text-sm font-medium text-nile-950">
+                      {t("name")}
+                    </label>
+                    <input
+                      id="contact-name"
+                      type="text"
+                      name="name"
+                      autoComplete="name"
+                      required
+                      className={fieldClass}
+                      placeholder={t("name_placeholder")}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="contact-email" className="mb-1.5 block text-sm font-medium text-nile-950">
+                      {t("title_three")}
+                    </label>
+                    <input
+                      id="contact-email"
+                      type="email"
+                      name="email"
+                      autoComplete="email"
+                      required
+                      className={fieldClass}
+                      placeholder="example@email.com"
+                    />
+                  </div>
                 </div>
+
                 <div>
-                  <h4 className="font-semibold text-lg text-alt">
-                    {t("title_three")}
-                  </h4>
-                  <Link
-                    href={`mailto:${siteConfig.email}`}
-                    className="text-slate-500"
+                  <label htmlFor="contact-service" className="mb-1.5 block text-sm font-medium text-nile-950">
+                    {t("service")}
+                  </label>
+                  <select
+                    id="contact-service"
+                    name="service"
+                    value={service}
+                    onChange={(e) => setService(e.target.value)}
+                    className={fieldClass}
                   >
-                    {siteConfig.email}
-                  </Link>
+                    <option value="">{t("service_placeholder")}</option>
+                    {groupKeys.map((g) => (
+                      <option key={g} value={g}>
+                        {pricing(`groups.${g}`)}
+                      </option>
+                    ))}
+                  </select>
                 </div>
-              </div>
+
+                <div>
+                  <label htmlFor="contact-message" className="mb-1.5 block text-sm font-medium text-nile-950">
+                    {t("message")}
+                  </label>
+                  <textarea
+                    id="contact-message"
+                    ref={messageRef}
+                    rows={5}
+                    name="message"
+                    required
+                    className={`${fieldClass} resize-none`}
+                    placeholder={t("message_placeholder")}
+                  />
+                </div>
+
+                <input type="hidden" name="_captcha" value="false" />
+                {plan && <input type="hidden" name="plan" value={plan} />}
+
+                <button type="submit" disabled={load} className="btn-blue w-full disabled:opacity-70">
+                  {load ? t("loading") : t("send")}
+                </button>
+              </form>
             </div>
-          </div>
-
-          {/* نموذج التواصل */}
-          <div className="relative z-30 overflow-hidden rounded-[2rem] border border-[#1e549f]/10 bg-white p-8 text-main shadow-[0_25px_60px_-20px_rgba(30,84,159,0.35)]">
-            <div aria-hidden="true" className="blob pointer-events-none absolute -end-16 -top-16 h-44 w-44 bg-[#dda853]/20" />
-            <h3 className="text-2xl font-semibold mb-6">{t("form_title")}</h3>
-
-            <form className="space-y-4" onSubmit={handleSubmit}>
-              {/* Name */}
-              <div>
-                <label htmlFor="contact-name" className="block text-sm font-medium mb-1">
-                  {t("name")}
-                </label>
-                <input
-                  id="contact-name"
-                  type="text"
-                  name="name"
-                  autoComplete="name"
-                  required
-                  className="w-full border border-gray-300 rounded-xl px-4 py-2.5 transition focus:outline-none focus:border-[#dda853] focus:ring-2 focus:ring-[#dda853]/40"
-                  placeholder={t("name_placeholder")}
-                />
-              </div>
-
-              {/* Email */}
-              <div>
-                <label htmlFor="contact-email" className="block text-sm font-medium mb-1">
-                  {t("title_three")}
-                </label>
-                <input
-                  id="contact-email"
-                  type="email"
-                  name="email"
-                  autoComplete="email"
-                  required
-                  className="w-full border border-gray-300 rounded-xl px-4 py-2.5 transition focus:outline-none focus:border-[#dda853] focus:ring-2 focus:ring-[#dda853]/40"
-                  placeholder="example@email.com"
-                />
-              </div>
-
-              {/* Message */}
-              <div>
-                <label htmlFor="contact-message" className="block text-sm font-medium mb-1">
-                  {t("message")}
-                </label>
-                <textarea
-                  id="contact-message"
-                  rows={4}
-                  name="message"
-                  required
-                  className="resize-none w-full border border-gray-300 rounded-xl px-4 py-2.5 transition focus:outline-none focus:border-[#dda853] focus:ring-2 focus:ring-[#dda853]/40"
-                  placeholder={t("message_placeholder")}
-                ></textarea>
-              </div>
-
-              {/* Disable Captcha */}
-              <input type="hidden" name="_captcha" value="false" />
-              {load ? (
-                <button
-                  type="submit"
-                  disabled
-                  className="btn-gold w-full opacity-70"
-                >
-                  {t("loading")}
-                </button>
-              ) : (
-                <button
-                  type="submit"
-                  className="btn-gold w-full"
-                >
-                  {t("send")}
-                </button>
-              )}
-            </form>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

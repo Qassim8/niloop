@@ -2,36 +2,37 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
-function WorkCard({ href, image, title, label, tag }) {
+function WorkCard({ href, image, title, label, tag, priority = false }) {
   return (
     <Link
       href={href}
-      className="group block overflow-hidden rounded-[2rem] border border-[#1e549f]/10 bg-white shadow-[0_10px_40px_-15px_rgba(30,84,159,0.25)] transition duration-500 hover:-translate-y-2 hover:shadow-[0_25px_50px_-15px_rgba(30,84,159,0.4)]"
+      data-spotlight
+      className="group block rounded-[var(--radius-media)] border border-line bg-white p-3 shadow-[var(--shadow-card)] transition duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-1 hover:border-nile-600/30 hover:shadow-[var(--shadow-lift)]"
     >
-      <div className="relative m-3 h-52 overflow-hidden rounded-[1.5rem]">
+      <div className="relative aspect-[4/3] overflow-hidden rounded-[1.25rem] bg-nile-50">
         <Image
           src={image}
           alt={title}
           fill
-          sizes="(min-width: 768px) 33vw, 100vw"
-          className="object-cover transition duration-700 group-hover:scale-110"
+          priority={priority}
+          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+          className="object-cover transition duration-700 ease-[var(--ease-out-expo)] group-hover:scale-[1.04]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0b2a57]/80 via-[#1e549f]/20 to-transparent opacity-70 transition duration-500 group-hover:opacity-100" />
-
         {tag && (
-          <span className="absolute start-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-main backdrop-blur-sm">
+          <span className="absolute start-3 top-3 rounded-full bg-white/95 px-3 py-1 text-xs font-semibold text-nile-700 backdrop-blur-sm">
             {tag}
           </span>
         )}
-
-        <span className="absolute inset-x-0 bottom-3 flex translate-y-4 items-center justify-center gap-1 font-semibold text-white opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-          {label}
-          <ArrowUpRight size={16} className="rtl:-scale-x-100" />
+        <span className="absolute bottom-3 end-3 flex h-10 w-10 items-center justify-center rounded-full bg-white text-nile-950 opacity-0 shadow-lg transition duration-300 group-hover:opacity-100">
+          <ArrowUpRight size={18} className="rtl:-scale-x-100" />
         </span>
       </div>
-      <h3 className="min-h-[3.5rem] px-5 pb-5 pt-1 text-base font-bold leading-snug text-main line-clamp-2">
-        {title}
-      </h3>
+      <div className="flex items-center justify-between gap-3 px-3 pb-3 pt-4">
+        <h3 className="line-clamp-2 min-h-[3rem] text-lg font-semibold leading-snug text-nile-950">
+          {title}
+        </h3>
+        <span className="sr-only">{label}</span>
+      </div>
     </Link>
   );
 }

@@ -1,115 +1,82 @@
 "use client";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight } from "lucide-react";
-import SectionHeader from "../sections-header";
-import { useTranslations } from "next-intl";
 import { Quote } from "lucide-react";
-import { Blobs } from "../ui/shapes";
-import Wave from "../ui/wave";
+import Image from "next/image";
+import ImageSlot, { hasSlotImage } from "../ui/image-slot";
+import SectionHeader from "../sections-header";
+import Reveal from "../ui/reveal";
+import { useTranslations } from "next-intl";
 
-export default function Testimonials({ wave = "text-white" }) {
-  let t = useTranslations("Testimonials");
+export default function Testimonials({ tone = "white" }) {
+  const t = useTranslations("Testimonials");
 
   const testimonials = [
-    {
-      name: t("first_name"),
-      role: t("first_title"),
-      image: "/images/bareq-logo.webp",
-      text: t("first_desc"),
-    },
-    {
-      name: t("second_name"),
-      role: t("second_title"),
-      image: "/images/sanaa.png",
-      text: t("second_desc"),
-    },
-    {
-      name: t("third_name"),
-      role: t("third_title"),
-      image: "/images/badr-logo.png",
-      text: t("third_desc"),
-    },
-    {
-      name: t("fourth_name"),
-      role: t("fourth_title"),
-      image: "/images/zadi-logo.png",
-      text: t("fourth_desc"),
-    },
-    {
-      name: t("seventh_name"),
-      role: t("seventh_title"),
-      image: "/images/abda_bswal.png",
-      text: t("seventh_desc"),
-    },
-    {
-      name: t("eigth_name"),
-      role: t("eigth_title"),
-      image: "/images/eatc-logo.png",
-      text: t("eigth_desc"),
-    },
+    { name: t("first_name"), role: t("first_title"), slot: "person-bareq", image: "/images/bareq-logo.webp", text: t("first_desc") },
+    { name: t("second_name"), role: t("second_title"), slot: "person-sanaa", image: "/images/sanaa.png", text: t("second_desc") },
+    { name: t("third_name"), role: t("third_title"), slot: "person-badr", image: "/images/badr-logo.png", text: t("third_desc") },
+    { name: t("fourth_name"), role: t("fourth_title"), slot: "person-zadi", image: "/images/zadi-logo.png", text: t("fourth_desc") },
+    { name: t("seventh_name"), role: t("seventh_title"), slot: "person-abda", image: "/images/abda_bswal.png", text: t("seventh_desc") },
+    { name: t("eigth_name"), role: t("eigth_title"), slot: "person-eatc", image: "/images/eatc-logo.png", text: t("eigth_desc") },
   ];
 
   return (
-    <section className="relative overflow-hidden bg-water pb-28 pt-20">
-      <Blobs />
+    <section className={`section ${tone === "sand" ? "bg-sand" : "bg-white"}`}>
       <div className="container">
         <SectionHeader title={t("title")} subtitle={t("subtitle")} />
-        <Swiper
-          modules={[Navigation]}
-          navigation={{
-            nextEl: ".swiper-next",
-            prevEl: ".swiper-prev",
-          }}
-          loop
-          className="relative"
-        >
-          {testimonials.map((t, index) => (
-            <SwiperSlide key={index}>
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                className="relative my-8 mx-8 max-w-3xl overflow-hidden rounded-[2rem] border border-[#1e549f]/10 bg-white p-8 px-6 text-center shadow-[0_20px_50px_-20px_rgba(30,84,159,0.35)] md:mx-auto"
-              >
-                <Quote
-                  aria-hidden="true"
-                  className="absolute -top-2 start-5 h-16 w-16 text-[#dda853]/20"
-                />
-                <div className="flex justify-center items-center h-[60px] md:h-[150px] w-[80px] md:w-[200px] mx-auto mb-3">
-                  <img
-                    src={t.image}
-                    alt={t.name}
-                    loading="lazy"
-                    className="max-w-full max-h-full"
-                  />
-                </div>
-                <h3 className="md:text-xl font-semibold text-blue-900">
-                  {t.name}
-                </h3>
-                <span className="text-gray-500">{t.role}</span>
-                <p className="text-sm mt-4 text-gray-700 leading-relaxed">
-                  {t.text}
-                </p>
-              </motion.div>
-            </SwiperSlide>
-          ))}
 
-          {/* أزرار التنقل */}
-          <div className="swiper-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 w-7 md:w-10 h-7 md:h-10 bg-[#1e549f] hover:bg-[#dda853] hover:text-[#0b2a57] text-white flex items-center justify-center rounded-full cursor-pointer shadow-lg transition">
-            <ArrowLeft />
-          </div>
-          <div className="swiper-next absolute right-0 top-1/2 -translate-y-1/2 z-10 w-7 md:w-10 h-7 md:h-10 bg-[#1e549f] hover:bg-[#dda853] hover:text-[#0b2a57] text-white flex items-center justify-center rounded-full cursor-pointer shadow-lg transition">
-            <ArrowRight />
-          </div>
-        </Swiper>
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-5">
+          {testimonials.map((item, i) => {
+            const featured = i === 1;
+            return (
+              <Reveal key={item.name} delay={(i % 3) * 0.08}>
+                <figure
+                  data-spotlight
+                  className={`flex h-full flex-col rounded-[var(--radius-media)] border p-7 md:p-8 ${
+                    featured
+                      ? "surface-nile border-nile-800 text-white shadow-[var(--shadow-lift)]"
+                      : tone === "sand" ? "border-line bg-white shadow-[var(--shadow-card)]" : "border-line bg-sand shadow-[var(--shadow-card)]"
+                  }`}
+                >
+                  <Quote size={28} className={featured ? "text-gold-400" : "text-gold-500"} />
+                  <blockquote
+                    className={`mt-5 flex-1 leading-relaxed ${featured ? "text-nile-50" : "text-slate-700"}`}
+                  >
+                    {item.text}
+                  </blockquote>
+                  <figcaption className="mt-8 flex items-center gap-4">
+                    {hasSlotImage(item.slot) ? (
+                      <ImageSlot
+                        id={item.slot}
+                        alt={item.name}
+                        sizes="56px"
+                        className="h-14 w-14 shrink-0 rounded-full"
+                      />
+                    ) : (
+                      <span className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white p-2">
+                        <Image
+                          src={item.image}
+                          alt=""
+                          width={56}
+                          height={56}
+                          className="max-h-full w-auto object-contain"
+                        />
+                      </span>
+                    )}
+                    <span>
+                      <span className={`block font-semibold ${featured ? "text-white" : "text-nile-950"}`}>
+                        {item.name}
+                      </span>
+                      <span className={`block text-sm ${featured ? "text-nile-200" : "text-slate-500"}`}>
+                        {item.role}
+                      </span>
+                    </span>
+                  </figcaption>
+                </figure>
+              </Reveal>
+            );
+          })}
+        </div>
       </div>
-      {wave && <Wave className={wave} />}
     </section>
   );
 }

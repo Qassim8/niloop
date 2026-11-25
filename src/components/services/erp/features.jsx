@@ -1,7 +1,6 @@
 "use client";
 
 import SectionHeader from "@/components/sections-header";
-import Wave from "@/components/ui/wave";
 import { motion } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
@@ -20,14 +19,14 @@ export default function ErpFeatures() {
   const locale = useLocale();
 
   return (
-    <section className="relative overflow-hidden bg-water pb-28 pt-20">
-      <div className="container text-center">
+    <section className="section relative overflow-hidden bg-sand">
+      <div className="container">
         <SectionHeader
           title={t("features_title")}
           subtitle={t("features_subtitle")}
         />
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
           {features.map(({ key, Icon }, index) => (
             <motion.div
               key={key}
@@ -35,35 +34,34 @@ export default function ErpFeatures() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="p-8 bg-white rounded-[2rem] shadow-[0_10px_40px_-15px_rgba(30,84,159,0.25)] hover:shadow-[0_25px_50px_-15px_rgba(30,84,159,0.4)] hover:-translate-y-2 transition-all duration-500 border border-[#1e549f]/10 border-t-4 border-t-[#dda853] hover:border-t-[#1e549f]"
+              className="card card-hover h-full p-8"
             >
-              <div className="flex flex-col items-center text-center">
-                <Icon className="w-12 md:w-14 h-12 md:h-14 mb-4 text-main" strokeWidth={1.5} />
-                <h3 className="text-xl font-semibold text-main mb-2">
+              <div className="flex flex-col items-start text-start">
+                <Icon className="mb-5 h-12 w-12 rounded-2xl bg-nile-50 p-3 text-nile-600" strokeWidth={1.75} />
+                <h3 className="text-xl font-semibold text-nile-950 mb-2">
                   {t(key)}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-slate-600 leading-relaxed">
                   {t(`${key}_desc`)}
                 </p>
               </div>
             </motion.div>
           ))}
 
-          <div className="p-8 bg-main text-white rounded-[2rem] shadow-md flex flex-col items-center justify-center text-center">
+          <div className="surface-nile flex h-full flex-col items-start justify-center rounded-[var(--radius-card)] p-8 text-start">
             <h3 className="text-xl font-semibold mb-2">{t("example_title")}</h3>
             <p className="leading-relaxed mb-5 text-white/90">
               {t("example_desc")}
             </p>
             <Link
               href={`/${locale}/projects/matajri`}
-              className="inline-block bg-alt text-main font-semibold px-5 py-2 rounded-xl hover:opacity-90 transition"
+              className="btn-gold !min-h-10 !px-5 !py-2"
             >
               {t("example_cta")}
             </Link>
           </div>
         </div>
       </div>
-      <Wave className="text-white" />
     </section>
   );
 }

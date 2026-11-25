@@ -2,6 +2,7 @@
 import BreadcrumbSection from "@/components/breadcrumb";
 import FeaturesSection from "@/components/services/marketing/features";
 import TopSection from "@/components/services/marketing/top-section";
+import PricingTiers from "@/components/pricing/tiers";
 import { useTranslations } from "next-intl";
 import React, { useState, useEffect } from "react";
 
@@ -23,6 +24,7 @@ function MarketingPageClient() {
       />
       <TopSection />
       <FeaturesSection />
+      <PricingTiers group="marketing" />
     </>
   );
 }

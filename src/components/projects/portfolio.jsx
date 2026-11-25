@@ -2,14 +2,17 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import SectionHeader from "../sections-header";
 import { useLocale, useTranslations } from "next-intl";
 import WorkCard from "./work-card";
+import Reveal from "../ui/reveal";
 import { projects } from "@/data/projects";
 
 export default function WorksSection({ home }) {
   const t = useTranslations("Projects");
   const locale = useLocale();
+  const Arrow = locale === "ar" ? ArrowLeft : ArrowRight;
   const [activeFilter, setActiveFilter] = useState("all");
 
   const works = projects.map((project) => ({
@@ -31,27 +34,23 @@ export default function WorksSection({ home }) {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-white py-20">
+    <section className={`section ${home ? "bg-sand" : "bg-white"}`}>
       <div className="container">
         <SectionHeader title={t("title")} subtitle={t("subtitle")} />
 
         {!home && (
-          <div
-            role="group"
-            className="my-8 flex flex-wrap justify-center gap-3"
-          >
+          <div role="group" className="mb-10 flex flex-wrap justify-center gap-2">
             {filterBtns.map(({ title, type }) => (
               <button
                 key={type}
                 type="button"
                 aria-pressed={activeFilter === type}
-                className={`text-xs md:text-base px-5 md:px-7 py-2 font-bold rounded-full outline-0 cursor-pointer transition duration-300
-                  ${
-                    activeFilter === type
-                      ? "bg-main text-white shadow-lg shadow-[#1e549f]/30"
-                      : "bg-[#dda853]/15 text-main hover:bg-[#dda853]/30"
-                  }`}
                 onClick={() => setActiveFilter(type)}
+                className={`cursor-pointer rounded-full border px-5 py-2.5 text-sm font-semibold transition duration-300 md:text-base ${
+                  activeFilter === type
+                    ? "border-nile-600 bg-nile-600 text-white"
+                    : "border-line bg-white text-nile-700 hover:border-nile-600/40"
+                }`}
               >
                 {title}
               </button>
@@ -59,26 +58,25 @@ export default function WorksSection({ home }) {
           </div>
         )}
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {(home ? visible.slice(0, 6) : visible).map((work) => (
-            <WorkCard
-              key={work.slug}
-              href={`/${locale}/projects/${work.slug}`}
-              image={work.image}
-              title={work.title}
-              label={t("show")}
-              tag={t(`type_${work.type}`)}
-            />
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {(home ? visible.slice(0, 6) : visible).map((work, i) => (
+            <Reveal key={work.slug} delay={(i % 3) * 0.08}>
+              <WorkCard
+                href={`/${locale}/projects/${work.slug}`}
+                image={work.image}
+                title={work.title}
+                label={t("show")}
+                tag={t(`type_${work.type}`)}
+              />
+            </Reveal>
           ))}
         </div>
 
         {home && (
-          <div className="text-center mt-12">
-            <Link
-              href={`/${locale}/projects`}
-              className="btn-blue"
-            >
+          <div className="mt-12 text-center">
+            <Link href={`/${locale}/projects`} className="btn-outline">
               {t("more")}
+              <Arrow size={16} />
             </Link>
           </div>
         )}

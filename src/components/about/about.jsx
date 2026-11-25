@@ -1,89 +1,69 @@
 "use client";
 
-import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
+import ImageSlot from "../ui/image-slot";
+import { Briefcase, Lightbulb, Sparkles } from "lucide-react";
 import SectionHeader from "../sections-header";
-import { motion } from "framer-motion";
+import Reveal from "../ui/reveal";
 import { useTranslations } from "next-intl";
 import { siteConfig } from "@/lib/site";
-import Wave from "../ui/wave";
-import { Ripples } from "../ui/shapes";
 
-export default function AboutSection({ wave = "text-white" }) {
+export default function AboutSection() {
   const t = useTranslations("About");
   const stats = useTranslations("Stats");
 
   const years = new Date().getFullYear() - siteConfig.foundingYear;
 
-  const slides = [
-    { title: t("expert", { years }), text: t("expert_desc") },
-    { title: t("creative"), text: t("creative_desc") },
-    { title: t("excellence"), text: t("excellence_desc") },
+  const values = [
+    { Icon: Briefcase, title: t("expert", { years }), text: t("expert_desc") },
+    { Icon: Lightbulb, title: t("creative"), text: t("creative_desc") },
+    { Icon: Sparkles, title: t("excellence"), text: t("excellence_desc") },
   ];
 
   return (
-    <section id="about" className="bg-sand relative overflow-hidden pb-28 pt-20">
-      <div className="container grid grid-cols-1 items-center gap-14 md:grid-cols-2">
-        {/* Image in an organic "dune" shape with a gold shadow blob */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.92 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          viewport={{ once: true }}
-          className="relative order-last mx-auto w-full max-w-md md:order-first md:max-w-none"
-        >
-          <div className="blob absolute -bottom-6 -end-6 h-full w-full bg-gradient-to-br from-[#dda853] to-[#f1d49a] opacity-80" />
-          <div className="blob relative aspect-[4/5] w-full overflow-hidden shadow-2xl">
-            <Image
-              src="/images/about.webp"
+    <section id="about" className="section bg-sand">
+      <div className="container grid items-center gap-14 lg:grid-cols-12">
+        <Reveal x={-40} y={0} className="relative order-last lg:order-first lg:col-span-5">
+          <div className="relative">
+            <ImageSlot
+              id="about-team"
               alt={t("image_alt")}
-              fill
-              sizes="(min-width: 768px) 50vw, 100vw"
-              className="object-cover"
+              fallback="/images/about.webp"
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              className="rounded-[var(--radius-media)] shadow-[var(--shadow-lift)]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0b2a57]/50 to-transparent" />
+            <div className="pointer-events-none absolute inset-0 rounded-[var(--radius-media)] bg-gradient-to-t from-nile-950/40 to-transparent" />
           </div>
 
-          {/* Floating badge */}
-          <div className="float-y absolute -start-3 bottom-10 rounded-2xl border border-white/60 bg-white/90 px-5 py-4 shadow-xl backdrop-blur-md md:-start-8">
-            <p dir="ltr" className="text-3xl font-extrabold text-main">{years}+</p>
+          <div className="float-soft absolute -bottom-5 end-4 rounded-2xl border border-line bg-white px-6 py-4 shadow-[var(--shadow-lift)] md:-end-6">
+            <p dir="ltr" className="text-4xl font-semibold text-nile-600">{years}+</p>
             <p className="text-sm text-slate-500">{stats("expert")}</p>
           </div>
-          <Ripples className="-top-10 -end-10 h-40 w-40 [&>span]:!border-[#dda853]/40" />
-        </motion.div>
+        </Reveal>
 
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
-        >
-          <SectionHeader title={t("title")} subtitle={t("subtitle")} align="start" />
-
-          <Swiper
-            modules={[Autoplay, Pagination]}
-            grabCursor
-            autoplay={{ delay: 4500, disableOnInteraction: false }}
-            pagination={{ clickable: true }}
-            className="relative w-full !pb-10"
-          >
-            {slides.map((item, i) => (
-              <SwiperSlide key={i} className="!h-auto">
-                <div className="card-soft h-full p-7">
-                  <h3 className="mb-3 text-xl font-bold text-main md:text-2xl">
-                    {item.title}
-                  </h3>
-                  <p className="leading-relaxed text-slate-600">{item.text}</p>
+        <div className="lg:col-span-7">
+          <SectionHeader
+            title={t("title")}
+            subtitle={t("subtitle")}
+            align="start"
+            className="mb-10"
+          />
+          <ul className="space-y-4">
+            {values.map(({ Icon, title, text }, i) => (
+              <Reveal as="li" key={title} delay={i * 0.1}>
+                <div className="card flex items-start gap-5 p-6">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-nile-50 text-nile-600">
+                    <Icon size={22} />
+                  </span>
+                  <div>
+                    <h3 className="text-xl font-semibold text-nile-950">{title}</h3>
+                    <p className="mt-1 leading-relaxed text-slate-600">{text}</p>
+                  </div>
                 </div>
-              </SwiperSlide>
+              </Reveal>
             ))}
-          </Swiper>
-        </motion.div>
+          </ul>
+        </div>
       </div>
-      {wave && <Wave className={wave} />}
     </section>
   );
 }

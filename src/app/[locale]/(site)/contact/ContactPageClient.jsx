@@ -16,8 +16,8 @@ function ContactPageClient() {
   return (
     <>
       <BreadcrumbSection title={title} links={[{ label: title }]} />
-      <FAQ />
       <Contact />
+      <FAQ />
     </>
   );
 }

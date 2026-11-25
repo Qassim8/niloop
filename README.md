@@ -46,3 +46,7 @@ npm run build && npm start
 3. Put images in `public/images/` (WebP, ≤ 1600px wide). The project page, listing card, sitemap entry and structured data are generated automatically.
 
 The covers for Matajri, Al Zamil Clean and Sudatech in `public/images/projects/` are temporary; replace them with real screenshots using the same file names.
+
+## Adding photos
+
+Reserved picture areas ("image slots") and the recommended picture for each are listed in `public/images/slots/README.md`. Drop a file named after the slot into `public/images/slots/` and rebuild; labelled placeholders are shown only in development (or with `NEXT_PUBLIC_IMAGE_HINTS=true`).

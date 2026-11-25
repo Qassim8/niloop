@@ -1,28 +1,51 @@
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import RouteLoader from "@/components/route-loader";
 import MotionProvider from "@/components/motion-provider";
 import JsonLd from "@/components/json-ld";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
-import { Tajawal, Asap } from "next/font/google";
+import {
+  Readex_Pro,
+  IBM_Plex_Sans_Arabic,
+  Aref_Ruqaa,
+  Instrument_Serif,
+} from "next/font/google";
 import { routing } from "@/i18n/routing";
 import { SITE_URL, siteConfig } from "@/lib/site";
 import { organizationGraph } from "@/lib/schema";
 import "../globals.css";
 
-const tajawal = Tajawal({
+const readex = Readex_Pro({
   subsets: ["arabic", "latin"],
-  weight: ["300", "400", "500", "700", "800"],
-  variable: "--font-tajawal",
+  variable: "--font-readex",
   display: "swap",
 });
 
-const asap = Asap({
-  subsets: ["latin"],
-  weight: ["300", "400", "600", "700"],
-  variable: "--font-asap",
+const plex = IBM_Plex_Sans_Arabic({
+  subsets: ["arabic", "latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-plex",
   display: "swap",
+});
+
+// Accent fonts for the highlighted word in headlines (see .accent in globals.css)
+const aref = Aref_Ruqaa({
+  subsets: ["arabic", "latin"],
+  weight: ["700"],
+  variable: "--font-aref",
+  display: "swap",
+  preload: false,
+});
+
+const instrument = Instrument_Serif({
+  subsets: ["latin"],
+  weight: ["400"],
+  style: ["italic"],
+  variable: "--font-instrument",
+  display: "swap",
+  preload: false,
 });
 
 export function generateStaticParams() {
@@ -30,7 +53,7 @@ export function generateStaticParams() {
 }
 
 export const viewport = {
-  themeColor: "#1e549f",
+  themeColor: "#081b38",
 };
 
 export async function generateMetadata({ params }) {
@@ -65,7 +88,7 @@ export default async function LocaleLayout({ children, params }) {
     <html
       lang={locale}
       dir={locale === "ar" ? "rtl" : "ltr"}
-      className={`${tajawal.variable} ${asap.variable}`}
+      className={`${readex.variable} ${plex.variable} ${aref.variable} ${instrument.variable}`}
       suppressHydrationWarning
     >
       <body>
@@ -75,6 +98,7 @@ export default async function LocaleLayout({ children, params }) {
             <Header />
             <main>{children}</main>
             <Footer />
+            <RouteLoader />
           </MotionProvider>
         </NextIntlClientProvider>
       </body>

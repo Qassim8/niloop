@@ -17,6 +17,8 @@ export function GET() {
     `- [Graphic design & identity / الجرافيك والهوية](${SITE_URL}/en/services/graphic-design): logos, brand identities, social media designs`,
     `- [Digital marketing / التسويق الرقمي](${SITE_URL}/en/services/marketing): campaigns, social media management`,
     "",
+    `- [Pricing & offers / الأسعار والعروض](${SITE_URL}/en/pricing): approximate prices in SAR and bundled packages`,
+    "",
     "## Projects",
     ...projects.map((p) => `- [${p.slug}](${SITE_URL}/en/projects/${p.slug})`),
     "",

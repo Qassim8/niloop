@@ -18,7 +18,9 @@
     "marketing_desc": "We plan and manage digital marketing campaigns, social media accounts and paid ads with performance tracking to grow your reach and sales.",
     "erp_title": "ERP, Accounting & Inventory Systems for Businesses | Niloop",
     "erp_desc": "We build custom ERP systems covering accounting, inventory, financial reports, employee statistics and customer management, tailored to how your business works.",
-    "not_found_title": "Page not found | Niloop"
+    "not_found_title": "Page not found | Niloop",
+    "pricing_title": "Pricing & Packages | Websites, ERP Systems & Branding – Niloop",
+    "pricing_desc": "Approximate prices in Saudi riyals for website development, ERP systems, visual identity, content writing and digital marketing, with bundled offers from Niloop."
   },
   "Header": {
     "home": "Home",
@@ -34,7 +36,10 @@
     "erp": "ERP Systems",
     "menu": "Menu",
     "switch_language": "Switch language",
-    "logo_alt": "Niloop logo"
+    "logo_alt": "Niloop logo",
+    "pricing": "Pricing",
+    "cta": "Book a consultation",
+    "loading": "Loading"
   },
   "Hero": {
     "hero_title": "Your idea deserves to gain power, and we are giving it its true form in",
@@ -42,7 +47,13 @@
     "hero_subtitle": "A tech company delivering web development, ERP systems, brand identity and content writing for businesses in Saudi Arabia, the Gulf and the Arab world",
     "start_now": "Start Your Project",
     "more": "About Us",
-    "hero_alt": "Modern buildings representing technology solutions"
+    "hero_alt": "Modern buildings representing technology solutions",
+    "eyebrow": "Tech company · Saudi Arabia & the Gulf",
+    "headline": "We build websites, systems and brands that <accent>grow your business</accent>",
+    "cta_primary": "Book a free consultation",
+    "cta_secondary": "View our work",
+    "showcase_label": "Our work",
+    "chip_label": "ERP system from our work"
   },
   "About": {
     "title": "About us",
@@ -61,7 +72,9 @@
     "mission_desc": "To provide high-quality services and solutions to our clients with a strong focus on innovation, commitment, and continuous excellence.",
     "strategy": "Strategy",
     "strategy_desc": "Operating with clear, well-studied plans based on deep market analysis, and building strong partnerships to achieve our shared objectives.",
-    "image_alt": "The Niloop team at work"
+    "image_alt": "The Niloop team at work",
+    "gallery_title": "Inside Niloop",
+    "gallery_subtitle": "Moments from our work"
   },
   "Services": {
     "title": "Services",
@@ -93,7 +106,10 @@
     "trust_desc": "We take pride in our clients’ satisfaction and their continued partnership with us across multiple projects",
     "erp": "ERP Systems",
     "erp_desc": "Accounting, inventory and reporting systems built for your business",
-    "details": "Learn more"
+    "details": "Learn more",
+    "from": "From",
+    "marketing": "Digital Marketing",
+    "marketing_desc": "Campaigns, ads and social media management with measurable results"
   },
   "Web": {
     "title": "Website Design",
@@ -298,7 +314,10 @@
     "success": "Your message has been sent successfully!",
     "whatsapp": "Chat on WhatsApp",
     "name_label": "Name",
-    "sending_failed": "We couldn't send your message. Please try again or message us on WhatsApp."
+    "sending_failed": "We couldn't send your message. Please try again or message us on WhatsApp.",
+    "plan_prefill": "Hello, I'd like to ask about: {name}",
+    "service": "Service needed",
+    "service_placeholder": "Choose a service"
   },
   "Footer": {
     "company_desc": "A tech company specialising in website and online store development, ERP systems, graphic design, visual identity and content writing, serving clients in Saudi Arabia, the Gulf, the Arab world and beyond.",
@@ -316,7 +335,8 @@
     "web": "Web Development",
     "erp": "ERP Systems",
     "graphic": "Graphic & Brand Identity",
-    "marketing": "Digital Marketing"
+    "marketing": "Digital Marketing",
+    "pricing": "Pricing & Offers"
   },
   "Brand": {
     "name": "Niloop",
@@ -344,11 +364,239 @@
     "feature_five_desc": "A complete record of customers, their transactions and orders to improve service and build lasting relationships.",
     "example_title": "An Example From Our Work",
     "example_desc": "We built “Matajri”, a mini ERP for tailoring shops that covers accounting, inventory, financial reports, per-employee statistics and customer management.",
-    "example_cta": "View the project"
+    "example_cta": "View the project",
+    "spot_eyebrow": "ERP spotlight"
   },
   "NotFound": {
     "title": "Page not found",
     "desc": "The page you're looking for doesn't exist or has been moved.",
     "home": "Back to home"
+  },
+  "Pricing": {
+    "title": "Pricing & Offers",
+    "subtitle": "Approximate prices in SAR",
+    "intro": "Approximate prices in Saudi riyals, starting from the minimum. We set the final price after studying your requirements; the quote is free and non-binding.",
+    "offers_title": "Offers & Packages",
+    "offers_subtitle": "Save more when you combine services",
+    "tiers_title": "Approximate Pricing",
+    "tiers_subtitle": "Start with what fits your project",
+    "from": "From",
+    "popular": "Most popular",
+    "includes": "Includes",
+    "value": "Separate value",
+    "save": "Save {amount}",
+    "cta": "Request a quote",
+    "cta_offer": "Get this offer",
+    "all": "All pricing & offers",
+    "note": "Prices are approximate, in Saudi riyals, and are finalized after studying the requirements. Hosting, domain and advertising budgets are not included unless stated.",
+    "units": {
+      "once": "",
+      "month": "/ month",
+      "module": "/ module",
+      "article": "/ article"
+    },
+    "groups": {
+      "web": "Web Development",
+      "erp": "ERP Systems",
+      "graphic": "Design & Visual Identity",
+      "marketing": "Digital Marketing",
+      "content": "Content Writing"
+    },
+    "items": {
+      "web_starter": {
+        "title": "Company Website",
+        "desc": "A professional site that introduces your company and services",
+        "features": [
+          "Up to 5 pages",
+          "Responsive on all devices",
+          "Basic SEO setup",
+          "Contact form and WhatsApp link"
+        ]
+      },
+      "web_business": {
+        "title": "Advanced Business Website",
+        "desc": "A complete bilingual website for your company",
+        "features": [
+          "Up to 10 pages",
+          "Arabic and English",
+          "Advanced SEO optimization",
+          "Maps and social media integration"
+        ]
+      },
+      "web_store": {
+        "title": "Online Store",
+        "desc": "A full store to showcase and sell your products",
+        "features": [
+          "Products, categories and shopping cart",
+          "Payment gateway and shipping integration",
+          "Product and order management",
+          "Smooth mobile shopping experience"
+        ]
+      },
+      "erp_mini": {
+        "title": "Mini ERP System",
+        "desc": "A system to run your business with three modules of your choice",
+        "features": [
+          "3 modules (accounting, inventory, customers, staff, reports)",
+          "Easy-to-use Arabic interface",
+          "Basic financial reports",
+          "Initial usage training"
+        ]
+      },
+      "erp_module": {
+        "title": "Extra Module",
+        "desc": "Add a custom module to your system",
+        "features": [
+          "From the available modules or built for your business",
+          "Integrates with the other modules"
+        ]
+      },
+      "erp_full": {
+        "title": "Full Custom ERP",
+        "desc": "A system designed entirely around your business",
+        "features": [
+          "Up to 8 modules",
+          "User permissions and per-employee statistics",
+          "Custom reports",
+          "Support after delivery"
+        ]
+      },
+      "logo": {
+        "title": "Logo Design",
+        "desc": "A logo that expresses your brand",
+        "features": [
+          "3 initial concepts",
+          "Revisions on the chosen direction",
+          "Print- and web-ready files"
+        ]
+      },
+      "identity": {
+        "title": "Visual Identity",
+        "desc": "A consistent identity for your brand",
+        "features": [
+          "Logo, colors and fonts",
+          "Basic stationery and print items",
+          "Social media templates"
+        ]
+      },
+      "brand": {
+        "title": "Brand Building",
+        "desc": "A complete brand from idea to application",
+        "features": [
+          "Full visual identity",
+          "Brand guidelines",
+          "Brand voice and messaging",
+          "Introductory materials and print"
+        ]
+      },
+      "social_designs": {
+        "title": "Social Media Designs",
+        "desc": "Monthly designs in your brand identity",
+        "features": [
+          "Up to 12 designs per month",
+          "Consistent with your brand identity"
+        ]
+      },
+      "social_mgmt": {
+        "title": "Social Media Management",
+        "desc": "A regular presence and engagement with your audience",
+        "features": [
+          "Two main platforms",
+          "Content scheduling and publishing",
+          "Monthly performance report"
+        ]
+      },
+      "ads": {
+        "title": "Paid Ads Management",
+        "desc": "Targeted campaigns for the best return",
+        "features": [
+          "Campaign setup and audience targeting",
+          "Performance monitoring and optimization",
+          "Ad budget is paid to the platform separately"
+        ]
+      },
+      "content_article": {
+        "title": "Article Writing",
+        "desc": "Professionally written content",
+        "features": [
+          "Up to 500 words",
+          "SEO-friendly",
+          "Language review"
+        ]
+      },
+      "content_pack": {
+        "title": "Monthly Content Package",
+        "desc": "Regular content for your brand",
+        "features": [
+          "12 content pieces per month",
+          "Posts and articles per your plan",
+          "An organized content plan"
+        ]
+      },
+      "content_site": {
+        "title": "Website Copywriting",
+        "desc": "Your site copy in a marketing voice",
+        "features": [
+          "Up to 5 pages",
+          "In your brand voice",
+          "SEO-friendly headings and descriptions"
+        ]
+      }
+    },
+    "offers": {
+      "launch": {
+        "title": "Launch Package",
+        "desc": "A company website with a visual identity: everything you need to look professional"
+      },
+      "growth": {
+        "title": "Growth Package",
+        "desc": "An advanced business website with brand building and website copy"
+      },
+      "erp_custom": {
+        "title": "Custom ERP Package",
+        "desc": "An ERP with 3 chosen and customized modules + 2 extra modules"
+      },
+      "erp_plus": {
+        "title": "ERP + Company Website",
+        "desc": "A custom ERP system together with an advanced business website"
+      },
+      "store": {
+        "title": "Complete Store Package",
+        "desc": "An online store with a visual identity and one month of social media management"
+      }
+    }
+  },
+  "Clients": {
+    "title": "Trusted by"
+  },
+  "Intent": {
+    "title": "What do you need today?",
+    "subtitle": "Start here",
+    "hint": "Pick a service and we'll prepare a suitable offer",
+    "website": "Company website",
+    "store": "Online store",
+    "erp": "ERP system",
+    "identity": "Visual identity",
+    "content": "Content writing",
+    "marketing": "Marketing & social media"
+  },
+  "Markets": {
+    "title": "We serve clients in",
+    "list": [
+      "Saudi Arabia",
+      "UAE",
+      "Kuwait",
+      "Qatar",
+      "Bahrain",
+      "Oman",
+      "Sudan",
+      "Egypt",
+      "the Levant",
+      "and worldwide"
+    ]
+  },
+  "CtaBand": {
+    "title": "Ready to start <accent>your project?</accent>",
+    "desc": "Tell us about your idea and we'll come back with a suitable offer. The consultation is free and non-binding."
   }
 }

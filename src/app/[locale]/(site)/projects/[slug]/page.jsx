@@ -8,8 +8,6 @@ import JsonLd from "@/components/json-ld";
 import PageSchema from "@/components/page-schema";
 import SectionHeader from "@/components/sections-header";
 import WorkCard from "@/components/projects/work-card";
-import Wave from "@/components/ui/wave";
-import { Ripples } from "@/components/ui/shapes";
 import { createMetadata, truncate } from "@/lib/seo";
 import { projectSchema } from "@/lib/schema";
 import { projects, getProject } from "@/data/projects";
@@ -79,21 +77,24 @@ export default async function ProjectPage({ params }) {
         links={[{ label: t("title"), href: "/projects" }, { label: title }]}
       />
 
-      <article className="bg-white py-20">
+      <article className="section bg-white">
         <div className="container">
-          <div className="grid md:grid-cols-3 gap-10">
-            <div className="md:col-span-2">
-              <p className="text-slate-600 leading-loose text-lg">{description}</p>
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
+            <div className="lg:col-span-8">
+              <p className="text-lg leading-loose text-slate-600">{description}</p>
 
               {features.length > 0 && (
                 <>
-                  <h2 className="text-2xl font-bold text-main mt-10 mb-4">
+                  <h2 className="mb-5 mt-12 text-2xl font-semibold text-nile-950">
                     {t("features")}
                   </h2>
-                  <ul className="space-y-3 text-slate-600">
+                  <ul className="grid gap-3 sm:grid-cols-2">
                     {features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-3">
-                        <span className="mt-0.5 w-6 h-6 shrink-0 flex items-center justify-center rounded-full bg-alt text-main">
+                      <li
+                        key={feature}
+                        className="flex items-start gap-3 rounded-2xl border border-line bg-sand p-4 text-slate-700"
+                      >
+                        <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gold-400 text-nile-950">
                           <Check size={14} strokeWidth={3} />
                         </span>
                         {feature}
@@ -104,33 +105,34 @@ export default async function ProjectPage({ params }) {
               )}
             </div>
 
-            <aside className="card-soft md:col-span-1 h-fit space-y-4 border-t-4 border-t-[#dda853] p-6">
+            <aside className="card h-fit space-y-5 p-6 lg:col-span-4">
               <div>
-                <p className="text-sm text-slate-400">{t("category")}</p>
-                <p className="font-semibold text-main">
-                  {t(`type_${project.type}`)}
-                </p>
+                <p className="text-sm text-slate-500">{t("category")}</p>
+                <p className="mt-1 font-semibold text-nile-950">{t(`type_${project.type}`)}</p>
               </div>
               {project.link && (
                 <a
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-blue !py-2"
+                  className="btn-blue w-full"
                 >
                   {t("visit")}
                   <ArrowUpRight size={18} />
                 </a>
               )}
+              <Link href={`/${locale}/contact`} className="btn-outline w-full">
+                {t("cta_button")}
+              </Link>
             </aside>
           </div>
 
           <h2 className="sr-only">{t("gallery")}</h2>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2">
+          <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:gap-5">
             {project.images.map((image, i) => (
               <div
                 key={image}
-                className={`relative overflow-hidden rounded-[2rem] shadow-[0_15px_40px_-15px_rgba(30,84,159,0.4)] aspect-[16/9] ${
+                className={`relative aspect-[16/10] overflow-hidden rounded-[var(--radius-media)] border border-line bg-nile-50 shadow-[var(--shadow-card)] ${
                   i === 0 && project.images.length > 1 ? "sm:col-span-2" : ""
                 }`}
               >
@@ -148,26 +150,10 @@ export default async function ProjectPage({ params }) {
         </div>
       </article>
 
-      <section className="gradient-pan relative overflow-hidden bg-gradient-to-r from-[#0b2a57] via-[#1e549f] to-[#c58f3c] py-32 text-center text-white">
-        <Wave position="top" className="text-white" />
-        <Ripples className="start-1/2 top-1/2 h-[28rem] w-[28rem] -translate-x-1/2 -translate-y-1/2" />
-        <div className="relative z-20 mx-auto max-w-3xl px-4">
-          <h2 className="text-3xl font-bold mb-4">{t("cta_title")}</h2>
-          <p className="text-lg mb-8">{t("cta_desc")}</p>
-          <Link
-            href={`/${locale}/contact`}
-            className="btn-gold text-lg"
-          >
-            {t("cta_button")}
-          </Link>
-        </div>
-        <Wave className="text-water" />
-      </section>
-
-      <section className="relative overflow-hidden bg-water pb-28 pt-20">
+      <section className="section bg-sand">
         <div className="container">
           <SectionHeader title={t("related")} subtitle={t("subtitle")} />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
             {related.map((p) => (
               <WorkCard
                 key={p.slug}
@@ -175,11 +161,11 @@ export default async function ProjectPage({ params }) {
                 image={p.image}
                 title={t(`${p.key}_title`)}
                 label={t("show")}
+                tag={t(`type_${p.type}`)}
               />
             ))}
           </div>
         </div>
-        <Wave className="text-white" />
       </section>
     </>
   );

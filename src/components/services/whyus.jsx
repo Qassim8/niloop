@@ -1,67 +1,55 @@
 "use client";
 
 import { ShieldCheck, Users, Zap, Award } from "lucide-react";
-import { motion } from "framer-motion";
 import SectionHeader from "../sections-header";
-import Wave from "../ui/wave";
+import Reveal from "../ui/reveal";
 import { useTranslations } from "next-intl";
 
-export default function WhyUs() {
+// "Why Niloop" — four reasons, plus the markets we serve.
+export default function WhyUs({ tone = "sand" }) {
   const t = useTranslations("Services");
+  const m = useTranslations("Markets");
 
   const features = [
-    {
-      icon: <ShieldCheck className="w-10 h-10 text-alt" />,
-      title: t("quality"),
-      desc: t("quality_desc"),
-    },
-    {
-      icon: <Users className="w-10 h-10 text-alt" />,
-      title: t("professionalism"),
-      desc: t("professionalism_desc"),
-    },
-    {
-      icon: <Zap className="w-10 h-10 text-alt" />,
-      title: t("creativety"),
-      desc: t("creativety_desc"),
-    },
-    {
-      icon: <Award className="w-10 h-10 text-alt" />,
-      title: t("trust"),
-      desc: t("trust_desc"),
-    },
+    { Icon: ShieldCheck, title: t("quality"), desc: t("quality_desc") },
+    { Icon: Users, title: t("professionalism"), desc: t("professionalism_desc") },
+    { Icon: Zap, title: t("creativety"), desc: t("creativety_desc") },
+    { Icon: Award, title: t("trust"), desc: t("trust_desc") },
   ];
 
   return (
-    <section className="bg-water relative overflow-hidden pb-28 pt-20" id="why-us">
-      <div className="container text-center">
-        {/* Title */}
-        <SectionHeader
-          title={t("why_niloop")}
-          subtitle={t("why_niloop_desc")}
-        />
+    <section className={`section ${tone === "sand" ? "bg-sand" : "bg-white"}`} id="why-us">
+      <div className="container">
+        <SectionHeader title={t("why_niloop")} subtitle={t("why_niloop_desc")} />
 
-        {/* Features */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {features.map((item, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: idx * 0.2 }}
-              viewport={{ once: true }}
-              className="card-soft group p-6"
-            >
-              <div className="flex justify-center mb-6">{item.icon}</div>
-              <h3 className="text-xl font-semibold mb-2 text-main group-hover:!text-[#dda853] transition duration-300">
-                {item.title}
-              </h3>
-              <p className="text-slate-500">{item.desc}</p>
-            </motion.div>
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {features.map(({ Icon, title, desc }, idx) => (
+            <Reveal key={title} delay={idx * 0.08}>
+              <div data-spotlight className={`card card-hover h-full p-7 ${tone === "sand" ? "" : "bg-sand"}`}>
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-nile-50 text-nile-600">
+                  <Icon size={24} />
+                </span>
+                <h3 className="mt-5 text-xl font-semibold text-nile-950">{title}</h3>
+                <p className="mt-2 leading-relaxed text-slate-600">{desc}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
+
+        <Reveal className="mt-14 text-center">
+          <p className="mb-5 text-sm font-semibold text-slate-500">{m("title")}</p>
+          <ul className="flex flex-wrap items-center justify-center gap-2">
+            {m.raw("list").map((place) => (
+              <li
+                key={place}
+                className={`rounded-full border border-line px-4 py-2 text-sm font-medium text-nile-700 ${tone === "sand" ? "bg-white" : "bg-sand"}`}
+              >
+                {place}
+              </li>
+            ))}
+          </ul>
+        </Reveal>
       </div>
-      <Wave className="text-white" />
     </section>
   );
 }

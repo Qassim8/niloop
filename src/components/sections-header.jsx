@@ -2,48 +2,46 @@
 
 import { motion } from "framer-motion";
 
+// `subtitle` renders as the small eyebrow label above the title.
 export default function SectionHeader({
   title,
   subtitle,
+  description,
   align = "center",
   light = false,
+  className = "mb-12 md:mb-16",
 }) {
   const isCenter = align === "center";
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.6 }}
-      transition={{ duration: 0.7, ease: "easeOut" }}
-      className={`relative mb-14 z-30 flex flex-col ${
+      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      className={`flex flex-col gap-4 ${
         isCenter ? "items-center text-center" : "items-start text-start"
-      }`}
+      } ${className}`}
     >
-      <div className="relative">
-        {/* Ghost word behind the title */}
+      {subtitle && (
+        <span className={`eyebrow ${light ? "eyebrow-dark" : ""}`}>{subtitle}</span>
+      )}
+      <h2
+        className={`max-w-3xl text-3xl font-semibold leading-[1.3] md:text-5xl md:leading-[1.2] ${
+          light ? "text-white" : "text-nile-950"
+        }`}
+      >
+        {title}
+      </h2>
+      {description && (
         <p
-          aria-hidden="true"
-          className={`relative top-8 md:top-12 max-w-[88vw] truncate text-4xl md:text-[72px] font-extrabold opacity-10 select-none ${
-            light ? "text-white" : "text-alt"
+          className={`max-w-2xl text-lg leading-relaxed ${
+            light ? "text-nile-100" : "text-slate-600"
           }`}
         >
-          {subtitle}
+          {description}
         </p>
-        <h2
-          className={`text-3xl md:text-5xl font-bold inline-block mb-4 ${
-            light ? "text-white" : "text-main"
-          }`}
-        >
-          {title}
-        </h2>
-      </div>
-      {/* Wavy underline: the Nile in miniature */}
-      <span
-        aria-hidden="true"
-        className="wavy-underline block h-2 w-28"
-      />
-      <span className="sr-only">{subtitle}</span>
+      )}
     </motion.div>
   );
 }

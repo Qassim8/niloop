@@ -3,7 +3,7 @@
 import BreadcrumbSection from "@/components/breadcrumb";
 import ErpFeatures from "@/components/services/erp/features";
 import ErpTopSection from "@/components/services/erp/top-section";
-import CallToAction from "@/components/services/getservice";
+import PricingTiers from "@/components/pricing/tiers";
 import { useTranslations } from "next-intl";
 
 export default function ErpPageClient() {
@@ -17,7 +17,7 @@ export default function ErpPageClient() {
       />
       <ErpTopSection />
       <ErpFeatures />
-      <CallToAction />
+      <PricingTiers group="erp" />
     </>
   );
 }

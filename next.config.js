@@ -1,3 +1,5 @@
+const fs = require("fs");
+const path = require("path");
 const createNextIntlPlugin = require("next-intl/plugin");
 
 const withNextIntl = createNextIntlPlugin();
@@ -9,11 +11,21 @@ const securityHeaders = [
   { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
 ];
 
+// Images dropped into public/images/slots/ (see its README) are detected at build time so that
+// <ImageSlot> can swap its placeholder for the real picture automatically.
+const slotsDir = path.join(__dirname, "public/images/slots");
+const slotFiles = fs.existsSync(slotsDir)
+  ? fs.readdirSync(slotsDir).filter((f) => /\.(webp|jpe?g|png|avif)$/i.test(f))
+  : [];
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  env: { NEXT_PUBLIC_IMAGE_SLOTS: JSON.stringify(slotFiles) },
   poweredByHeader: false,
   images: {
     formats: ["image/avif", "image/webp"],
+    // 90 is used for large showcase images (e.g. the hero), 75 for everything else.
+    qualities: [75, 90],
   },
   async headers() {
     return [

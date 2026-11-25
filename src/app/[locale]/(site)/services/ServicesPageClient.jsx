@@ -1,9 +1,9 @@
 "use client";
 
 import BreadcrumbSection from "@/components/breadcrumb";
-import CallToAction from "@/components/services/getservice";
 import ServicesSection from "@/components/services/services";
 import WhyUs from "@/components/services/whyus";
+import OffersSection from "@/components/pricing/offers";
 import { useTranslations } from "next-intl";
 import React, { useEffect, useState } from "react";
 
@@ -18,9 +18,9 @@ const ServicesPageClient = () => {
   return (
     <>
       <BreadcrumbSection title={title} links={[{ label: title }]} />
-      <ServicesSection wave={false} />
-      <CallToAction />
-      <WhyUs />
+      <ServicesSection />
+      <OffersSection showAllLink background="bg-sand" />
+      <WhyUs tone="white" />
     </>
   );
 };

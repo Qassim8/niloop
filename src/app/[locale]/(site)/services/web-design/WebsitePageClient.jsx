@@ -3,6 +3,7 @@
 import BreadcrumbSection from "@/components/breadcrumb";
 import FeaturesSection from "@/components/services/web-design/featuers";
 import TopSection from "@/components/services/web-design/top-section";
+import PricingTiers from "@/components/pricing/tiers";
 import { useTranslations } from "next-intl";
 import React, { useEffect, useState } from "react";
 
@@ -24,6 +25,7 @@ function WebsitePageClient() {
       />
       <TopSection />
       <FeaturesSection />
+      <PricingTiers group="web" />
     </>
   );
 }

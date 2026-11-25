@@ -1,6 +1,7 @@
 "use client";
 
 import AboutSection from "@/components/about/about";
+import AboutGallery from "@/components/about/gallery";
 import GoalsSection from "@/components/about/goals";
 import StatsSection from "@/components/about/statistic";
 import BreadcrumbSection from "@/components/breadcrumb";
@@ -20,6 +21,7 @@ export default function AboutPageClient() {
     <>
       <BreadcrumbSection title={title} links={[{ label: title }]} />
       <AboutSection />
+      <AboutGallery />
       <GoalsSection />
       <StatsSection />
       <Testimonials />

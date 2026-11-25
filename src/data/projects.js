@@ -1,8 +1,8 @@
 // Portfolio data. Texts live in messages/*.json under "Projects" as `${key}_title`, `${key}_desc`
 // and (optionally) `${key}_f1..${key}_f{features}`.
 //
-// To use real screenshots for the three newest projects, replace the files in
-// public/images/projects/ keeping the same names (or edit `images` below).
+// The three newest projects use placeholder images. Replace the files in
+// public/images/projects/ with real screenshots, keeping the same names (or edit `images` below).
 // Add the live URL in `link` when it is ready; the "Visit" button and structured data pick it up.
 export const projects = [
   {
@@ -10,7 +10,11 @@ export const projects = [
     key: "matajri",
     type: "system",
     image: "/images/projects/matajri.webp",
-    images: ["/images/projects/matajri.webp"],
+    images: [
+      "/images/projects/matajri.webp",
+      "/images/projects/matajri-1.webp",
+      "/images/projects/matajri-2.webp",
+    ],
     link: "",
     features: 5,
   },
@@ -19,7 +23,11 @@ export const projects = [
     key: "alzamil",
     type: "website",
     image: "/images/projects/alzamil-clean.webp",
-    images: ["/images/projects/alzamil-clean.webp"],
+    images: [
+      "/images/projects/alzamil-clean.webp",
+      "/images/projects/alzamil-clean-1.webp",
+      "/images/projects/alzamil-clean-2.webp",
+    ],
     link: "",
     features: 3,
   },
@@ -28,7 +36,11 @@ export const projects = [
     key: "sudatech",
     type: "website",
     image: "/images/projects/sudatech.webp",
-    images: ["/images/projects/sudatech.webp"],
+    images: [
+      "/images/projects/sudatech.webp",
+      "/images/projects/sudatech-1.webp",
+      "/images/projects/sudatech-2.webp",
+    ],
     link: "",
     features: 3,
   },
