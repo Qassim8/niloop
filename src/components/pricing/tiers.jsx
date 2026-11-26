@@ -46,14 +46,15 @@ function TierCard({ id, index }) {
 }
 
 // Price tiers for one service group (web, erp, graphic, marketing, content).
-export function TierGrid({ group }) {
+export function TierGrid({ group, ids }) {
+  const list = ids ?? groups[group];
   return (
     <div
       className={`grid gap-4 sm:grid-cols-2 lg:gap-5 ${
-        groups[group].length === 3 ? "lg:grid-cols-3" : "lg:grid-cols-4"
+        list.length === 3 ? "lg:grid-cols-3" : "lg:grid-cols-4"
       }`}
     >
-      {groups[group].map((id, i) => (
+      {list.map((id, i) => (
         <TierCard key={id} id={id} index={i} />
       ))}
     </div>

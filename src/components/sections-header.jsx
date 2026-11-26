@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import SplitReveal from "./ui/split-reveal";
 
 // `subtitle` renders as the small eyebrow label above the title.
 export default function SectionHeader({
@@ -32,7 +33,7 @@ export default function SectionHeader({
           light ? "text-white" : "text-nile-950"
         }`}
       >
-        {title}
+        <SplitReveal text={title} />
         {chip}
       </h2>
       {description && (

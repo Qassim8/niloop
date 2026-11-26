@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
+import SplitReveal from "./ui/split-reveal";
 
 // Compact dark page header with the page title and breadcrumb trail.
-export default function BreadcrumbSection({ title, links }) {
+export default function BreadcrumbSection({ title, links, lead }) {
   const t = useTranslations("Header");
   const locale = useLocale();
   const Sep = locale === "ar" ? ChevronLeft : ChevronRight;
@@ -32,8 +33,9 @@ export default function BreadcrumbSection({ title, links }) {
           ))}
         </nav>
         <h1 className="max-w-4xl text-4xl font-semibold leading-[1.25] text-white md:text-6xl md:leading-[1.15]">
-          {title}
+          <SplitReveal text={title} />
         </h1>
+        {lead && <p className="mt-6 max-w-2xl text-lg leading-relaxed text-nile-100 md:text-xl">{lead}</p>}
       </div>
     </section>
   );

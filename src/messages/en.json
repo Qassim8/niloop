@@ -1,9 +1,9 @@
 {
   "SEO": {
-    "home_title": "Niloop | Web Development, ERP Systems & Branding in Saudi Arabia & the Gulf",
-    "home_desc": "Niloop is a tech company delivering web and e-commerce development, ERP and accounting systems, visual identity and branding, and content writing for businesses in Saudi Arabia, the Gulf and the Arab world.",
+    "home_title": "Niloop | Websites, Online Stores, ERP Systems & Branding Across the Arab World",
+    "home_desc": "Niloop is a tech company building online stores, websites, ERP and accounting systems, visual identities and content for clients in Saudi Arabia, the Gulf, Egypt, Sudan, the Levant and across the Arab world.",
     "about_title": "About Us | Niloop Tech Solutions",
-    "about_desc": "Meet Niloop: a team of developers, designers and content writers since 2021, building websites, ERP systems and brand identities that help businesses in the Gulf and beyond grow.",
+    "about_desc": "Meet Niloop: a team of developers, designers and content writers since 2021, building websites, stores, ERP systems and brand identities that help businesses across the Arab world grow.",
     "services_title": "Services | Web Development, ERP, Branding & Content Writing",
     "services_desc": "Niloop services: website and e-commerce development, ERP systems for accounting and inventory, graphic design and visual identity, brand building, content writing and social media management.",
     "projects_title": "Our Work | Websites, ERP Systems & Brand Identities – Niloop",
@@ -20,7 +20,13 @@
     "erp_desc": "We build custom ERP systems covering accounting, inventory, financial reports, employee statistics and customer management, tailored to how your business works.",
     "not_found_title": "Page not found | Niloop",
     "pricing_title": "Pricing & Packages | Websites, ERP Systems & Branding – Niloop",
-    "pricing_desc": "Approximate prices in Saudi riyals for website development, ERP systems, visual identity, content writing and digital marketing, with bundled offers from Niloop."
+    "pricing_desc": "Approximate prices in Saudi riyals for website development, ERP systems, visual identity, content writing and digital marketing, with bundled offers from Niloop.",
+    "solutions_title": "Store Solutions | Online Stores & Store Management Systems – Niloop",
+    "solutions_desc": "Niloop's solutions for store owners: complete online stores and ERP systems that manage accounting, inventory, customers and staff, across the Arab world.",
+    "subscription_title": "Monthly Plan | Designs, Content & Account Management – Niloop",
+    "subscription_desc": "Your on-call creative team on a monthly plan: social media designs, content writing, account and ads management at a clear cost.",
+    "content_title": "Content Writing for Websites, Stores & Social Media | Niloop",
+    "content_desc": "We write website and store copy, product descriptions, articles and social posts in your brand voice with clean Arabic, optimized for search engines."
   },
   "Header": {
     "home": "Home",
@@ -39,7 +45,18 @@
     "logo_alt": "Niloop logo",
     "pricing": "Pricing",
     "cta": "Book a consultation",
-    "loading": "Loading"
+    "loading": "Loading",
+    "content": "Content Writing",
+    "solutions": "Store Solutions",
+    "subscription": "Monthly Plan",
+    "group_services": "Services",
+    "group_more": "Solutions & plans",
+    "solutions_desc": "Online stores and store management systems",
+    "subscription_desc": "Your on-call creative team on a monthly plan",
+    "pricing_desc": "Approximate prices and bundled offers",
+    "store_online": "Online store",
+    "store_erp": "Store management system",
+    "store_tailoring": "Tailoring shop system"
   },
   "Hero": {
     "hero_title": "Your idea deserves to gain power, and we are giving it its true form in",
@@ -74,7 +91,14 @@
     "strategy_desc": "Operating with clear, well-studied plans based on deep market analysis, and building strong partnerships to achieve our shared objectives.",
     "image_alt": "The Niloop team at work",
     "gallery_title": "Inside Niloop",
-    "gallery_subtitle": "Moments from our work"
+    "gallery_subtitle": "Moments from our work",
+    "lead": "Niloop is an Arab tech company building websites, systems and brand identities that help businesses and stores stand out and grow.",
+    "approach_label": "Our approach",
+    "approach_title": "From first contact to delivery",
+    "values_label": "Our values",
+    "values_title": "What we commit to",
+    "numbers_label": "Niloop in numbers",
+    "book": "Book a consultation"
   },
   "Services": {
     "title": "Services",
@@ -109,7 +133,14 @@
     "details": "Learn more",
     "from": "From",
     "marketing": "Digital Marketing",
-    "marketing_desc": "Campaigns, ads and social media management with measurable results"
+    "marketing_desc": "Campaigns, ads and social media management with measurable results",
+    "content_page_desc": "Copy that sells and convinces",
+    "numbers_title": "What makes us different?",
+    "numbers_label": "Niloop in numbers",
+    "list_label": "Core services",
+    "list_title": "Everything your brand needs to grow, under one roof",
+    "view_all": "All services",
+    "page_lead": "Websites, stores, systems, identity and content: everything your brand needs to grow, from one team."
   },
   "Web": {
     "title": "Website Design",
@@ -244,7 +275,73 @@
     "cta_desc": "Contact us now and we'll turn your idea into a professional website, system or brand identity.",
     "cta_button": "Start Your Project",
     "related": "More Projects",
-    "view_project": "Project details"
+    "view_project": "Project details",
+    "villance_sector": "Travel & bookings",
+    "villance_problem": "Booking hotels needed a simpler experience that brings comparison, room details and booking into one place.",
+    "villance_solution": "We designed a fast site with advanced filters for area, price and rating, clear detail pages, favorites and booking management.",
+    "villance_takeaway": "A smooth booking flow that cuts steps and makes options clearer.",
+    "economics_sector": "University education",
+    "economics_problem": "The faculty needed one visual identity that reflects its academic standing across every platform and material.",
+    "economics_solution": "We designed a complete identity covering logo, color system, typography and media materials in a modern, dignified style.",
+    "economics_takeaway": "A unified, more professional institutional presence.",
+    "zus_sector": "Fashion retail",
+    "zus_problem": "A clothing store needed a clear display for its many products and easy filtering and checkout.",
+    "zus_solution": "We built an online store with filtering by gender, category and brand, plus favorites, product pages and a shopping cart.",
+    "zus_takeaway": "A clear, fast shopping experience on phone and desktop.",
+    "abda_sector": "Education & awareness",
+    "abda_problem": "An awareness initiative needed a digital presence that gets the right information to new graduates and scholarship applicants.",
+    "abda_solution": "We delivered a full campaign: a website, graphic designs and awareness posters in an engaging style.",
+    "abda_takeaway": "One consistent message that is easy to reach.",
+    "badr_sector": "Mining",
+    "badr_problem": "A mining company needed an identity that expresses seriousness, trust and commitment to safety and sustainability.",
+    "badr_solution": "We designed a logo, visual identity and introductory materials that reflect the sector and the company's ambition.",
+    "badr_takeaway": "A dignified identity that builds trust with partners and clients.",
+    "bareq_sector": "Consulting",
+    "bareq_problem": "A consulting company needed a website that introduces its services and builds trust with prospects.",
+    "bareq_solution": "We built a corporate website presenting services, vision and founding story with an intro video, map and contact links.",
+    "bareq_takeaway": "A professional image that makes it easy for clients to get in touch.",
+    "abwab_sector": "Online marketplaces",
+    "abwab_problem": "A marketplace for new and used items needed an identity and a simple search and categorization experience.",
+    "abwab_solution": "We designed the visual identity and app interfaces with clear categories and smart search to make buying and selling easy.",
+    "abwab_takeaway": "A clear, safe experience for buying and selling.",
+    "madaghut_sector": "Restaurants",
+    "madaghut_problem": "A restaurant needed an identity that reflects authenticity and local flavor and sets it apart.",
+    "madaghut_solution": "We designed a visual identity and introductory materials in a warm style that expresses heritage and authentic taste.",
+    "madaghut_takeaway": "A distinctive presence that strengthens brand memory.",
+    "eatc_sector": "Training",
+    "eatc_problem": "A training center needed an elegant identity that reflects its academic spirit and the quality of its programs.",
+    "eatc_solution": "We designed a balanced, modern logo, visual identity and introductory materials.",
+    "eatc_takeaway": "A professional presence that builds trust with trainees and organizations.",
+    "speed_sector": "Travel & tourism",
+    "speed_problem": "A travel agency needed an identity that expresses speed and reliability for individuals and companies.",
+    "speed_solution": "We designed a visual identity and promotional designs that reflect the agency's range of services.",
+    "speed_takeaway": "A clear, attractive brand in a highly competitive market.",
+    "matajri_sector": "Tailoring & store management",
+    "matajri_problem": "Many tailoring shop owners manage accounts and stock by hand, losing time and scattering their data.",
+    "matajri_solution": "We built a mini ERP that brings accounting, inventory, financial reports, per-employee statistics and customer management into one dashboard.",
+    "matajri_takeaway": "Clearer, faster store management and decisions based on accurate reports.",
+    "alzamil_sector": "Cleaning services",
+    "alzamil_problem": "A cleaning company needed a website that presents its services clearly and makes it easy to reach.",
+    "alzamil_solution": "We designed a responsive website with a clean look and a clear presentation of services and contact options.",
+    "alzamil_takeaway": "Higher trust and faster contact with customers.",
+    "sudatech_sector": "Technology & networking",
+    "sudatech_problem": "A tech products store needed an organized display for a wide range of networking and server products.",
+    "sudatech_solution": "We built an online store with clear categories, detail pages and a smooth purchasing experience.",
+    "sudatech_takeaway": "Easier browsing and faster ordering of tech products.",
+    "sector": "Sector",
+    "services_label": "Services",
+    "about_project": "About the project",
+    "challenge": "Challenge",
+    "problem": "Problem",
+    "solution": "Solution",
+    "takeaway": "Key takeaway",
+    "summary": "Summary",
+    "next": "Next project",
+    "draft_note": "Approximate text, to be updated with the project's details.",
+    "lets_chat": "Let's talk",
+    "project_links": "Project links",
+    "live_site": "Live site",
+    "page_lead": "Websites, stores, systems and brand identities we delivered for clients across the Arab world."
   },
   "Stats": {
     "clients": "Happy clients",
@@ -275,7 +372,9 @@
     "seventh_desc": "The media campaign delivered was fully integrated — from branding and website to visual materials — all perfectly aligned with our educational mission.",
     "eigth_name": "EATC",
     "eigth_title": "Academic Training Center",
-    "eigth_desc": "The visual identity was elegant and balanced, with a logo that beautifully reflects the academic spirit and values of our center."
+    "eigth_desc": "The visual identity was elegant and balanced, with a logo that beautifully reflects the academic spirit and values of our center.",
+    "client_label": "Niloop client",
+    "via_whatsapp": "Message from the client on WhatsApp"
   },
   "FAQ": {
     "title": "FAQ",
@@ -295,7 +394,7 @@
     "q_seven": "Do you build ERP and accounting systems?",
     "q_seven_desc": "Yes. We build custom ERP systems covering accounting, inventory, financial reports, employee statistics and customer management, such as “Matajri” for tailoring shops.",
     "q_eight": "Do you serve clients outside Saudi Arabia?",
-    "q_eight_desc": "Yes. We serve clients across Saudi Arabia and the Gulf, as well as Sudan, Egypt and the Levant, and we work remotely with clients in Europe, the US, Canada and Australia."
+    "q_eight_desc": "Yes. We serve clients across the Arab world: Saudi Arabia and the Gulf, Egypt, Sudan, the Levant and North Africa, and we work remotely with clients in Europe, the US, Canada and Australia."
   },
   "Contact": {
     "title": "Contact Us",
@@ -317,10 +416,32 @@
     "sending_failed": "We couldn't send your message. Please try again or message us on WhatsApp.",
     "plan_prefill": "Hello, I'd like to ask about: {name}",
     "service": "Service needed",
-    "service_placeholder": "Choose a service"
+    "service_placeholder": "Choose a service",
+    "lead_title": "Tell us about your next project",
+    "lead_desc": "The right tech partner saves you time and cost and puts your project on the right track.",
+    "label": "Start the conversation",
+    "interested": "I'm interested in…",
+    "interests": {
+      "web": "A website",
+      "store": "An online store",
+      "erp": "An ERP system",
+      "identity": "Visual identity",
+      "content": "Content writing",
+      "marketing": "Digital marketing",
+      "other": "Something else"
+    },
+    "budget": "Approximate budget (SAR)",
+    "budgets": {
+      "b1": "Under 3,000",
+      "b2": "3,000 – 8,000",
+      "b3": "8,000 – 15,000",
+      "b4": "Over 15,000",
+      "b5": "Not decided yet"
+    },
+    "email_label": "Email"
   },
   "Footer": {
-    "company_desc": "A tech company specialising in website and online store development, ERP systems, graphic design, visual identity and content writing, serving clients in Saudi Arabia, the Gulf, the Arab world and beyond.",
+    "company_desc": "An Arab tech company specialising in website and online store development, ERP systems, graphic design, visual identity and content writing, serving clients across the Arab world and beyond.",
     "quick_links": "Quick Links",
     "home": "Home",
     "services": "Services",
@@ -336,7 +457,17 @@
     "erp": "ERP Systems",
     "graphic": "Graphic & Brand Identity",
     "marketing": "Digital Marketing",
-    "pricing": "Pricing & Offers"
+    "pricing": "Pricing & Offers",
+    "company": "Company",
+    "solutions": "Store solutions",
+    "subscribe_title": "Stay in the loop",
+    "subscribe_desc": "Short tech ideas and news, now and then.",
+    "subscribe_placeholder": "Your email",
+    "subscribe_button": "Subscribe",
+    "subscribed": "Thanks for subscribing!",
+    "subscribe_failed": "Couldn't subscribe. Please try again.",
+    "subscription": "Monthly plan",
+    "content": "Content writing"
   },
   "Brand": {
     "name": "Niloop",
@@ -591,7 +722,16 @@
       "Oman",
       "Sudan",
       "Egypt",
-      "the Levant",
+      "Jordan",
+      "Lebanon",
+      "Palestine",
+      "Syria",
+      "Iraq",
+      "Libya",
+      "Tunisia",
+      "Algeria",
+      "Morocco",
+      "Yemen",
       "and worldwide"
     ]
   },
@@ -601,10 +741,109 @@
   },
   "Statement": {
     "label": "About us",
-    "text": "We are a team of developers, designers and content writers building websites, ERP systems and brand identities that help businesses in Saudi Arabia and the Gulf stand out and grow with confidence."
+    "text": "We are a team of developers, designers and content writers building websites, stores, ERP systems and brand identities that help businesses and stores across the Arab world stand out and grow with confidence."
   },
   "Process": {
     "step": "Step",
     "of": "of"
+  },
+  "Solutions": {
+    "title": "Store Solutions",
+    "subtitle": "For every store that wants to sell and run better",
+    "lead": "Whether you're launching your online store or want a system that controls stock, accounts and staff, we build the right solution for your store's size and business.",
+    "benefits_title": "What you get",
+    "for_title": "Who is it for?",
+    "example": "An example from our work",
+    "see_project": "View the project",
+    "all": "All solutions",
+    "learn_more": "Learn more",
+    "price_cta": "Request a quote",
+    "items": {
+      "online-store": {
+        "title": "A complete online store",
+        "tag": "Online stores",
+        "desc": "A fast, secure store that shows your products, takes orders and payments and works smoothly on mobile.",
+        "who": "Store owners and brands who want to sell online in their country or across the Arab world.",
+        "benefits": [
+          "Products, categories and shopping cart",
+          "Payment gateway and shipping integration",
+          "A dashboard to manage products and orders",
+          "SEO setup to grow free traffic",
+          "Responsive design with smooth mobile checkout"
+        ]
+      },
+      "store-erp": {
+        "title": "An ERP to run your store",
+        "tag": "ERP systems",
+        "desc": "A system that brings accounting, inventory, invoicing, financial reports, staff statistics and customer management into one dashboard.",
+        "who": "Stores and shops that manage accounts and stock by hand or in scattered spreadsheets and want more clarity.",
+        "benefits": [
+          "Accurate accounting and invoicing",
+          "Inventory management and low-stock alerts",
+          "Profit, sales and expense reports",
+          "Per-employee performance and permissions",
+          "A complete customer record"
+        ]
+      },
+      "tailoring-shops": {
+        "title": "A system for tailoring shops",
+        "tag": "Tailoring",
+        "desc": "The “Matajri” mini ERP for tailoring shops, customizable to the way your shop works.",
+        "who": "Tailoring shop owners who want to control accounts and stock and follow up on staff and customers.",
+        "benefits": [
+          "Accounting and invoicing",
+          "Inventory management",
+          "Financial reports",
+          "Per-employee statistics",
+          "Customer management"
+        ]
+      }
+    }
+  },
+  "Subscription": {
+    "title": "Monthly Plan",
+    "subtitle": "Your on-call creative team",
+    "lead": "Subscribe to a monthly plan and get designs, content and account management continuously, instead of contracting each service separately.",
+    "steps_label": "How it works",
+    "steps_title": "Just three steps",
+    "steps": [
+      {
+        "title": "Subscribe",
+        "desc": "Choose the plan that fits your business and monthly workload."
+      },
+      {
+        "title": "Add your tasks",
+        "desc": "Send your requests and priorities and we take it from there."
+      },
+      {
+        "title": "Receive your work",
+        "desc": "Work reaches you in quick batches with room for revisions."
+      }
+    ],
+    "plans_label": "Plans",
+    "plans_title": "What can your plan include?",
+    "cta": "Start your subscription",
+    "note": "Prices are approximate and depend on the monthly workload."
+  },
+  "Content": {
+    "title": "Content Writing",
+    "subtitle": "Services",
+    "advantages_title": "Content that turns visitors into customers",
+    "advantages_desc": "We write website, store, post and article copy in your brand voice with clear Arabic, optimized for search engines.",
+    "ad_one": "A tone that expresses your brand and audience",
+    "ad_two": "Search-engine-friendly copy",
+    "ad_three": "Clean Arabic with language review",
+    "features_title": "What do we write for you?",
+    "features_subtitle": "Content for every channel",
+    "feature_one": "Website and store copy",
+    "feature_one_desc": "Marketing copy for home, about and service pages.",
+    "feature_two": "Product descriptions",
+    "feature_two_desc": "Clear, attractive descriptions that help store visitors decide to buy.",
+    "feature_three": "Articles and blogs",
+    "feature_three_desc": "Useful articles that bring search traffic and build reader trust.",
+    "feature_four": "Social media posts",
+    "feature_four_desc": "Regular content in your brand voice that lifts engagement.",
+    "feature_five": "Ad and campaign copy",
+    "feature_five_desc": "Focused headlines and ad text that support your paid campaigns."
   }
 }

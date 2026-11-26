@@ -36,6 +36,7 @@ export const defaultLocale = "ar";
 export const areaServed = [
   "SA", "AE", "KW", "QA", "BH", "OM",
   "SD", "EG", "JO", "LB", "SY", "PS", "IQ",
+  "LY", "TN", "DZ", "MA", "YE", "MR",
   "GB", "DE", "FR", "US", "CA", "AU",
 ];
 
@@ -47,6 +48,12 @@ export const staticRoutes = [
   { path: "/services/erp", priority: 0.9, changeFrequency: "monthly" },
   { path: "/services/graphic-design", priority: 0.8, changeFrequency: "monthly" },
   { path: "/services/marketing", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/services/content-writing", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/solutions", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/solutions/online-store", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/solutions/store-erp", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/solutions/tailoring-shops", priority: 0.7, changeFrequency: "monthly" },
+  { path: "/subscription", priority: 0.7, changeFrequency: "monthly" },
   { path: "/pricing", priority: 0.8, changeFrequency: "monthly" },
   { path: "/projects", priority: 0.8, changeFrequency: "weekly" },
   { path: "/about", priority: 0.7, changeFrequency: "monthly" },

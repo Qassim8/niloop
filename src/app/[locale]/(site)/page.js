@@ -3,6 +3,7 @@ import ClientsStrip from "@/components/home/clients";
 import ErpSpotlight from "@/components/home/erp-spotlight";
 import Intent from "@/components/home/intent";
 import Statement from "@/components/home/statement";
+import StoresBand from "@/components/home/stores-band";
 import WorksScroll from "@/components/home/works-scroll";
 import HowWeWork from "@/components/projects/steps";
 import WhyUs from "@/components/services/whyus";
@@ -35,6 +36,7 @@ export default async function Home({ params }) {
       <ServicesSection />
       <WorksScroll />
       <ErpSpotlight />
+      <StoresBand />
       <OffersSection limit={3} showAllLink />
       <HowWeWork />
       <WhyUs tone="sand" />

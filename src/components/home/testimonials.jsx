@@ -8,7 +8,8 @@ import SectionHeader from "../sections-header";
 import Chip from "../ui/chip";
 import Reveal from "../ui/reveal";
 import ImageSlot, { hasSlotImage } from "../ui/image-slot";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import { extraTestimonials } from "@/data/testimonials";
 
 function Card({ item, featured }) {
   return (
@@ -24,6 +25,9 @@ function Card({ item, featured }) {
       <blockquote className={`mt-5 flex-1 leading-relaxed ${featured ? "text-nile-50" : "text-slate-700"}`}>
         {item.text}
       </blockquote>
+      {item.via && (
+        <p className={`mt-4 text-xs ${featured ? "text-nile-300" : "text-slate-400"}`}>{item.via}</p>
+      )}
       <figcaption className="mt-8 flex items-center gap-4">
         {hasSlotImage(item.slot) ? (
           <ImageSlot id={item.slot} alt={item.name} sizes="56px" className="h-14 w-14 shrink-0 rounded-full" />
@@ -44,6 +48,7 @@ function Card({ item, featured }) {
 // Three columns that drift in opposite directions while the section scrolls by.
 export default function Testimonials() {
   const t = useTranslations("Testimonials");
+  const locale = useLocale();
   const ref = useRef(null);
   const [desktop, setDesktop] = useState(false);
 
@@ -68,8 +73,21 @@ export default function Testimonials() {
     { name: t("eigth_name"), role: t("eigth_title"), image: "/images/eatc-logo.png", slot: "person-eatc", text: t("eigth_desc") },
   ];
 
-  // Column i holds items i and i+3
-  const columns = [0, 1, 2].map((i) => [items[i], items[i + 3]]);
+  // Entries added in src/data/testimonials.js (e.g. messages collected on WhatsApp)
+  const pick = (v) => (v && typeof v === "object" ? v[locale] ?? v.ar : v);
+  extraTestimonials.forEach((e) =>
+    items.push({
+      name: pick(e.name) || t("client_label"),
+      role: pick(e.role) || "",
+      image: "/images/Logo_mark.svg",
+      slot: `person-${e.id}`,
+      text: pick(e.text),
+      via: e.source === "whatsapp" ? t("via_whatsapp") : null,
+    })
+  );
+
+  // Spread the cards over three columns (card i goes to column i % 3)
+  const columns = [0, 1, 2].map((c) => items.filter((_, i) => i % 3 === c));
   const shifts = [up, down, up];
 
   return (

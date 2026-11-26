@@ -16,7 +16,7 @@ const ProjectsPageClient = () => {
 
   return (
     <>
-      <BreadcrumbSection title={title} links={[{ label: title }]} />
+      <BreadcrumbSection title={title} lead={t("page_lead")} links={[{ label: title }]} />
       <WorksSection home={false} />
       <HowWeWork />
     </>

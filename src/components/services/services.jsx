@@ -15,7 +15,7 @@ const services = [
   { key: "erp", Icon: Calculator, href: "/services/erp", sample: "erp_mini", tone: "dark" },
   { key: "graphic", Icon: PenTool, href: "/services/graphic-design", sample: "identity", tone: "gold" },
   { key: "marketing", Icon: Megaphone, href: "/services/marketing", sample: "social_mgmt", tone: "blue" },
-  { key: "content", Icon: FileText, href: "/pricing#content", sample: "content_pack", tone: "light" },
+  { key: "content", Icon: FileText, href: "/services/content-writing", sample: "content_pack", tone: "light" },
 ];
 
 const toneClasses = {

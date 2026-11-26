@@ -3,7 +3,20 @@
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
-import { Menu, X, ChevronDown, ArrowUpRight } from "lucide-react";
+import {
+  Menu,
+  X,
+  ChevronDown,
+  ArrowUpRight,
+  Code,
+  Calculator,
+  PenTool,
+  Megaphone,
+  FileText,
+  Store,
+  CalendarClock,
+  Tags,
+} from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 
@@ -46,22 +59,17 @@ export default function Navbar() {
   ];
 
   const serviceLinks = [
-    {
-      href: `/${locale}/services/web-design`,
-      label: t("web"),
-      desc: s("web_desc"),
-    },
-    { href: `/${locale}/services/erp`, label: t("erp"), desc: s("erp_desc") },
-    {
-      href: `/${locale}/services/graphic-design`,
-      label: t("graphic"),
-      desc: s("graphic_desc"),
-    },
-    {
-      href: `/${locale}/services/marketing`,
-      label: t("marketing"),
-      desc: s("marketing_desc"),
-    },
+    { href: `/${locale}/services/web-design`, label: t("web"), desc: s("web_desc"), Icon: Code },
+    { href: `/${locale}/services/erp`, label: t("erp"), desc: s("erp_desc"), Icon: Calculator },
+    { href: `/${locale}/services/graphic-design`, label: t("graphic"), desc: s("graphic_desc"), Icon: PenTool },
+    { href: `/${locale}/services/marketing`, label: t("marketing"), desc: s("marketing_desc"), Icon: Megaphone },
+    { href: `/${locale}/services/content-writing`, label: t("content"), desc: s("content_desc"), Icon: FileText },
+  ];
+
+  const moreLinks = [
+    { href: `/${locale}/solutions`, label: t("solutions"), desc: t("solutions_desc"), Icon: Store },
+    { href: `/${locale}/subscription`, label: t("subscription"), desc: t("subscription_desc"), Icon: CalendarClock },
+    { href: `/${locale}/pricing`, label: t("pricing"), desc: t("pricing_desc"), Icon: Tags },
   ];
 
   useEffect(() => {
@@ -199,34 +207,37 @@ export default function Navbar() {
                   </button>
 
                   {servicesOpen && (
-                    <div className="animate-slideDownSoft absolute start-0 top-full w-[24rem] max-w-[90vw] whitespace-normal pt-3">
-                      <div className="rounded-3xl border border-line bg-white p-3 shadow-[var(--shadow-lift)]">
-                        {serviceLinks.map((service) => (
-                          <Link
-                            key={service.href}
-                            href={service.href}
-                            className="group flex items-start justify-between gap-3 rounded-2xl p-3 transition hover:bg-nile-50"
-                          >
-                            <span className="min-w-0 flex-1">
-                              <span className="block font-semibold text-nile-950">
-                                {service.label}
-                              </span>
-                              <span className="mt-0.5 line-clamp-2 block text-sm leading-snug text-slate-500">
-                                {service.desc}
-                              </span>
-                            </span>
-                            <ArrowUpRight
-                              size={16}
-                              className="mt-1 shrink-0 text-gold-500 opacity-0 transition group-hover:opacity-100 rtl:-scale-x-100"
-                            />
-                          </Link>
+                    <div className="animate-slideDownSoft absolute start-0 top-full w-[40rem] max-w-[92vw] whitespace-normal pt-3">
+                      <div className="grid grid-cols-5 gap-3 rounded-3xl border border-line bg-white p-3 shadow-[var(--shadow-lift)]">
+                        {[
+                          { title: t("group_services"), href: `/${locale}/services`, tint: "bg-nile-50 text-nile-700", links: serviceLinks, span: "col-span-3" },
+                          { title: t("group_more"), href: `/${locale}/pricing`, tint: "bg-gold-100 text-gold-700", links: moreLinks, span: "col-span-2" },
+                        ].map((group) => (
+                          <div key={group.title} className={group.span}>
+                            <Link
+                              href={group.href}
+                              className={`mb-1 flex items-center justify-between rounded-2xl px-4 py-2.5 text-sm font-semibold ${group.tint}`}
+                            >
+                              {group.title}
+                              <ArrowUpRight size={15} className="rtl:-scale-x-100" />
+                            </Link>
+                            {group.links.map(({ href, label, desc, Icon }) => (
+                              <Link
+                                key={href}
+                                href={href}
+                                className="group flex items-start gap-3 rounded-2xl p-3 transition hover:bg-nile-50"
+                              >
+                                <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-sand text-nile-600">
+                                  <Icon size={16} />
+                                </span>
+                                <span className="min-w-0 flex-1">
+                                  <span className="block text-sm font-semibold text-nile-950">{label}</span>
+                                  <span className="line-clamp-2 block text-xs leading-snug text-slate-500">{desc}</span>
+                                </span>
+                              </Link>
+                            ))}
+                          </div>
                         ))}
-                        <Link
-                          href={`/${locale}/services`}
-                          className="mt-1 block rounded-2xl bg-nile-50 p-3 text-center text-sm font-semibold text-nile-600 transition hover:bg-nile-100"
-                        >
-                          {t("all")}
-                        </Link>
                       </div>
                     </div>
                   )}
@@ -295,7 +306,7 @@ export default function Navbar() {
                 </Link>
                 {link.dropdown && (
                   <ul className="mb-2 ms-4 border-s border-white/15 ps-2">
-                    {serviceLinks.map((service) => (
+                    {[...serviceLinks, ...moreLinks].map((service) => (
                       <li key={service.href}>
                         <Link
                           href={service.href}
