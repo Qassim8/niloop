@@ -44,9 +44,9 @@
   "Hero": {
     "hero_title": "Your idea deserves to gain power, and we are giving it its true form in",
     "niloop": " Niloop",
-    "hero_subtitle": "A tech company delivering web development, ERP systems, brand identity and content writing for businesses in Saudi Arabia, the Gulf and the Arab world",
-    "start_now": "Start Your Project",
-    "more": "About Us",
+    "hero_subtitle": "Innovative digital solutions that help you build a strong presence in the digital world",
+    "start_now": "Start Now",
+    "more": "More",
     "hero_alt": "Modern buildings representing technology solutions",
     "eyebrow": "Tech company · Saudi Arabia & the Gulf",
     "headline": "We build websites, systems and brands that <accent>grow your business</accent>",
@@ -598,5 +598,13 @@
   "CtaBand": {
     "title": "Ready to start <accent>your project?</accent>",
     "desc": "Tell us about your idea and we'll come back with a suitable offer. The consultation is free and non-binding."
+  },
+  "Statement": {
+    "label": "About us",
+    "text": "We are a team of developers, designers and content writers building websites, ERP systems and brand identities that help businesses in Saudi Arabia and the Gulf stand out and grow with confidence."
+  },
+  "Process": {
+    "step": "Step",
+    "of": "of"
   }
 }

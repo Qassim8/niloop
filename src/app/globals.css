@@ -25,9 +25,9 @@
   --color-gold-500: #c98d35;
   --color-gold-700: #9a6420; /* gold for text on light backgrounds (AA contrast) */
 
-  --color-sand: #fbf8f2;
+  --color-sand: #eef2f9; /* cool light page tone */
   --color-ink: #0e1a2b;
-  --color-line: #e6e0d3;
+  --color-line: #dce3ef;
 
   --font-display: var(--font-readex), var(--font-plex), system-ui, sans-serif;
   --font-body: var(--font-plex), system-ui, sans-serif;
@@ -205,6 +205,7 @@ html[lang="en"] .accent {
     mask-size: 640px auto;
   }
 }
+
 
 /* ---------- Motion ---------- */
 @keyframes marquee {

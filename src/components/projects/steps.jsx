@@ -1,12 +1,16 @@
 "use client";
-import SectionHeader from "../sections-header";
-import { motion } from "framer-motion";
-import Reveal from "../ui/reveal";
-import LoopThread from "../ui/loop-thread";
-import { useTranslations } from "next-intl";
 
-export default function HowWeWork({ tone = "white" }) {
+import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { useEffect, useRef, useState } from "react";
+import ImageSlot from "../ui/image-slot";
+
+// "How we work": a dark panel that is pinned while the page scrolls. The active step changes
+// with the scroll position (or on tap) and the picture on the side changes with it.
+export default function HowWeWork() {
   const t = useTranslations("Projects");
+  const p = useTranslations("Process");
 
   const steps = ["one", "two", "three", "four"].map((k, i) => ({
     id: i + 1,
@@ -14,35 +18,116 @@ export default function HowWeWork({ tone = "white" }) {
     desc: t(`step_${k}_desc`),
   }));
 
+  const sectionRef = useRef(null);
+  const [active, setActive] = useState(0);
+  const [pinned, setPinned] = useState(false);
+
+  useEffect(() => {
+    const query = window.matchMedia("(min-width: 768px)");
+    const update = () => setPinned(query.matches);
+    update();
+    query.addEventListener("change", update);
+    return () => query.removeEventListener("change", update);
+  }, []);
+
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end end"] });
+  useMotionValueEvent(scrollYProgress, "change", (v) => {
+    if (!pinned) return;
+    setActive(Math.min(steps.length - 1, Math.floor(v * steps.length)));
+  });
+
+  const current = steps[active];
+
   return (
-    <section className={`section relative overflow-hidden ${tone === "sand" ? "bg-sand" : "bg-white"}`}>
-      <LoopThread className="absolute start-1/2 top-10 hidden w-[60rem] max-w-none -translate-x-1/2 opacity-70 md:block rtl:translate-x-1/2" />
+    <section ref={sectionRef} className="relative bg-sand md:h-[320vh]">
+      <div className="px-3 py-4 md:sticky md:top-0 md:flex md:h-screen md:items-center md:px-4">
+        <div className="surface-nile relative mx-auto w-full max-w-[1280px] overflow-hidden rounded-[2rem] p-6 md:rounded-[3rem] md:p-12">
+          <div aria-hidden="true" className="logo-pattern absolute inset-0" />
 
-      <div className="container relative">
-        <SectionHeader title={t("how_it_work")} subtitle={t("how_it_work_desc")} />
+          <div className="relative grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
+            <div className="lg:col-span-6">
+              <span className="eyebrow eyebrow-dark">{t("how_it_work_desc")}</span>
+              <h2 className="mt-5 text-3xl font-semibold leading-[1.25] text-white md:text-5xl">
+                {t("how_it_work")}
+              </h2>
 
-        <motion.div
-          aria-hidden="true"
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={{ once: true, amount: 0.8 }}
-          transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-6 hidden h-0.5 origin-[100%_50%] rounded-full bg-gradient-to-l from-gold-400 via-nile-300 to-transparent lg:block ltr:origin-[0%_50%] ltr:bg-gradient-to-r"
-        />
-        <ol className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {steps.map((step, index) => (
-            <Reveal as="li" key={step.id} delay={index * 0.1}>
-              <div data-spotlight className="card card-hover relative h-full p-7">
-                <span className="font-[family-name:var(--font-display)] text-6xl font-semibold text-nile-100">
-                  <span dir="ltr">{String(step.id).padStart(2, "0")}</span>
-                </span>
-                <h3 className="mt-4 text-xl font-semibold text-nile-950">{step.title}</h3>
-                <p className="mt-2 leading-relaxed text-slate-600">{step.desc}</p>
-                <span aria-hidden="true" className="absolute bottom-0 start-7 h-1 w-10 rounded-full bg-gold-400" />
+              <div role="tablist" className="mt-8 space-y-2.5">
+                {steps.map((step, i) => {
+                  const on = i === active;
+                  return (
+                    <button
+                      key={step.id}
+                      type="button"
+                      role="tab"
+                      aria-selected={on}
+                      onClick={() => setActive(i)}
+                      className={`w-full cursor-pointer rounded-2xl border p-4 text-start transition-colors duration-500 md:p-5 ${
+                        on
+                          ? "border-gold-400 bg-gold-400 text-nile-950"
+                          : "border-white/10 bg-white/[0.04] text-white hover:bg-white/10"
+                      }`}
+                    >
+                      <span className="flex items-center gap-4">
+                        <span dir="ltr" className={`text-sm font-semibold ${on ? "text-nile-700" : "text-nile-200"}`}>
+                          {String(step.id).padStart(2, "0")}
+                        </span>
+                        <span className="flex-1 text-lg font-semibold md:text-xl">{step.title}</span>
+                        <span
+                          className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition ${
+                            on ? "bg-nile-950 text-gold-400" : "bg-white/10 text-white"
+                          }`}
+                        >
+                          <ArrowUpRight size={16} className="rtl:-scale-x-100" />
+                        </span>
+                      </span>
+                      <motion.span
+                        initial={false}
+                        animate={{ height: on ? "auto" : 0, opacity: on ? 1 : 0 }}
+                        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                        className="block overflow-hidden"
+                      >
+                        <span className="block pt-3 ps-9 leading-relaxed text-nile-800 md:ps-10">
+                          {step.desc}
+                        </span>
+                      </motion.span>
+                    </button>
+                  );
+                })}
               </div>
-            </Reveal>
-          ))}
-        </ol>
+            </div>
+
+            {/* Picture for the active step */}
+            <div className="hidden lg:col-span-6 lg:block">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={current.id}
+                  initial={{ opacity: 0, y: 24, scale: 0.97 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -16, scale: 0.98 }}
+                  transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <ImageSlot
+                    id={`process-${current.id}`}
+                    alt={current.title}
+                    sizes="(min-width: 1024px) 40vw, 100vw"
+                    className="rounded-[2rem] border border-white/10"
+                    empty={
+                      <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.06]">
+                        <div aria-hidden="true" className="logo-pattern absolute inset-0 opacity-60" />
+                        <span dir="ltr" className="relative font-[family-name:var(--font-display)] text-[9rem] font-bold leading-none text-gold-400">
+                          {String(current.id).padStart(2, "0")}
+                        </span>
+                        <span className="absolute bottom-5 start-6 text-sm text-nile-100">
+                          {p("step")} {current.id} {p("of")} {steps.length}
+                        </span>
+                      </div>
+                    }
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

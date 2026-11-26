@@ -7,6 +7,7 @@ export default function SectionHeader({
   title,
   subtitle,
   description,
+  chip,
   align = "center",
   light = false,
   className = "mb-12 md:mb-16",
@@ -32,6 +33,7 @@ export default function SectionHeader({
         }`}
       >
         {title}
+        {chip}
       </h2>
       {description && (
         <p

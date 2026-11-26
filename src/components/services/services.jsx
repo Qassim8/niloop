@@ -1,99 +1,140 @@
 "use client";
 
-import { ArrowLeft, ArrowRight, Check, Code, Calculator, PenTool, Megaphone, FileText } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowLeft, ArrowRight, Check, Code, Calculator, PenTool, Megaphone, FileText, Layers } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
+import { useRef } from "react";
 import SectionHeader from "../sections-header";
-import Reveal from "../ui/reveal";
+import Chip from "../ui/chip";
 import { FromPrice } from "../pricing/price";
 
-// Five core services as a bento grid. `sample` is the catalog item whose first features are
-// shown as deliverables and whose price is shown as "from" price.
+// Five core services as cards that stack on top of each other while scrolling.
 const services = [
-  { key: "web", Icon: Code, href: "/services/web-design", sample: "web_starter", span: "lg:col-span-5" },
-  { key: "erp", Icon: Calculator, href: "/services/erp", sample: "erp_mini", span: "lg:col-span-7", featured: true },
-  { key: "graphic", Icon: PenTool, href: "/services/graphic-design", sample: "identity", span: "lg:col-span-4" },
-  { key: "marketing", Icon: Megaphone, href: "/services/marketing", sample: "social_mgmt", span: "lg:col-span-4" },
-  { key: "content", Icon: FileText, href: "/pricing#content", sample: "content_pack", span: "lg:col-span-4" },
+  { key: "web", Icon: Code, href: "/services/web-design", sample: "web_starter", tone: "light" },
+  { key: "erp", Icon: Calculator, href: "/services/erp", sample: "erp_mini", tone: "dark" },
+  { key: "graphic", Icon: PenTool, href: "/services/graphic-design", sample: "identity", tone: "gold" },
+  { key: "marketing", Icon: Megaphone, href: "/services/marketing", sample: "social_mgmt", tone: "blue" },
+  { key: "content", Icon: FileText, href: "/pricing#content", sample: "content_pack", tone: "light" },
 ];
 
-export default function ServicesSection() {
+const toneClasses = {
+  light: "bg-white text-nile-950 border-line",
+  dark: "surface-nile text-white border-nile-800",
+  gold: "bg-gold-100 text-nile-950 border-gold-200",
+  blue: "bg-nile-100 text-nile-950 border-nile-200",
+};
+
+function StackCard({ service, index, total, progress }) {
   const t = useTranslations("Services");
   const p = useTranslations("Pricing");
   const locale = useLocale();
   const Arrow = locale === "ar" ? ArrowLeft : ArrowRight;
+  const { key, Icon, href, sample, tone } = service;
+  const dark = tone === "dark";
+
+  // Cards further back shrink a little as the next one slides over them
+  const targetScale = 1 - (total - 1 - index) * 0.04;
+  const scale = useTransform(progress, [index / total, 1], [1, targetScale]);
 
   return (
-    <section className="bg-white section">
-      <div className="container">
-        <SectionHeader title={t("title")} subtitle={t("subtitle")} />
+    <div className="sticky" style={{ top: `calc(5.5rem + ${index * 1.1}rem)` }}>
+      <motion.article
+        style={{ scale, transformOrigin: "50% 0%" }}
+        className={`relative mb-6 overflow-hidden rounded-[2rem] border p-7 shadow-[var(--shadow-lift)] md:rounded-[2.5rem] md:p-12 ${toneClasses[tone]}`}
+      >
+        {dark && <div aria-hidden="true" className="logo-pattern absolute inset-0" />}
 
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-12 lg:gap-5">
-          {services.map(({ key, Icon, href, sample, span, featured }, i) => (
-            <Reveal key={key} delay={(i % 3) * 0.08} className={`md:col-span-1 ${span}`}>
-              <Link
-                href={`/${locale}${href}`}
-                data-spotlight
-                className={`group relative flex h-full flex-col overflow-hidden rounded-[var(--radius-media)] border p-7 transition duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-1 md:p-9 ${
-                  featured
-                    ? "surface-nile border-nile-800 text-white shadow-[var(--shadow-lift)]"
-                    : "border-line bg-sand shadow-[var(--shadow-card)] hover:border-nile-600/30 hover:shadow-[var(--shadow-lift)]"
+        <div className="relative grid items-center gap-8 md:grid-cols-12">
+          <div className="md:col-span-7">
+            <div className="flex items-center gap-4">
+              <span
+                className={`flex h-14 w-14 items-center justify-center rounded-2xl ${
+                  dark ? "bg-gold-400 text-nile-950" : "bg-nile-950 text-white"
                 }`}
               >
-                {featured && <div aria-hidden="true" className="logo-pattern absolute inset-0" />}
+                <Icon size={26} />
+              </span>
+              <span dir="ltr" className={`text-sm font-semibold ${dark ? "text-nile-200" : "text-nile-600"}`}>
+                {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+              </span>
+            </div>
 
-                <div className="relative flex items-start justify-between">
-                  <span
-                    className={`flex h-14 w-14 items-center justify-center rounded-2xl ${
-                      featured ? "bg-gold-400 text-nile-950" : "bg-white text-nile-600 shadow-sm"
-                    }`}
-                  >
-                    <Icon size={26} />
-                  </span>
-                  <span
-                    className={`flex h-10 w-10 items-center justify-center rounded-full border transition duration-300 ${
-                      featured
-                        ? "border-white/20 text-white group-hover:bg-white group-hover:text-nile-950"
-                        : "border-nile-600/20 text-nile-600 group-hover:bg-nile-600 group-hover:text-white"
-                    }`}
-                  >
-                    <Arrow size={16} />
-                  </span>
-                </div>
+            <h3 className="mt-6 text-3xl font-semibold leading-tight md:text-5xl">{t(key)}</h3>
+            <p className={`mt-3 max-w-xl text-lg leading-relaxed ${dark ? "text-nile-100" : "text-slate-600"}`}>
+              {t(`${key}_desc`)}
+            </p>
 
-                <h3 className={`relative mt-8 text-2xl font-semibold ${featured ? "text-white" : "text-nile-950"}`}>
-                  {t(key)}
-                </h3>
-                <p className={`relative mt-2 leading-relaxed ${featured ? "text-nile-100" : "text-slate-600"}`}>
-                  {t(`${key}_desc`)}
-                </p>
+            <ul className="mt-6 grid gap-2.5 text-sm sm:grid-cols-2 md:text-base">
+              {p.raw(`items.${sample}.features`).slice(0, 4).map((feature) => (
+                <li key={feature} className={`flex items-start gap-2.5 ${dark ? "text-nile-50" : "text-slate-700"}`}>
+                  <Check size={18} className="mt-0.5 shrink-0 text-gold-500" />
+                  {feature}
+                </li>
+              ))}
+            </ul>
 
-                <ul className="relative mt-6 flex-1 space-y-2.5 text-sm">
-                  {p.raw(`items.${sample}.features`).slice(0, 3).map((feature) => (
-                    <li key={feature} className={`flex items-start gap-2.5 ${featured ? "text-nile-100" : "text-slate-600"}`}>
-                      <Check size={16} className="mt-0.5 shrink-0 text-gold-500" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-
-                <FromPrice
-                  id={sample}
-                  className={`relative mt-6 inline-block text-sm ${featured ? "text-gold-300" : "text-gold-700"}`}
-                />
+            <div className="mt-8 flex flex-wrap items-center gap-5">
+              <Link
+                href={`/${locale}${href}`}
+                className={`${dark ? "btn-gold" : "btn-blue"} group`}
+              >
+                {t("details")}
+                <Arrow size={16} className="transition rtl:group-hover:-translate-x-1 ltr:group-hover:translate-x-1" />
               </Link>
-            </Reveal>
+              <FromPrice id={sample} className={`text-sm ${dark ? "text-gold-300" : "text-gold-700"}`} />
+            </div>
+          </div>
+
+          {/* Large numeral as a graphic element */}
+          <div className="hidden md:col-span-5 md:block" aria-hidden="true">
+            <div
+              className={`flex aspect-square items-center justify-center rounded-[2rem] font-[family-name:var(--font-display)] text-[9rem] font-bold leading-none ${
+                dark ? "bg-white/[0.06] text-gold-400" : "bg-white/60 text-nile-600/90"
+              }`}
+            >
+              <span dir="ltr">{String(index + 1).padStart(2, "0")}</span>
+            </div>
+          </div>
+        </div>
+      </motion.article>
+    </div>
+  );
+}
+
+export default function ServicesSection() {
+  const t = useTranslations("Services");
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
+
+  return (
+    <section className="section bg-white">
+      <div className="container">
+        <SectionHeader
+          title={t("title")}
+          subtitle={t("subtitle")}
+          chip={<Chip icon={Layers} tone="gold" />}
+        />
+
+        <div ref={ref} className="relative">
+          {services.map((service, i) => (
+            <StackCard
+              key={service.key}
+              service={service}
+              index={i}
+              total={services.length}
+              progress={scrollYProgress}
+            />
           ))}
         </div>
 
-        {/* Complementary services */}
-        <Reveal className="mt-8 flex flex-wrap items-center justify-center gap-2">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
           {["branding", "montage", "social_media"].map((k) => (
-            <span key={k} className="rounded-full border border-line bg-white px-4 py-2 text-sm text-slate-600">
+            <span key={k} className="rounded-full border border-line bg-sand px-4 py-2 text-sm text-slate-600">
               {t(k)}
             </span>
           ))}
-        </Reveal>
+        </div>
       </div>
     </section>
   );

@@ -38,7 +38,7 @@ export default function Footer() {
   return (
     <>
       <CtaBand />
-      <footer className="surface-nile relative mx-3 mb-3 overflow-hidden rounded-[2rem] px-6 pb-8 pt-16 md:mx-4 md:mb-4 md:rounded-[3rem] md:pt-20">
+      <footer className="surface-nile relative mx-3 mb-3 overflow-hidden rounded-[2rem] px-6 pb-0 pt-16 md:mx-4 md:mb-4 md:rounded-[3rem] md:pt-20">
         <div className="container relative z-10 grid grid-cols-1 gap-10 !px-0 md:grid-cols-12 md:!px-4">
           <div className="md:col-span-5">
             <span className="mb-5 inline-block rounded-2xl bg-white px-4 py-2">
@@ -114,20 +114,20 @@ export default function Footer() {
           </div>
         </div>
 
+        <div className="container relative z-10 !px-0 border-t border-white/10 py-6 text-center text-sm text-nile-300 md:!px-4">
+          {t("copyright")}
+          <span className="text-gold-300">{t("niloop")}</span> © {new Date().getFullYear()}
+        </div>
         {/* Oversized wordmark */}
-        <Reveal y={80} className="pointer-events-none relative z-0 mt-12 md:mt-16">
+        <Reveal y={80} className="pointer-events-none relative z-0 mt-4 md:mt-6">
           <p
             aria-hidden="true"
-            className="select-none text-center font-[family-name:var(--font-display)] text-[22vw] font-bold leading-[0.9] text-white/[0.06] md:text-[14rem]"
+            className="-mb-[5vw] select-none text-center font-[family-name:var(--font-display)] text-[30vw] font-bold leading-[0.82] text-white/[0.09] md:-mb-14 md:text-[22rem]"
           >
             {locale === "ar" ? brand("name") : brand("name").toUpperCase()}
           </p>
         </Reveal>
 
-        <div className="container relative z-10 !px-0 border-t border-white/10 pt-6 text-center text-sm text-nile-300 md:!px-4">
-          {t("copyright")}
-          <span className="text-gold-300">{t("niloop")}</span> © {new Date().getFullYear()}
-        </div>
       </footer>
     </>
   );

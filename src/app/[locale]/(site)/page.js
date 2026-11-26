@@ -2,12 +2,12 @@ import StatsSection from "@/components/about/statistic";
 import ClientsStrip from "@/components/home/clients";
 import ErpSpotlight from "@/components/home/erp-spotlight";
 import Intent from "@/components/home/intent";
-import ServicesTicker from "@/components/home/ticker";
+import Statement from "@/components/home/statement";
+import WorksScroll from "@/components/home/works-scroll";
 import HowWeWork from "@/components/projects/steps";
 import WhyUs from "@/components/services/whyus";
 import FAQ from "@/components/home/faq";
 import Hero from "@/components/home/hero";
-import WorksSection from "@/components/projects/portfolio";
 import ServicesSection from "@/components/services/services";
 import Testimonials from "@/components/home/testimonials";
 import OffersSection from "@/components/pricing/offers";
@@ -30,15 +30,15 @@ export default async function Home({ params }) {
       <Hero />
       <ClientsStrip />
       <StatsSection />
+      <Statement />
       <Intent />
       <ServicesSection />
-      {/* <ServicesTicker /> */}
-      <WorksSection home={true} />
+      <WorksScroll />
       <ErpSpotlight />
       <OffersSection limit={3} showAllLink />
-      <HowWeWork tone="sand" />
-      <WhyUs tone="white" />
-      <Testimonials tone="sand" />
+      <HowWeWork />
+      <WhyUs tone="sand" />
+      <Testimonials />
       <FAQ home={true} />
     </>
   );
