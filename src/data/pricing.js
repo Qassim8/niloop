@@ -17,8 +17,8 @@ export const items = {
   brand: { group: "graphic", price: 3500, unit: "once" },
   social_designs: { group: "graphic", price: 800, unit: "month" },
 
-  social_mgmt: { group: "marketing", price: 1500, unit: "month" },
-  ads: { group: "marketing", price: 1000, unit: "month" },
+  ad_designs: { group: "ads", price: 600, unit: "once" },
+  ads: { group: "ads", price: 1000, unit: "month" },
 
   content_article: { group: "content", price: 80, unit: "article" },
   content_pack: { group: "content", price: 900, unit: "month" },
@@ -30,7 +30,7 @@ export const groups = {
   web: ["web_starter", "web_business", "web_store"],
   erp: ["erp_mini", "erp_module", "erp_full"],
   graphic: ["logo", "identity", "brand", "social_designs"],
-  marketing: ["social_mgmt", "ads", "social_designs"],
+  ads: ["ad_designs", "ads"],
   content: ["content_article", "content_pack", "content_site"],
 };
 
@@ -60,8 +60,8 @@ export const offers = [
   },
   {
     id: "store",
-    price: 8900,
-    includes: [{ id: "web_store" }, { id: "identity" }, { id: "social_mgmt" }],
+    price: 8200,
+    includes: [{ id: "web_store" }, { id: "identity" }, { id: "ad_designs" }],
   },
 ];
 

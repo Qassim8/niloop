@@ -11,9 +11,8 @@ export default function ServicesTicker() {
     t("graphic"),
     t("content"),
     t("branding"),
-    t("marketing"),
+    t("ads"),
     t("montage"),
-    t("social_media"),
   ];
   const loop = [...words, ...words];
 

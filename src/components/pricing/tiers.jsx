@@ -3,7 +3,8 @@
 import { Check } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
-import SectionHeader from "../sections-header";
+import Editorial from "../ui/editorial";
+import SplitReveal from "../ui/split-reveal";
 import Reveal from "../ui/reveal";
 import { formatSar, groups, items } from "@/data/pricing";
 
@@ -45,7 +46,7 @@ function TierCard({ id, index }) {
   );
 }
 
-// Price tiers for one service group (web, erp, graphic, marketing, content).
+// Price tiers for one service group (web, erp, graphic, ads, content).
 export function TierGrid({ group, ids }) {
   const list = ids ?? groups[group];
   return (
@@ -66,12 +67,13 @@ export default function PricingTiers({ group }) {
   const t = useTranslations("Pricing");
 
   return (
-    <section className="section bg-sand" id="pricing">
+    <section className="section bg-white" id="pricing">
       <div className="container">
-        <SectionHeader
-          title={`${t("tiers_title")} – ${t(`groups.${group}`)}`}
-          subtitle={t("tiers_subtitle")}
-        />
+        <Editorial label={t("tiers_subtitle")} className="mb-10 md:mb-14">
+          <h2 className="max-w-3xl text-3xl font-semibold leading-[1.3] text-nile-950 md:text-5xl md:leading-[1.2]">
+            <SplitReveal text={`${t("tiers_title")} – ${t(`groups.${group}`)}`} />
+          </h2>
+        </Editorial>
         <TierGrid group={group} />
         <p className="mx-auto mt-10 max-w-3xl text-center text-sm leading-relaxed text-slate-500">
           {t("note")}

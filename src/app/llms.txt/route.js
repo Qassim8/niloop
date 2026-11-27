@@ -15,7 +15,7 @@ export function GET() {
     `- [Web development / تطوير المواقع](${SITE_URL}/en/services/web-design): responsive, SEO-friendly websites and online stores`,
     `- [ERP systems / أنظمة ERP](${SITE_URL}/en/services/erp): accounting, inventory, financial reports, employee statistics, customer management`,
     `- [Graphic design & identity / الجرافيك والهوية](${SITE_URL}/en/services/graphic-design): logos, brand identities, social media designs`,
-    `- [Digital marketing / التسويق الرقمي](${SITE_URL}/en/services/marketing): campaigns, social media management`,
+    `- [Ads / الإعلانات](${SITE_URL}/en/services/ads): ad design and paid campaign management`,
     "",
     `- [Store solutions / حلول المتاجر](${SITE_URL}/en/solutions): online stores and ERP systems for store owners`,
     `- [Content writing / كتابة المحتوى](${SITE_URL}/en/services/content-writing): website, store and social media copy`,

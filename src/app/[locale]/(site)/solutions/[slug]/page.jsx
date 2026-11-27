@@ -111,7 +111,7 @@ export default async function SolutionPage({ params }) {
 
       <section className="section bg-sand">
         <div className="container">
-          <SectionHeader title={t("all")} subtitle={t("title")} />
+          <SectionHeader variant="editorial" title={t("all")} subtitle={t("title")} />
           <NumberedRows
             size="md"
             items={others.map((s) => ({

@@ -86,7 +86,7 @@ export default function WorksScroll() {
         </div>
 
         {/* Phones: native horizontal swipe. Desktop: the track is moved by the scroll position. */}
-        <div className="overflow-x-auto md:overflow-visible [scrollbar-width:none] snap-x snap-mandatory md:snap-none">
+        <div className="relative overflow-x-auto md:overflow-visible [scrollbar-width:none] snap-x snap-mandatory md:snap-none">
           <motion.ul
             ref={trackRef}
             style={desktop ? { x } : undefined}

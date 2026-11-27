@@ -13,7 +13,7 @@ const options = [
   { key: "erp", plan: "erp_mini", Icon: Calculator },
   { key: "identity", plan: "identity", Icon: PenTool },
   { key: "content", plan: "content_pack", Icon: FileText },
-  { key: "marketing", plan: "social_mgmt", Icon: Megaphone },
+  { key: "ads", plan: "ads", Icon: Megaphone },
 ];
 
 export default function Intent() {

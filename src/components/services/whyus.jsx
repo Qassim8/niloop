@@ -20,7 +20,7 @@ export default function WhyUs({ tone = "sand" }) {
   return (
     <section className={`section ${tone === "sand" ? "bg-sand" : "bg-white"}`} id="why-us">
       <div className="container">
-        <SectionHeader title={t("why_niloop")} subtitle={t("why_niloop_desc")} />
+        <SectionHeader variant="editorial" title={t("why_niloop")} subtitle={t("why_niloop_desc")} />
 
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {features.map(({ Icon, title, desc }, idx) => (

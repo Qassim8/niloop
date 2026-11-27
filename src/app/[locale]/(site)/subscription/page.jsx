@@ -43,13 +43,13 @@ export default async function SubscriptionPage({ params }) {
 
       <section className="section bg-sand">
         <div className="container">
-          <SectionHeader title={t("plans_title")} subtitle={t("plans_label")} />
-          <TierGrid ids={["social_designs", "social_mgmt", "content_pack", "ads"]} />
+          <SectionHeader variant="editorial" title={t("plans_title")} subtitle={t("plans_label")} />
+          <TierGrid ids={["social_designs", "content_pack", "ads"]} />
           <p className="mx-auto mt-10 max-w-3xl text-center text-sm leading-relaxed text-slate-500">
             {t("note")}
           </p>
           <div className="mt-8 text-center">
-            <Link href={`/${locale}/contact?plan=social_mgmt`} className="btn-blue">
+            <Link href={`/${locale}/contact?plan=content_pack`} className="btn-blue">
               {t("cta")}
             </Link>
           </div>

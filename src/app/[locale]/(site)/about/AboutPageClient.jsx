@@ -1,24 +1,26 @@
 "use client";
 
-import AboutSection from "@/components/about/about";
 import AboutGallery from "@/components/about/gallery";
+import AboutHero from "@/components/about/about-hero";
 import ApproachSection from "@/components/about/approach";
+import ClientsGrid from "@/components/about/clients-grid";
+import ServiceAccordion from "@/components/about/service-accordion";
 import StatsSection from "@/components/about/statistic";
+import Story, { WideImage } from "@/components/about/story";
 import ValuesSection from "@/components/about/values";
-import BreadcrumbSection from "@/components/breadcrumb";
 import Testimonials from "@/components/home/testimonials";
-import { useTranslations } from "next-intl";
 
 export default function AboutPageClient() {
-  const t = useTranslations("About");
-
   return (
     <>
-      <BreadcrumbSection title={t("title")} lead={t("lead")} links={[{ label: t("title") }]} />
-      <AboutSection />
+      <AboutHero />
+      <Story />
+      <StatsSection />
+      <WideImage />
+      <ServiceAccordion />
       <ApproachSection />
       <ValuesSection />
-      <StatsSection />
+      <ClientsGrid />
       <AboutGallery />
       <Testimonials />
     </>

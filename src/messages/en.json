@@ -5,7 +5,7 @@
     "about_title": "About Us | Niloop Tech Solutions",
     "about_desc": "Meet Niloop: a team of developers, designers and content writers since 2021, building websites, stores, ERP systems and brand identities that help businesses across the Arab world grow.",
     "services_title": "Services | Web Development, ERP, Branding & Content Writing",
-    "services_desc": "Niloop services: website and e-commerce development, ERP systems for accounting and inventory, graphic design and visual identity, brand building, content writing and social media management.",
+    "services_desc": "Niloop services: website and e-commerce development, ERP systems for accounting and inventory, graphic design and visual identity, content writing, and ad design and management.",
     "projects_title": "Our Work | Websites, ERP Systems & Brand Identities – Niloop",
     "projects_desc": "Explore Niloop's portfolio: ERP systems, online stores, company websites and brand identities delivered for clients in Saudi Arabia, the UAE, Sudan and more.",
     "contact_title": "Contact Us | Niloop – Free Consultation for Your Project",
@@ -14,19 +14,19 @@
     "web_desc": "We design and build fast, responsive, SEO-friendly websites and online stores that help your business show up on Google and win customers.",
     "graphic_title": "Graphic Design, Logo & Brand Identity Services | Niloop",
     "graphic_desc": "Professional logos, visual identities, advertising materials and social media designs that reflect your brand and set you apart.",
-    "marketing_title": "Digital Marketing & Social Media Management | Niloop",
-    "marketing_desc": "We plan and manage digital marketing campaigns, social media accounts and paid ads with performance tracking to grow your reach and sales.",
     "erp_title": "ERP, Accounting & Inventory Systems for Businesses | Niloop",
     "erp_desc": "We build custom ERP systems covering accounting, inventory, financial reports, employee statistics and customer management, tailored to how your business works.",
     "not_found_title": "Page not found | Niloop",
     "pricing_title": "Pricing & Packages | Websites, ERP Systems & Branding – Niloop",
-    "pricing_desc": "Approximate prices in Saudi riyals for website development, ERP systems, visual identity, content writing and digital marketing, with bundled offers from Niloop.",
+    "pricing_desc": "Approximate prices in Saudi riyals for website development, ERP systems, visual identity, content writing and ads, with bundled offers from Niloop.",
     "solutions_title": "Store Solutions | Online Stores & Store Management Systems – Niloop",
     "solutions_desc": "Niloop's solutions for store owners: complete online stores and ERP systems that manage accounting, inventory, customers and staff, across the Arab world.",
     "subscription_title": "Monthly Plan | Designs, Content & Account Management – Niloop",
-    "subscription_desc": "Your on-call creative team on a monthly plan: social media designs, content writing, account and ads management at a clear cost.",
+    "subscription_desc": "Your on-call creative team on a monthly plan: social media designs, content writing and ads management at a clear cost.",
     "content_title": "Content Writing for Websites, Stores & Social Media | Niloop",
-    "content_desc": "We write website and store copy, product descriptions, articles and social posts in your brand voice with clean Arabic, optimized for search engines."
+    "content_desc": "We write website and store copy, product descriptions, articles and social posts in your brand voice with clean Arabic, optimized for search engines.",
+    "ads_title": "Paid Ads & Ad Design for Stores and Businesses | Niloop",
+    "ads_desc": "We design your ads and run their paid campaigns with focused copy and precise audience targeting, so your message reaches the people who care."
   },
   "Header": {
     "home": "Home",
@@ -34,7 +34,6 @@
     "services": "Services",
     "web": "Website Design",
     "graphic": "Graphic Design",
-    "marketing": "Marketing",
     "projects": "Projects",
     "all": "All Services",
     "contact": "Contact Us",
@@ -56,7 +55,8 @@
     "pricing_desc": "Approximate prices and bundled offers",
     "store_online": "Online store",
     "store_erp": "Store management system",
-    "store_tailoring": "Tailoring shop system"
+    "store_tailoring": "Tailoring shop system",
+    "ads": "Ads"
   },
   "Hero": {
     "hero_title": "Your idea deserves to gain power, and we are giving it its true form in",
@@ -98,7 +98,10 @@
     "values_label": "Our values",
     "values_title": "What we commit to",
     "numbers_label": "Niloop in numbers",
-    "book": "Book a consultation"
+    "book": "Book a consultation",
+    "hero_desc": "We use technology, design and content to give our clients a clear digital presence that serves their goals and puts them in the right place in front of their audience.",
+    "services_label": "What we do",
+    "works_on": "What we work on"
   },
   "Services": {
     "title": "Services",
@@ -108,13 +111,11 @@
     "graphic": "Graphic Design",
     "graphic_desc": "Modern and Attractive Designs",
     "content": "Content Writing",
-    "content_desc": "Impactful Marketing Content",
+    "content_desc": "Impactful content that speaks to your audience",
     "branding": "Visual Identity & Brand Building",
     "branding_desc": "A Unique Touch to Your Visual Identity That Sets You Apart",
     "montage": "Visual Production",
     "montage_desc": "Consolidate Your Idea Through an Impactful, Professional Video",
-    "social_media": "Social Media Management",
-    "social_media_desc": "A Comprehensive Model for Building a Strong Social Media Presence",
     "waiting": "What Are You Waiting For?",
     "customers": "Join our valued clients and start your journey with us today",
     "get": "Get Your Service",
@@ -123,7 +124,7 @@
     "quality": "Quality & Commitment",
     "quality_desc": "We ensure the highest quality standards and strict adherence to deadlines",
     "professionalism": "Professional Team",
-    "professionalism_desc": "Our team includes experts in design, development, and marketing",
+    "professionalism_desc": "Our team includes experts in design, development, and content writing",
     "creativety": "Innovative Solutions",
     "creativety_desc": "We provide creative and tailored solutions that fit your company’s needs",
     "trust": "Client Trust",
@@ -132,15 +133,15 @@
     "erp_desc": "Accounting, inventory and reporting systems built for your business",
     "details": "Learn more",
     "from": "From",
-    "marketing": "Digital Marketing",
-    "marketing_desc": "Campaigns, ads and social media management with measurable results",
     "content_page_desc": "Copy that sells and convinces",
     "numbers_title": "What makes us different?",
     "numbers_label": "Niloop in numbers",
     "list_label": "Core services",
     "list_title": "Everything your brand needs to grow, under one roof",
     "view_all": "All services",
-    "page_lead": "Websites, stores, systems, identity and content: everything your brand needs to grow, from one team."
+    "page_lead": "Websites, stores, systems, identity and content: everything your brand needs to grow, from one team.",
+    "ads": "Ads",
+    "ads_desc": "Ad design and management that reach the right audience"
   },
   "Web": {
     "title": "Website Design",
@@ -183,27 +184,6 @@
     "feature_four_desc": "From logo to colors and typography, we craft a strong and cohesive visual identity.",
     "feature_fife": "Social Media Designs",
     "feature_fife_desc": "Professional posts and banners that boost your audience engagement with your brand."
-  },
-  "Marketing": {
-    "title": "Digital Marketing",
-    "subtitle": "Services",
-    "advantages_title": "Smart and Effective Digital Marketing",
-    "advantages_desc": "At Niloop, we help you reach your target audience through well-planned digital marketing campaigns. We use the latest tools and strategies to increase brand awareness and boost sales.",
-    "ad_one": "Custom Marketing Strategies for Your Needs",
-    "ad_two": "Precise and Effective Advertising Campaigns",
-    "ad_three": "Building a Real Audience and Increasing Engagement",
-    "features_title": "Why Our Marketing Services?",
-    "features_subtitle": "Deliberate Steps for Tangible Results",
-    "feature_one": "Effective Digital Advertising",
-    "feature_one_desc": "We design precisely targeted advertising campaigns to reach your target audience at the lowest cost and highest return on investment.",
-    "feature_two": "Performance and Opinion Analysis",
-    "feature_two_desc": "We use advanced analytics tools to measure results and optimize campaigns step by step.",
-    "feature_three": "Building an audience.",
-    "feature_three_desc": "We help you identify your ideal audience and increase your followers and leads.",
-    "feature_four": "Social media management.",
-    "feature_four_desc": "We publish premium content and build a strong, interactive relationship with your audience across various platforms.",
-    "feature_fife": "Increasing sales and conversions.",
-    "feature_fife_desc": "We use well-thought-out marketing strategies to convert visitors into loyal customers."
   },
   "Projects": {
     "title": "Projects",
@@ -380,7 +360,7 @@
     "title": "FAQ",
     "subtitle": "What's on your mind?",
     "q_one": "What services do you offer?",
-    "q_one_desc": "We offer website and online store development, ERP systems for accounting and inventory, graphic design and visual identity, brand building, content writing and social media management.",
+    "q_one_desc": "We offer website and online store development, ERP systems for accounting and inventory, graphic design and visual identity, brand building, content writing, and ad design and management.",
     "q_two": "How long does it take to complete a project?",
     "q_two_desc": "The duration depends on the size and complexity of the project, but we always stick to agreed timelines.",
     "q_three": "Do you provide post-delivery support?",
@@ -427,8 +407,8 @@
       "erp": "An ERP system",
       "identity": "Visual identity",
       "content": "Content writing",
-      "marketing": "Digital marketing",
-      "other": "Something else"
+      "other": "Something else",
+      "ads": "Ads"
     },
     "budget": "Approximate budget (SAR)",
     "budgets": {
@@ -456,7 +436,6 @@
     "web": "Web Development",
     "erp": "ERP Systems",
     "graphic": "Graphic & Brand Identity",
-    "marketing": "Digital Marketing",
     "pricing": "Pricing & Offers",
     "company": "Company",
     "solutions": "Store solutions",
@@ -467,7 +446,8 @@
     "subscribed": "Thanks for subscribing!",
     "subscribe_failed": "Couldn't subscribe. Please try again.",
     "subscription": "Monthly plan",
-    "content": "Content writing"
+    "content": "Content writing",
+    "ads": "Ads"
   },
   "Brand": {
     "name": "Niloop",
@@ -530,8 +510,8 @@
       "web": "Web Development",
       "erp": "ERP Systems",
       "graphic": "Design & Visual Identity",
-      "marketing": "Digital Marketing",
-      "content": "Content Writing"
+      "content": "Content Writing",
+      "ads": "Ads"
     },
     "items": {
       "web_starter": {
@@ -628,15 +608,6 @@
           "Consistent with your brand identity"
         ]
       },
-      "social_mgmt": {
-        "title": "Social Media Management",
-        "desc": "A regular presence and engagement with your audience",
-        "features": [
-          "Two main platforms",
-          "Content scheduling and publishing",
-          "Monthly performance report"
-        ]
-      },
       "ads": {
         "title": "Paid Ads Management",
         "desc": "Targeted campaigns for the best return",
@@ -672,6 +643,15 @@
           "In your brand voice",
           "SEO-friendly headings and descriptions"
         ]
+      },
+      "ad_designs": {
+        "title": "Ad Design Pack",
+        "desc": "Ad designs in your brand identity",
+        "features": [
+          "8 ad designs",
+          "Sized for the platforms",
+          "In your brand identity"
+        ]
       }
     },
     "offers": {
@@ -693,12 +673,13 @@
       },
       "store": {
         "title": "Complete Store Package",
-        "desc": "An online store with a visual identity and one month of social media management"
+        "desc": "An online store with a visual identity and an ad design pack"
       }
     }
   },
   "Clients": {
-    "title": "Trusted by"
+    "title": "Trusted by",
+    "headline": "Brands and stores that trusted us on their growth journey"
   },
   "Intent": {
     "title": "What do you need today?",
@@ -709,7 +690,7 @@
     "erp": "ERP system",
     "identity": "Visual identity",
     "content": "Content writing",
-    "marketing": "Marketing & social media"
+    "ads": "Ads"
   },
   "Markets": {
     "title": "We serve clients in",
@@ -803,7 +784,7 @@
   "Subscription": {
     "title": "Monthly Plan",
     "subtitle": "Your on-call creative team",
-    "lead": "Subscribe to a monthly plan and get designs, content and account management continuously, instead of contracting each service separately.",
+    "lead": "Subscribe to a monthly plan and get designs, content and ads continuously, instead of contracting each service separately.",
     "steps_label": "How it works",
     "steps_title": "Just three steps",
     "steps": [
@@ -845,5 +826,26 @@
     "feature_four_desc": "Regular content in your brand voice that lifts engagement.",
     "feature_five": "Ad and campaign copy",
     "feature_five_desc": "Focused headlines and ad text that support your paid campaigns."
+  },
+  "Ads": {
+    "title": "Ads",
+    "subtitle": "Services",
+    "advantages_title": "Ads that reach the right audience",
+    "advantages_desc": "We design your ads and run their paid campaigns across platforms with precise targeting and focused copy, so your message reaches the people who care.",
+    "ad_one": "Attractive ad designs in your brand identity",
+    "ad_two": "Precise audience targeting",
+    "ad_three": "Campaign monitoring and optimization",
+    "features_title": "What do we offer in ads?",
+    "features_subtitle": "From idea to campaign",
+    "feature_one": "Ad design",
+    "feature_one_desc": "Ad designs in your brand identity, sized for the different platforms.",
+    "feature_two": "Ad copy",
+    "feature_two_desc": "Focused headlines and text that push visitors to engage and decide.",
+    "feature_three": "Campaign setup and targeting",
+    "feature_three_desc": "Choosing the right platform, audience and budget, and setting up the paid campaign.",
+    "feature_four": "Monitoring and optimization",
+    "feature_four_desc": "Tracking results and adjusting the campaign continuously to improve return.",
+    "feature_five": "Reports",
+    "feature_five_desc": "A clear summary of the campaign performance and the results it achieved."
   }
 }

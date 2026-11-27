@@ -1,32 +1,29 @@
 "use client";
+
 import BreadcrumbSection from "@/components/breadcrumb";
-import FeaturesSection from "@/components/services/graphic-design/features";
-import TopSection from "@/components/services/graphic-design/top-section";
 import PricingTiers from "@/components/pricing/tiers";
+import ServiceFeatures from "@/components/services/service-features";
+import ServiceIntro from "@/components/services/service-intro";
 import { useTranslations } from "next-intl";
-import React, { useEffect, useState } from "react";
 
-function GraphicPageClient() {
+const keys = ["feature_one", "feature_two", "feature_three", "feature_four", "feature_fife"];
+
+export default function GraphicPageClient() {
   const t = useTranslations("Graphic");
-  const [title, setTitle] = useState(t("title"));
-  const [subtitle, setSubtitle] = useState(t("subtitle"));
-
-  useEffect(() => {
-    setTitle(title);
-    setSubtitle(subtitle);
-  }, [title, subtitle]);
 
   return (
     <>
       <BreadcrumbSection
-        title={title}
-        links={[{ label: subtitle, href: "/services" }, { label: title }]}
+        title={t("title")}
+        links={[{ label: t("subtitle"), href: "/services" }, { label: t("title") }]}
       />
-      <TopSection />
-      <FeaturesSection />
+      <ServiceIntro
+        namespace="Graphic"
+        slot="service-graphic"
+        image="/images/vecteezy_graphic-designer-with-creative-inspiration-at-work-space_6031624.webp"
+      />
+      <ServiceFeatures namespace="Graphic" keys={keys} />
       <PricingTiers group="graphic" />
     </>
   );
 }
-
-export default GraphicPageClient;

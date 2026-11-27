@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { useRef } from "react";
 import ImageSlot from "@/components/ui/image-slot";
+import HeroLights from "./hero-lights";
 
 // Full-screen hero: city skyline under a blue wash, centred headline, two buttons.
 // While scrolling, the picture drifts and zooms slowly and the text lifts away.
@@ -41,6 +42,7 @@ export default function Hero() {
           className="h-full w-full"
         />
         <div className="absolute inset-0 bg-blue-800/70" />
+        <HeroLights />
       </motion.div>
 
       <motion.div

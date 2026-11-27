@@ -9,7 +9,7 @@ import { useEffect, useRef, useState } from "react";
 import { siteConfig } from "@/lib/site";
 import { isPlanId, items } from "@/data/pricing";
 
-const interestKeys = ["web", "store", "erp", "identity", "content", "marketing", "other"];
+const interestKeys = ["web", "store", "erp", "identity", "content", "ads", "other"];
 const budgetKeys = ["b1", "b2", "b3", "b4", "b5"];
 
 // Which interest chip to pre-select for a catalog item / bundle id coming from ?plan=
@@ -17,7 +17,7 @@ const interestFor = (id) => {
   if (id === "web_store" || id === "store") return "store";
   const group = items[id]?.group;
   if (group === "graphic") return "identity";
-  if (["web", "erp", "content", "marketing"].includes(group)) return group;
+  if (["web", "erp", "content", "ads"].includes(group)) return group;
   return null;
 };
 

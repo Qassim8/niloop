@@ -17,7 +17,7 @@ export default function AboutGallery() {
   return (
     <section className="section bg-sand">
       <div className="container">
-        <SectionHeader title={t("gallery_title")} subtitle={t("gallery_subtitle")} />
+        <SectionHeader variant="editorial" title={t("gallery_title")} subtitle={t("gallery_subtitle")} />
         <div className="grid gap-4 md:grid-cols-3 lg:gap-5">
           {slots.map((id, i) => (
             <Reveal key={id} delay={i * 0.1}>

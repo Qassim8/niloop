@@ -14,7 +14,7 @@ const services = [
   { key: "web", Icon: Code, href: "/services/web-design", sample: "web_starter", tone: "light" },
   { key: "erp", Icon: Calculator, href: "/services/erp", sample: "erp_mini", tone: "dark" },
   { key: "graphic", Icon: PenTool, href: "/services/graphic-design", sample: "identity", tone: "gold" },
-  { key: "marketing", Icon: Megaphone, href: "/services/marketing", sample: "social_mgmt", tone: "blue" },
+  { key: "ads", Icon: Megaphone, href: "/services/ads", sample: "ads", tone: "blue" },
   { key: "content", Icon: FileText, href: "/services/content-writing", sample: "content_pack", tone: "light" },
 ];
 
@@ -129,7 +129,7 @@ export default function ServicesSection() {
         </div>
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
-          {["branding", "montage", "social_media"].map((k) => (
+          {["branding", "montage"].map((k) => (
             <span key={k} className="rounded-full border border-line bg-sand px-4 py-2 text-sm text-slate-600">
               {t(k)}
             </span>

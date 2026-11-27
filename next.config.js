@@ -27,6 +27,11 @@ const nextConfig = {
     // 90 is used for large showcase images (e.g. the hero), 75 for everything else.
     qualities: [75, 90],
   },
+  async redirects() {
+    return [
+      { source: "/:locale(ar|en)/services/marketing", destination: "/:locale/services/ads", permanent: true },
+    ];
+  },
   async headers() {
     return [
       { source: "/:path*", headers: securityHeaders },

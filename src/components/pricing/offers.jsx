@@ -102,7 +102,7 @@ export default function OffersSection({
   return (
     <section className={`section ${background}`} id="offers">
       <div className="container">
-        <SectionHeader title={t("offers_title")} subtitle={t("offers_subtitle")} />
+        <SectionHeader variant="editorial" title={t("offers_title")} subtitle={t("offers_subtitle")} />
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-5">
           {list.map((offer, i) => (
             <OfferCard key={offer.id} offer={offer} index={i} />

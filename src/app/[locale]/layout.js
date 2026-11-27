@@ -96,7 +96,7 @@ export default async function LocaleLayout({ children, params }) {
         <NextIntlClientProvider locale={locale} messages={messages}>
           <MotionProvider>
             <Header />
-            <main>{children}</main>
+            <main className="overflow-x-clip">{children}</main>
             <Footer />
             <RouteLoader />
           </MotionProvider>

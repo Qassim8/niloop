@@ -36,10 +36,10 @@ export default function WorksSection({ home }) {
   return (
     <section className={`section ${home ? "bg-sand" : "bg-white"}`}>
       <div className="container">
-        <SectionHeader title={t("title")} subtitle={t("subtitle")} />
+        <SectionHeader variant={home ? "center" : "editorial"} title={t("title")} subtitle={t("subtitle")} />
 
         {!home && (
-          <div role="group" className="mb-10 flex flex-wrap justify-center gap-2">
+          <div role="group" className="mb-10 flex flex-wrap gap-2">
             {filterBtns.map(({ title, type }) => (
               <button
                 key={type}

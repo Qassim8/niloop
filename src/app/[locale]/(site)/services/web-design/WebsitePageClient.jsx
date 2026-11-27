@@ -1,33 +1,29 @@
 "use client";
 
 import BreadcrumbSection from "@/components/breadcrumb";
-import FeaturesSection from "@/components/services/web-design/featuers";
-import TopSection from "@/components/services/web-design/top-section";
 import PricingTiers from "@/components/pricing/tiers";
+import ServiceFeatures from "@/components/services/service-features";
+import ServiceIntro from "@/components/services/service-intro";
 import { useTranslations } from "next-intl";
-import React, { useEffect, useState } from "react";
 
-function WebsitePageClient() {
+const keys = ["feature_two", "feature_three", "feature_four", "feature_fife", "feature_six"];
+
+export default function WebsitePageClient() {
   const t = useTranslations("Web");
-  const [title, setTitle] = useState(t("title"));
-  const [subtitle, setSubtitle] = useState(t("subtitle"));
-
-  useEffect(() => {
-    setTitle(title);
-    setSubtitle(subtitle);
-  }, [title, subtitle]);
 
   return (
     <>
       <BreadcrumbSection
-        title={title}
-        links={[{ label: subtitle, href: "/services" }, { label: title }]}
+        title={t("title")}
+        links={[{ label: t("subtitle"), href: "/services" }, { label: t("title") }]}
       />
-      <TopSection />
-      <FeaturesSection />
+      <ServiceIntro
+        namespace="Web"
+        slot="service-web"
+        image="/images/vecteezy_programmer-developer-engineer-with-laptop-sitting-at-the_8826724.webp"
+      />
+      <ServiceFeatures namespace="Web" keys={keys} />
       <PricingTiers group="web" />
     </>
   );
 }
-
-export default WebsitePageClient;

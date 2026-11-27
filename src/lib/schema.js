@@ -17,7 +17,7 @@ const offerings = {
     "التصميم الجرافيكي والهوية البصرية",
     "بناء العلامات التجارية",
     "كتابة المحتوى",
-    "إدارة وسائل التواصل الاجتماعي",
+    "تصميم وإدارة الإعلانات",
   ],
   en: [
     "Website and e-commerce development",
@@ -25,7 +25,7 @@ const offerings = {
     "Graphic design and visual identity",
     "Brand building",
     "Content writing",
-    "Social media management",
+    "Ad design and management",
   ],
 };
 

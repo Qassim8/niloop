@@ -49,7 +49,7 @@ export default async function SolutionsPage({ params }) {
 
       <section className="section bg-sand">
         <div className="container">
-          <SectionHeader title={p("tiers_title")} subtitle={p("tiers_subtitle")} />
+          <SectionHeader variant="editorial" title={p("tiers_title")} subtitle={p("tiers_subtitle")} />
           <TierGrid ids={["web_store", "erp_mini", "erp_full"]} />
           <p className="mx-auto mt-10 max-w-3xl text-center text-sm leading-relaxed text-slate-500">
             {p("note")}

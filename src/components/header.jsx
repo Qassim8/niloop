@@ -62,7 +62,7 @@ export default function Navbar() {
     { href: `/${locale}/services/web-design`, label: t("web"), desc: s("web_desc"), Icon: Code },
     { href: `/${locale}/services/erp`, label: t("erp"), desc: s("erp_desc"), Icon: Calculator },
     { href: `/${locale}/services/graphic-design`, label: t("graphic"), desc: s("graphic_desc"), Icon: PenTool },
-    { href: `/${locale}/services/marketing`, label: t("marketing"), desc: s("marketing_desc"), Icon: Megaphone },
+    { href: `/${locale}/services/ads`, label: t("ads"), desc: s("ads_desc"), Icon: Megaphone },
     { href: `/${locale}/services/content-writing`, label: t("content"), desc: s("content_desc"), Icon: FileText },
   ];
 

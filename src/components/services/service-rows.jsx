@@ -9,7 +9,7 @@ const services = [
   { key: "web", href: "/services/web-design" },
   { key: "erp", href: "/services/erp" },
   { key: "graphic", href: "/services/graphic-design" },
-  { key: "marketing", href: "/services/marketing" },
+  { key: "ads", href: "/services/ads" },
   { key: "content", href: "/services/content-writing" },
 ];
 

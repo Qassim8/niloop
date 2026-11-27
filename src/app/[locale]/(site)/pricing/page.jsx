@@ -44,6 +44,7 @@ export default async function PricingPage({ params }) {
         >
           <div className="container">
             <SectionHeader
+              variant="editorial"
               title={t(`groups.${group}`)}
               subtitle={t("tiers_title")}
             />

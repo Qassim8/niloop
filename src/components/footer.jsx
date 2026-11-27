@@ -29,7 +29,7 @@ export default function Footer() {
         { href: `/${locale}/services/web-design`, label: t("web") },
         { href: `/${locale}/services/erp`, label: t("erp") },
         { href: `/${locale}/services/graphic-design`, label: t("graphic") },
-        { href: `/${locale}/services/marketing`, label: t("marketing") },
+        { href: `/${locale}/services/ads`, label: t("ads") },
         { href: `/${locale}/services/content-writing`, label: t("content") },
       ],
     },
